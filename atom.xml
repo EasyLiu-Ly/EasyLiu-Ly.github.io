@@ -318,28 +318,6 @@
   </entry>
   
   <entry>
-    <title>Android应用层Window加载机制</title>
-    <link href="http://easyliu.com/2017/04/29/android/WindowAndWindowManager/"/>
-    <id>http://easyliu.com/2017/04/29/android/WindowAndWindowManager/</id>
-    <published>2017-04-29T03:10:12.000Z</published>
-    <updated>2017-06-01T15:57:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h1 id="Activity的Window加载机制"><a href="#Activity的Window加载机制" class="headerlink" title="Activity的Window加载机制"></a>Activity的Window加载机制</h1><h1 id="自定义悬浮窗的实现"><a href="#自定义悬浮窗的实现" class="headerlink" title="自定义悬浮窗的实现"></a>自定义悬浮窗的实现</h1><h1 id="Dialog的Window加载机制"><a href="#Dialog的Window加载机制" class="headerlink" title="Dialog的Window加载机制"></a>Dialog的Window加载机制</h1><h1 id="Toast的Window加载机制"><a href="#Toast的Window加载机制" class="headerlink" title="Toast的Window加载机制"></a>Toast的Window加载机制</h1><h1 id="PopupWindow的Window加载机制"><a href="#PopupWindow的Window加载机制" class="headerlink" title="PopupWindow的Window加载机制"></a>PopupWindow的Window加载机制</h1>]]></content>
-    
-    <summary type="html">
-    
-      Android应用层Window加载机制
-    
-    </summary>
-    
-      <category term="Android源码解析" scheme="http://easyliu.com/categories/Android%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
-    
-    
-      <category term="Android" scheme="http://easyliu.com/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Android应用层View触摸事件分发机制</title>
     <link href="http://easyliu.com/2017/04/24/android/ViewDispatchTouchEvent/"/>
     <id>http://easyliu.com/2017/04/24/android/ViewDispatchTouchEvent/</id>

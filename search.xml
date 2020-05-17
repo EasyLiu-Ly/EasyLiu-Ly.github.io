@@ -296,26 +296,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Android应用层Window加载机制]]></title>
-      <url>http://easyliu.com/2017/04/29/android/WindowAndWindowManager/</url>
-      <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h1 id="Activity的Window加载机制"><a href="#Activity的Window加载机制" class="headerlink" title="Activity的Window加载机制"></a>Activity的Window加载机制</h1><h1 id="自定义悬浮窗的实现"><a href="#自定义悬浮窗的实现" class="headerlink" title="自定义悬浮窗的实现"></a>自定义悬浮窗的实现</h1><h1 id="Dialog的Window加载机制"><a href="#Dialog的Window加载机制" class="headerlink" title="Dialog的Window加载机制"></a>Dialog的Window加载机制</h1><h1 id="Toast的Window加载机制"><a href="#Toast的Window加载机制" class="headerlink" title="Toast的Window加载机制"></a>Toast的Window加载机制</h1><h1 id="PopupWindow的Window加载机制"><a href="#PopupWindow的Window加载机制" class="headerlink" title="PopupWindow的Window加载机制"></a>PopupWindow的Window加载机制</h1>]]></content>
-      
-        <categories>
-            
-            <category> Android源码解析 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Android </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Android应用层View触摸事件分发机制]]></title>
       <url>http://easyliu.com/2017/04/24/android/ViewDispatchTouchEvent/</url>
       <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前两篇博客从源码的角度对View绘制流程进行了分析，那么当用户需要跟View进行交互的时候，比如点击按钮的时候，按钮是如何得到点击事件的呢？当用户在屏幕上进行点击或触摸的时候，事件是如何传递到各个View的呢？这个就是本篇博客研究的点：View事件分发机制。只有同时掌握View事件分发机和View绘制流程，并辅以一定的练习，才能真正掌握自定义View。下面开始进入正题！注：源码基于API25。</p>
