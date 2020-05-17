@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://easyliu.com/"/>
-  <updated>2018-02-11T16:37:38.000Z</updated>
+  <updated>2020-05-17T09:11:53.897Z</updated>
   <id>http://easyliu.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PowerMockIo单元测试基础语法</title>
+    <link href="http://easyliu.com/2020/05/17/unit_test/unit_test/"/>
+    <id>http://easyliu.com/2020/05/17/unit_test/unit_test/</id>
+    <published>2020-05-17T09:05:17.000Z</published>
+    <updated>2020-05-17T09:11:53.897Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、使用verifyPrivate来验证私有方法被调用<br>//arrange<br>SeeVideoBoardTopStartVM fakeVm = PowerMockito.mock(SeeVideoBoardTopStartVM.class);<br>Whitebox.setInternalState(mTestVm, “mSeeVideoBoardTopVM”, fakeVm);<br>//act<br>Whitebox.invokeMethod(mTestVm, “resetPlayer”);<br>//assert<br>PowerMockito.verifyPrivate(mTestVm).invoke(“setPlayStatus”, IUpdatePlayStatus.BEFORE);<br>PowerMockito.verifyPrivate(fakeVm).invoke(“onUnbindView”);<br>2、PowerMockIo来mock静态方法：<br>PowerMockito.mockStatic(AdaptiveUI.class);<br>PowerMockito.when(AdaptiveUI.getCurUISizeType(Mockito.any(Context.class))).thenReturn(UISizeType.REGULAR);<br>3、调用private方法<br>boolean result = Whitebox.invokeMethod(mBasePBSectionController, MOCK_METHOD, section);<br>Assert.assertFalse(result);<br>4、模拟私有方法<br>PowerMockito.when(mockPrivateClass, “privateFunc”).thenReturn(“test”);<br>5、mock公有方法<br>PowerMockito.when(mTestVm.getTextViewWidth()).thenReturn(FAKE_TEXT_WIDTH);<br>6、设置私有成员变量<br>Whitebox.setInternalState(mTestVm, “mSeeVideoBoardTopVM”, fakeVm);<br>7、当你需要使用PowerMock强大功能（Mock静态、final、私有方法等）的时候，就需要加注解@PrepareForTest<br>8、如果一个对象，只希望mock它的部分方法，而其他方法希望和真实对象的行为一眼，可以使用PowerMockito.spy(Class<t> clazz)代替PowerMockito.mock(Class<t> clazz)方法，<br>其后的设置依旧，这时，没有通过when设置过的方法，测试调用时，行为和真实对象一样</t></t></p>
+]]></content>
+    
+    <summary type="html">
+    
+      PowerMockIo单元测试基础语法
+    
+    </summary>
+    
+      <category term="单元测试" scheme="http://easyliu.com/categories/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="单元测试" scheme="http://easyliu.com/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Gradle基础之Grovy语法</title>

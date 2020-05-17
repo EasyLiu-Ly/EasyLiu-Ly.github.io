@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title><![CDATA[PowerMockIo单元测试基础语法]]></title>
+      <url>http://easyliu.com/2020/05/17/unit_test/unit_test/</url>
+      <content type="html"><![CDATA[<p>1、使用verifyPrivate来验证私有方法被调用<br>//arrange<br>SeeVideoBoardTopStartVM fakeVm = PowerMockito.mock(SeeVideoBoardTopStartVM.class);<br>Whitebox.setInternalState(mTestVm, “mSeeVideoBoardTopVM”, fakeVm);<br>//act<br>Whitebox.invokeMethod(mTestVm, “resetPlayer”);<br>//assert<br>PowerMockito.verifyPrivate(mTestVm).invoke(“setPlayStatus”, IUpdatePlayStatus.BEFORE);<br>PowerMockito.verifyPrivate(fakeVm).invoke(“onUnbindView”);<br>2、PowerMockIo来mock静态方法：<br>PowerMockito.mockStatic(AdaptiveUI.class);<br>PowerMockito.when(AdaptiveUI.getCurUISizeType(Mockito.any(Context.class))).thenReturn(UISizeType.REGULAR);<br>3、调用private方法<br>boolean result = Whitebox.invokeMethod(mBasePBSectionController, MOCK_METHOD, section);<br>Assert.assertFalse(result);<br>4、模拟私有方法<br>PowerMockito.when(mockPrivateClass, “privateFunc”).thenReturn(“test”);<br>5、mock公有方法<br>PowerMockito.when(mTestVm.getTextViewWidth()).thenReturn(FAKE_TEXT_WIDTH);<br>6、设置私有成员变量<br>Whitebox.setInternalState(mTestVm, “mSeeVideoBoardTopVM”, fakeVm);<br>7、当你需要使用PowerMock强大功能（Mock静态、final、私有方法等）的时候，就需要加注解@PrepareForTest<br>8、如果一个对象，只希望mock它的部分方法，而其他方法希望和真实对象的行为一眼，可以使用PowerMockito.spy(Class<t> clazz)代替PowerMockito.mock(Class<t> clazz)方法，<br>其后的设置依旧，这时，没有通过when设置过的方法，测试调用时，行为和真实对象一样</t></t></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 单元测试 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 单元测试 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Gradle基础之Grovy语法]]></title>
       <url>http://easyliu.com/2018/02/11/Gradle%E5%9F%BA%E7%A1%80%E4%B9%8BGrovy%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<h3 id="Gradle基础之Groovy语法"><a href="#Gradle基础之Groovy语法" class="headerlink" title="Gradle基础之Groovy语法"></a>Gradle基础之Groovy语法</h3><p>在使用Android Studio开发app的过程中，都会接触到Gradle配置，而Gradle的配置是基于Grovvy语法的。因此，要想熟练的使用Gradle进行配置，就必须熟悉Groovy语法，下面开始讲解下Groovy的基本语法。</p>
