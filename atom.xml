@@ -655,7 +655,7 @@
     <link href="http://easyliu.com/2017/03/15/first/"/>
     <id>http://easyliu.com/2017/03/15/first/</id>
     <published>2017-03-15T15:28:55.000Z</published>
-    <updated>2020-05-17T09:46:13.024Z</updated>
+    <updated>2020-05-17T11:16:04.020Z</updated>
     
     <content type="html"><![CDATA[<p>您好，欢迎来到easyliu的技术博客！</p>
 <p>相关链接：</p>
@@ -664,6 +664,7 @@
 <p><a href="https://hexo.io" target="_blank" rel="external">hexo官网</a></p>
 <p><a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="external">大道至简——Hexo简洁主题推荐</a></p>
 <p><a href="https://github.com/maximegris/angular-electron/issues/298" target="_blank" rel="external">npm install reports error “npm ERR! Unexpected end of JSON input while parsing near </a></p>
+<p><a href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="external">hueman-theme</a></p>
 <p>相关笔记：</p>
 <ul>
 <li><p>代码块高亮的方式为三个```之后加上语言，记得之间的空格，不然无效</p>
