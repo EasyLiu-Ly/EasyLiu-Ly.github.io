@@ -1,4 +1,188 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="欢迎来到我的博客"><title>Gradle基础之Grovy语法 | EasyLiu</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Gradle基础之Grovy语法</h1><a id="logo" href="/.">EasyLiu</a><p class="description">欢迎来到我的博客</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Gradle基础之Grovy语法</h1><div class="post-meta">Feb 11, 2018<span> | </span><span class="category"><a href="/categories/Gradle相关/">Gradle相关</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-thread-key="2018/02/11/android/Gradle基础之Grovy语法/" href="/2018/02/11/android/Gradle基础之Grovy语法/#comments" class="ds-thread-count"></a><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradle基础之Groovy语法"><span class="toc-number">1.</span> <span class="toc-text">Gradle基础之Groovy语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">2.</span> <span class="toc-text">注释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#单行注释"><span class="toc-number">2.1.</span> <span class="toc-text">单行注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多行注释"><span class="toc-number">2.2.</span> <span class="toc-text">多行注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GroovyDoc-注释"><span class="toc-number">2.3.</span> <span class="toc-text">GroovyDoc 注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Shebang-line"><span class="toc-number">2.4.</span> <span class="toc-text">Shebang line</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Groovy关键字"><span class="toc-number">3.</span> <span class="toc-text">Groovy关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标识符"><span class="toc-number">4.</span> <span class="toc-text">标识符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#正常的标识符"><span class="toc-number">4.1.</span> <span class="toc-text">正常的标识符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#引用标识符"><span class="toc-number">4.2.</span> <span class="toc-text">引用标识符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串"><span class="toc-number">5.</span> <span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#单引号字符串"><span class="toc-number">5.1.</span> <span class="toc-text">单引号字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串连接"><span class="toc-number">5.2.</span> <span class="toc-text">字符串连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三单引号字符串"><span class="toc-number">5.3.</span> <span class="toc-text">三单引号字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#转义特殊字符"><span class="toc-number">5.3.1.</span> <span class="toc-text">转义特殊字符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Unicode转义序列"><span class="toc-number">5.3.2.</span> <span class="toc-text">Unicode转义序列</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#双引用字符串"><span class="toc-number">5.4.</span> <span class="toc-text">双引用字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#字符串插值"><span class="toc-number">5.4.1.</span> <span class="toc-text">字符串插值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插值闭包表达式"><span class="toc-number">5.4.2.</span> <span class="toc-text">插值闭包表达式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#和java进行交互"><span class="toc-number">5.4.3.</span> <span class="toc-text">和java进行交互</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#GString和String的hashCode"><span class="toc-number">5.4.4.</span> <span class="toc-text">GString和String的hashCode</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三双引号字符串"><span class="toc-number">5.5.</span> <span class="toc-text">三双引号字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#斜线字符串"><span class="toc-number">5.6.</span> <span class="toc-text">斜线字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#美元斜线字符串"><span class="toc-number">5.7.</span> <span class="toc-text">美元斜线字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串总结"><span class="toc-number">5.8.</span> <span class="toc-text">字符串总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符"><span class="toc-number">5.9.</span> <span class="toc-text">字符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数字"><span class="toc-number">6.</span> <span class="toc-text">数字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#整型字面量"><span class="toc-number">6.1.</span> <span class="toc-text">整型字面量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#数字的非十进制表示"><span class="toc-number">6.1.1.</span> <span class="toc-text">数字的非十进制表示</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小数字面量"><span class="toc-number">6.2.</span> <span class="toc-text">小数字面量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字面中的下划线"><span class="toc-number">6.3.</span> <span class="toc-text">字面中的下划线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数字类型后缀"><span class="toc-number">6.4.</span> <span class="toc-text">数字类型后缀</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数学运算"><span class="toc-number">6.5.</span> <span class="toc-text">数学运算</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#除法运算"><span class="toc-number">6.5.1.</span> <span class="toc-text">除法运算</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指数运算"><span class="toc-number">6.5.2.</span> <span class="toc-text">指数运算</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布尔型"><span class="toc-number">7.</span> <span class="toc-text">布尔型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列表List"><span class="toc-number">8.</span> <span class="toc-text">列表List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组"><span class="toc-number">9.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#映射表Maps"><span class="toc-number">10.</span> <span class="toc-text">映射表Maps</span></a></li></ol></div></div><div class="post-content"><h3 id="Gradle基础之Groovy语法"><a href="#Gradle基础之Groovy语法" class="headerlink" title="Gradle基础之Groovy语法"></a>Gradle基础之Groovy语法</h3><p>在使用Android Studio开发app的过程中，都会接触到Gradle配置，而Gradle的配置是基于Grovvy语法的。因此，要想熟练的使用Gradle进行配置，就必须熟悉Groovy语法，下面开始讲解下Groovy的基本语法。</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Gradle基础之Grovy语法 | EasyLiu</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Android" />
+    
+    <meta name="description" content="Gradle基础之Grovy语法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle基础之Grovy语法">
+<meta property="og:url" content="http://easyliu.com/2018/02/11/android/Gradle基础之Grovy语法/index.html">
+<meta property="og:site_name" content="EasyLiu">
+<meta property="og:description" content="Gradle基础之Grovy语法">
+<meta property="og:image" content="http://easyliu.com/2018/02/11/android/Gradle基础之Grovy语法/转义字符对照表.png">
+<meta property="og:updated_time" content="2018-02-11T16:37:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gradle基础之Grovy语法">
+<meta name="twitter:description" content="Gradle基础之Grovy语法">
+<meta name="twitter:image" content="http://easyliu.com/2018/02/11/android/Gradle基础之Grovy语法/转义字符对照表.png">
+    
+
+    
+        <link rel="alternate" href="/" title="EasyLiu" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">欢迎来到我的博客</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android源码解析/">Android源码解析</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android自定义控件/">Android自定义控件</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Gradle相关/">Gradle相关</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/hexo/">hexo</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ios开发/">ios开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/单元测试/">单元测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/杂项/">杂项</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Gradle相关/">Gradle相关</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-android/Gradle基础之Grovy语法" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Gradle基础之Grovy语法
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2018/02/11/android/Gradle基础之Grovy语法/" class="article-date">
+         <time datetime="2018-02-11T15:56:14.000Z" itemprop="datePublished">2018-02-11</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Android/">Android</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="Gradle基础之Groovy语法"><a href="#Gradle基础之Groovy语法" class="headerlink" title="Gradle基础之Groovy语法"></a>Gradle基础之Groovy语法</h3><p>在使用Android Studio开发app的过程中，都会接触到Gradle配置，而Gradle的配置是基于Grovvy语法的。因此，要想熟练的使用Gradle进行配置，就必须熟悉Groovy语法，下面开始讲解下Groovy的基本语法。</p>
 <p>Groovy可以看作是java的加强版，扩展了java的语法，拥有自己的一些特性。</p>
 <p><a href="http://www.groovy-lang.org/syntax.html" target="_blank" rel="external">Groovy语法官方文档</a></p>
 <h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><h4 id="单行注释"><a href="#单行注释" class="headerlink" title="单行注释"></a>单行注释</h4><p>单行注释如下所示，跟java一样：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// a standalone single line comment</span></div><div class="line">println <span class="string">"hello"</span> <span class="comment">// a comment till the end of the line</span></div></pre></td></tr></table></figure></p>
@@ -155,19 +339,458 @@
 <p>如果key是一个变量，如下所示：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">def</span> key = <span class="string">'name'</span></div><div class="line"><span class="keyword">def</span> person = [<span class="string">key:</span> <span class="string">'Guillaume'</span>]  <span class="comment">//'Guilaume'对应的key为"key"，而不是变量key所关联的值    </span></div><div class="line"></div><div class="line"><span class="keyword">assert</span> !person.containsKey(<span class="string">'name'</span>)   <span class="comment">//不包含'name'这个key</span></div><div class="line"><span class="keyword">assert</span> person.containsKey(<span class="string">'key'</span>)     <span class="comment">//包含'key'这个key</span></div></pre></td></tr></table></figure></p>
 <p>要想解决上述问题，可以如下所示：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">def</span> key = <span class="string">'name'</span></div><div class="line">person = [(key): <span class="string">'Guillaume'</span>]  <span class="comment">//此时'Guilaume'对应的key就是变量key所对应的值      </span></div><div class="line"></div><div class="line"><span class="keyword">assert</span> person.containsKey(<span class="string">'name'</span>)    </div><div class="line"><span class="keyword">assert</span> !person.containsKey(<span class="string">'key'</span>)</div></pre></td></tr></table></figure></p>
 <p>以上就是Groovy的基本语法，关于Groovy的语法特性，还包含一下几个方面，直接看官方文档即可，有兴趣的可以了解下。<br><a href="http://www.groovy-lang.org/operators.html" target="_blank" rel="external">运算符 Operators</a><br><a href="http://www.groovy-lang.org/structure.html" target="_blank" rel="external">程序结构 Program structure</a><br><a href="http://www.groovy-lang.org/objectorientation.html" target="_blank" rel="external">Groovy 面向对象语法 Object orientation </a><br><a href="http://www.groovy-lang.org/closures.html" target="_blank" rel="external">闭包 Closures</a><br><a href="http://www.groovy-lang.org/semantics.html" target="_blank" rel="external">Groovy 语义 Semantics</a></p>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://easyliu.com/2018/02/11/android/Gradle基础之Grovy语法/" data-id="ckaavkafa000c84mwscgjikp5" class="article-share-link">分享到</a><div class="tags"><a href="/tags/Android/">Android</a></div><div class="post-nav"><a href="/2020/05/17/unit_test/unit_test/" class="pre">PowerMockIo单元测试基础语法</a><a href="/2017/05/14/android/SimpleSlidingMenu/" class="next">SimpleSlidingMenu</a></div><div data-thread-key="2018/02/11/android/Gradle基础之Grovy语法/" data-title="Gradle基础之Grovy语法" data-url="http://easyliu.com/2018/02/11/android/Gradle基础之Grovy语法/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2018/02/11/android/Gradle基础之Grovy语法/" data-title="Gradle基础之Grovy语法" data-url="http://easyliu.com/2018/02/11/android/Gradle基础之Grovy语法/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android源码解析/">Android源码解析</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android自定义控件/">Android自定义控件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gradle相关/">Gradle相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios开发/">ios开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/单元测试/">单元测试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/ios开发/" style="font-size: 15px;">ios开发</a> <a href="/tags/单元测试/" style="font-size: 15px;">单元测试</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/05/17/ios/xcode_shortcut/">xcode快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/17/unit_test/unit_test/">PowerMockIo单元测试基础语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/11/android/Gradle基础之Grovy语法/">Gradle基础之Grovy语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/14/android/SimpleSlidingMenu/">SimpleSlidingMenu</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/14/android/SlideFinishActivity/">SlideFinishActivity</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/29/android/WindowAndWindowManager/">Android应用层Window加载机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/24/android/ViewDispatchTouchEvent/">Android应用层View触摸事件分发机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/android/ViewInvalidteProcessTwo/">Android应用层View绘制流程之measure,layout,draw三步曲</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/android/ViewInvalidteProcessOne/">Android应用层View绘制流程之DecorView与ViewRootImpl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/18/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="comments-title"><i class="fa fa-comment-o"> 最近评论</i></div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://blog.csdn.net/liuyi1207164339" title="我的csdn博客" target="_blank">我的csdn博客</a><ul></ul><a href="http://blog.csdn.net/lmj623565791" title="鸿洋大神" target="_blank">鸿洋大神</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">EasyLiu.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>var duoshuoQuery = {short_name:'easyliu'};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-        || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
-</script><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
-if (search_path.length == 0) {
-   search_path = 'search.xml';
-}
-var path = '/' + search_path;
-searchFunc(path, 'local-search-input', 'local-search-result');
-</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://easyliu.com/2018/02/11/android/Gradle基础之Grovy语法/" data-id="ckaax0d0q000c25mwclpa41as" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "EasyLiu"
+        },
+        "headline": "Gradle基础之Grovy语法",
+        "image": "http://easyliu.com/2018/02/11/android/Gradle基础之Grovy语法/转义字符对照表.png",
+        "keywords": "Android",
+        "genre": "Gradle相关",
+        "datePublished": "2018-02-11",
+        "dateCreated": "2018-02-11",
+        "dateModified": "2018-02-12",
+        "url": "http://easyliu.com/2018/02/11/android/Gradle基础之Grovy语法/",
+        "description": "Gradle基础之Groovy语法在使用Android Studio开发app的过程中，都会接触到Gradle配置，而Gradle的配置是基于Grovvy语法的。因此，要想熟练的使用Gradle进行配置，就必须熟悉Groovy语法，下面开始讲解下Groovy的基本语法。
+Groovy可以看作是java的加强版，扩展了java的语法，拥有自己的一些特性。
+Groovy语法官方文档
+注释单行注释单行注",
+        "wordCount": 4115
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/05/17/unit_test/unit_test/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            PowerMockIo单元测试基础语法
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/05/14/android/SimpleSlidingMenu/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">SimpleSlidingMenu</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">目录</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradle基础之Groovy语法"><span class="toc-number">1.</span> <span class="toc-text">Gradle基础之Groovy语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">2.</span> <span class="toc-text">注释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#单行注释"><span class="toc-number">2.1.</span> <span class="toc-text">单行注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多行注释"><span class="toc-number">2.2.</span> <span class="toc-text">多行注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GroovyDoc-注释"><span class="toc-number">2.3.</span> <span class="toc-text">GroovyDoc 注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Shebang-line"><span class="toc-number">2.4.</span> <span class="toc-text">Shebang line</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Groovy关键字"><span class="toc-number">3.</span> <span class="toc-text">Groovy关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标识符"><span class="toc-number">4.</span> <span class="toc-text">标识符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#正常的标识符"><span class="toc-number">4.1.</span> <span class="toc-text">正常的标识符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#引用标识符"><span class="toc-number">4.2.</span> <span class="toc-text">引用标识符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串"><span class="toc-number">5.</span> <span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#单引号字符串"><span class="toc-number">5.1.</span> <span class="toc-text">单引号字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串连接"><span class="toc-number">5.2.</span> <span class="toc-text">字符串连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三单引号字符串"><span class="toc-number">5.3.</span> <span class="toc-text">三单引号字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#转义特殊字符"><span class="toc-number">5.3.1.</span> <span class="toc-text">转义特殊字符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Unicode转义序列"><span class="toc-number">5.3.2.</span> <span class="toc-text">Unicode转义序列</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#双引用字符串"><span class="toc-number">5.4.</span> <span class="toc-text">双引用字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#字符串插值"><span class="toc-number">5.4.1.</span> <span class="toc-text">字符串插值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插值闭包表达式"><span class="toc-number">5.4.2.</span> <span class="toc-text">插值闭包表达式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#和java进行交互"><span class="toc-number">5.4.3.</span> <span class="toc-text">和java进行交互</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#GString和String的hashCode"><span class="toc-number">5.4.4.</span> <span class="toc-text">GString和String的hashCode</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三双引号字符串"><span class="toc-number">5.5.</span> <span class="toc-text">三双引号字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#斜线字符串"><span class="toc-number">5.6.</span> <span class="toc-text">斜线字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#美元斜线字符串"><span class="toc-number">5.7.</span> <span class="toc-text">美元斜线字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串总结"><span class="toc-number">5.8.</span> <span class="toc-text">字符串总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符"><span class="toc-number">5.9.</span> <span class="toc-text">字符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数字"><span class="toc-number">6.</span> <span class="toc-text">数字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#整型字面量"><span class="toc-number">6.1.</span> <span class="toc-text">整型字面量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#数字的非十进制表示"><span class="toc-number">6.1.1.</span> <span class="toc-text">数字的非十进制表示</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小数字面量"><span class="toc-number">6.2.</span> <span class="toc-text">小数字面量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字面中的下划线"><span class="toc-number">6.3.</span> <span class="toc-text">字面中的下划线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数字类型后缀"><span class="toc-number">6.4.</span> <span class="toc-text">数字类型后缀</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数学运算"><span class="toc-number">6.5.</span> <span class="toc-text">数学运算</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#除法运算"><span class="toc-number">6.5.1.</span> <span class="toc-text">除法运算</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指数运算"><span class="toc-number">6.5.2.</span> <span class="toc-text">指数运算</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布尔型"><span class="toc-number">7.</span> <span class="toc-text">布尔型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列表List"><span class="toc-number">8.</span> <span class="toc-text">列表List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组"><span class="toc-number">9.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#映射表Maps"><span class="toc-number">10.</span> <span class="toc-text">映射表Maps</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/05/17/ios/xcode_shortcut/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/ios开发/">ios开发</a></p>
+                            <p class="item-title"><a href="/2020/05/17/ios/xcode_shortcut/" class="title">xcode快捷键</a></p>
+                            <p class="item-date"><time datetime="2020-05-17T09:34:22.000Z" itemprop="datePublished">2020-05-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/05/17/unit_test/unit_test/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/单元测试/">单元测试</a></p>
+                            <p class="item-title"><a href="/2020/05/17/unit_test/unit_test/" class="title">PowerMockIo单元测试基础语法</a></p>
+                            <p class="item-date"><time datetime="2020-05-17T09:05:17.000Z" itemprop="datePublished">2020-05-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/11/android/Gradle基础之Grovy语法/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/02/11/android/Gradle基础之Grovy语法/转义字符对照表.png)" alt="Gradle基础之Grovy语法" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Gradle相关/">Gradle相关</a></p>
+                            <p class="item-title"><a href="/2018/02/11/android/Gradle基础之Grovy语法/" class="title">Gradle基础之Grovy语法</a></p>
+                            <p class="item-date"><time datetime="2018-02-11T15:56:14.000Z" itemprop="datePublished">2018-02-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/14/android/SimpleSlidingMenu/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2017/05/14/android/SimpleSlidingMenu/simpleSlidingMenu.gif)" alt="SimpleSlidingMenu" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android自定义控件/">Android自定义控件</a></p>
+                            <p class="item-title"><a href="/2017/05/14/android/SimpleSlidingMenu/" class="title">SimpleSlidingMenu</a></p>
+                            <p class="item-date"><time datetime="2017-05-14T03:26:19.000Z" itemprop="datePublished">2017-05-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/14/android/SlideFinishActivity/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2017/05/14/android/SlideFinishActivity/SlideFinishActivity.gif)" alt="SlideFinishActivity" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android自定义控件/">Android自定义控件</a></p>
+                            <p class="item-title"><a href="/2017/05/14/android/SlideFinishActivity/" class="title">SlideFinishActivity</a></p>
+                            <p class="item-date"><time datetime="2017-05-14T03:07:05.000Z" itemprop="datePublished">2017-05-14</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android源码解析/">Android源码解析</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android自定义控件/">Android自定义控件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gradle相关/">Gradle相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios开发/">ios开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/单元测试/">单元测试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios开发/">ios开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/ios开发/" style="font-size: 10px;">ios开发</a> <a href="/tags/其他/" style="font-size: 10px;">其他</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://blog.csdn.net/liuyi1207164339">我的csdn博客</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://blog.csdn.net/lmj623565791">鸿洋大神</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 EasyLiu</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://easyliu.com/2018/02/11/android/Gradle基础之Grovy语法/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+</body>
+</html>
