@@ -647,11 +647,14 @@
 <p><a href="http://www.jianshu.com/p/96a13401b0ca" target="_blank" rel="external">程序猿修炼之道(4)-技能篇之Markdown（附：工具推荐）</a></p>
 <p><a href="https://hexo.io" target="_blank" rel="external">hexo官网</a></p>
 <p><a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="external">大道至简——Hexo简洁主题推荐</a></p>
+<p><a href="https://github.com/maximegris/angular-electron/issues/298" target="_blank" rel="external">npm install reports error “npm ERR! Unexpected end of JSON input while parsing near </a></p>
 <p>相关笔记：</p>
 <ul>
 <li><p>代码块高亮的方式为三个```之后加上语言，记得之间的空格，不然无效</p>
 </li>
 <li><p>对于引用图片，在同一目录下面新建asset文件夹，把图片放入其中，然后引用即可</p>
+</li>
+<li><p>在_post下面的ios目录下面新建xcode_shortcut.md文件：hexo new –path ios/xcode_shortcut “xcode_shortcut”</p>
 </li>
 </ul>
 ]]></content>
