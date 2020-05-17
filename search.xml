@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title><![CDATA[xcode快捷键]]></title>
+      <url>http://easyliu.com/2020/05/17/ios/xcode_shortcut/</url>
+      <content type="html"><![CDATA[<p>1、cmd+shift+j  在左边文件管理区定位到当前文件</p>
+<p>2、cmd+shift+o 快速查找某个类，对应Android studio开发的话是shift+shift</p>
+<p>3、ctrl+cmd+往左箭头或者往右箭头  光标返回到上一个选中的位置或者下一个选中的位置</p>
+]]></content>
+      
+        <categories>
+            
+            <category> ios开发 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ios开发 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[PowerMockIo单元测试基础语法]]></title>
       <url>http://easyliu.com/2020/05/17/unit_test/unit_test/</url>
       <content type="html"><![CDATA[<h3 id="1、使用verifyPrivate来验证私有方法被调用"><a href="#1、使用verifyPrivate来验证私有方法被调用" class="headerlink" title="1、使用verifyPrivate来验证私有方法被调用"></a>1、使用verifyPrivate来验证私有方法被调用</h3><p>//arrange<br>SeeVideoBoardTopStartVM fakeVm = PowerMockito.mock(SeeVideoBoardTopStartVM.class);<br>Whitebox.setInternalState(mTestVm, “mSeeVideoBoardTopVM”, fakeVm);<br>//act<br>Whitebox.invokeMethod(mTestVm, “resetPlayer”);<br>//assert<br>PowerMockito.verifyPrivate(mTestVm).invoke(“setPlayStatus”, IUpdatePlayStatus.BEFORE);<br>PowerMockito.verifyPrivate(fakeVm).invoke(“onUnbindView”);</p>

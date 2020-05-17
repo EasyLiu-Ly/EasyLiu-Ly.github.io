@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://easyliu.com/"/>
-  <updated>2020-05-17T09:14:52.356Z</updated>
+  <updated>2020-05-17T09:36:20.037Z</updated>
   <id>http://easyliu.com/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>xcode快捷键</title>
+    <link href="http://easyliu.com/2020/05/17/ios/xcode_shortcut/"/>
+    <id>http://easyliu.com/2020/05/17/ios/xcode_shortcut/</id>
+    <published>2020-05-17T09:34:22.000Z</published>
+    <updated>2020-05-17T09:36:20.037Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、cmd+shift+j  在左边文件管理区定位到当前文件</p>
+<p>2、cmd+shift+o 快速查找某个类，对应Android studio开发的话是shift+shift</p>
+<p>3、ctrl+cmd+往左箭头或者往右箭头  光标返回到上一个选中的位置或者下一个选中的位置</p>
+]]></content>
+    
+    <summary type="html">
+    
+      xcode快捷键
+    
+    </summary>
+    
+      <category term="ios开发" scheme="http://easyliu.com/categories/ios%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="ios开发" scheme="http://easyliu.com/tags/ios%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>PowerMockIo单元测试基础语法</title>
