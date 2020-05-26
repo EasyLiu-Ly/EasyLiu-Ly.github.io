@@ -4,6 +4,26 @@
   
     
     <entry>
+      <title><![CDATA[java代码规范]]></title>
+      <url>http://easyliu.com/2020/05/26/code/java_code_style/</url>
+      <content type="html"><![CDATA[<h3 id="1、减少嵌套层级，提前返回"><a href="#1、减少嵌套层级，提前返回" class="headerlink" title="1、减少嵌套层级，提前返回"></a>1、减少嵌套层级，提前返回</h3><h3 id="2、一行不大于100个字符"><a href="#2、一行不大于100个字符" class="headerlink" title="2、一行不大于100个字符"></a>2、一行不大于100个字符</h3><h3 id="3、函数参数个数不宜过多，太多了考虑抽象成类"><a href="#3、函数参数个数不宜过多，太多了考虑抽象成类" class="headerlink" title="3、函数参数个数不宜过多，太多了考虑抽象成类"></a>3、函数参数个数不宜过多，太多了考虑抽象成类</h3><h3 id="4、private成员变量以m为前缀"><a href="#4、private成员变量以m为前缀" class="headerlink" title="4、private成员变量以m为前缀"></a>4、private成员变量以m为前缀</h3><h3 id="5、常量为全大写，以下划线拼接"><a href="#5、常量为全大写，以下划线拼接" class="headerlink" title="5、常量为全大写，以下划线拼接"></a>5、常量为全大写，以下划线拼接</h3><h3 id="6、静态成员变量以s为前缀"><a href="#6、静态成员变量以s为前缀" class="headerlink" title="6、静态成员变量以s为前缀"></a>6、静态成员变量以s为前缀</h3><h3 id="7、单个函数行数不宜过多，超过20-line就考虑抽取函数"><a href="#7、单个函数行数不宜过多，超过20-line就考虑抽取函数" class="headerlink" title="7、单个函数行数不宜过多，超过20 line就考虑抽取函数"></a>7、单个函数行数不宜过多，超过20 line就考虑抽取函数</h3><h3 id="8、经常进行重构"><a href="#8、经常进行重构" class="headerlink" title="8、经常进行重构"></a>8、经常进行重构</h3>]]></content>
+      
+        <categories>
+            
+            <category> 代码规范 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 代码规范 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[xcode快捷键]]></title>
       <url>http://easyliu.com/2020/05/17/ios/xcode_shortcut/</url>
       <content type="html"><![CDATA[<p>1、cmd+shift+j  在左边文件管理区定位到当前文件</p>
