@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>EasyLiu</title>
-  <subtitle>欢迎来到我的博客</subtitle>
+  <subtitle>welcome</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://easyliu.com/"/>
