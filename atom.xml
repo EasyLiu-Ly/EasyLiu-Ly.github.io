@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://easyliu.com/"/>
-  <updated>2020-05-30T04:15:48.125Z</updated>
+  <updated>2020-05-30T04:28:13.239Z</updated>
   <id>http://easyliu.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://easyliu.com/2020/05/30/android/as_shortcut/"/>
     <id>http://easyliu.com/2020/05/30/android/as_shortcut/</id>
     <published>2020-05-30T03:38:43.000Z</published>
-    <updated>2020-05-30T04:15:48.125Z</updated>
+    <updated>2020-05-30T04:28:13.239Z</updated>
     
     <content type="html"><![CDATA[<h2 id="重构快捷键"><a href="#重构快捷键" class="headerlink" title="重构快捷键"></a>重构快捷键</h2><p>shift+alt+M 选中抽取方法<br>ctrl+alt+c 抽取常量</p>
 ]]></content>
@@ -43,7 +43,7 @@
     <link href="http://easyliu.com/2020/05/26/code/java_code_style/"/>
     <id>http://easyliu.com/2020/05/26/code/java_code_style/</id>
     <published>2020-05-26T13:31:58.000Z</published>
-    <updated>2020-05-26T14:02:47.911Z</updated>
+    <updated>2020-05-30T04:27:58.837Z</updated>
     
     <content type="html"><![CDATA[<h3 id="1、减少嵌套层级，提前返回"><a href="#1、减少嵌套层级，提前返回" class="headerlink" title="1、减少嵌套层级，提前返回"></a>1、减少嵌套层级，提前返回</h3><h3 id="2、一行不大于100个字符"><a href="#2、一行不大于100个字符" class="headerlink" title="2、一行不大于100个字符"></a>2、一行不大于100个字符</h3><h3 id="3、函数参数个数不宜过多，太多了考虑抽象成类"><a href="#3、函数参数个数不宜过多，太多了考虑抽象成类" class="headerlink" title="3、函数参数个数不宜过多，太多了考虑抽象成类"></a>3、函数参数个数不宜过多，太多了考虑抽象成类</h3><h3 id="4、private成员变量以m为前缀"><a href="#4、private成员变量以m为前缀" class="headerlink" title="4、private成员变量以m为前缀"></a>4、private成员变量以m为前缀</h3><h3 id="5、常量为全大写，以下划线拼接"><a href="#5、常量为全大写，以下划线拼接" class="headerlink" title="5、常量为全大写，以下划线拼接"></a>5、常量为全大写，以下划线拼接</h3><h3 id="6、静态成员变量以s为前缀"><a href="#6、静态成员变量以s为前缀" class="headerlink" title="6、静态成员变量以s为前缀"></a>6、静态成员变量以s为前缀</h3><h3 id="7、单个函数行数不宜过多，超过20-line就考虑抽取函数"><a href="#7、单个函数行数不宜过多，超过20-line就考虑抽取函数" class="headerlink" title="7、单个函数行数不宜过多，超过20 line就考虑抽取函数"></a>7、单个函数行数不宜过多，超过20 line就考虑抽取函数</h3><h3 id="8、经常进行重构"><a href="#8、经常进行重构" class="headerlink" title="8、经常进行重构"></a>8、经常进行重构</h3><h3 id="9、时常考虑抽象、封装、多态"><a href="#9、时常考虑抽象、封装、多态" class="headerlink" title="9、时常考虑抽象、封装、多态"></a>9、时常考虑抽象、封装、多态</h3><h3 id="10、命名规则：精简但能清楚表达语义"><a href="#10、命名规则：精简但能清楚表达语义" class="headerlink" title="10、命名规则：精简但能清楚表达语义"></a>10、命名规则：精简但能清楚表达语义</h3><h3 id="11、写函数的时候从方便单测的角度进行考虑，进行单测覆盖"><a href="#11、写函数的时候从方便单测的角度进行考虑，进行单测覆盖" class="headerlink" title="11、写函数的时候从方便单测的角度进行考虑，进行单测覆盖"></a>11、写函数的时候从方便单测的角度进行考虑，进行单测覆盖</h3>]]></content>
     
