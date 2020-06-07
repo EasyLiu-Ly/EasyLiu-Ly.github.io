@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://easyliu.com/"/>
-  <updated>2020-05-30T04:33:49.100Z</updated>
+  <updated>2020-06-07T07:39:54.679Z</updated>
   <id>http://easyliu.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>replaceSpace</title>
+    <link href="http://easyliu.com/2020/06/07/algorithm/repalceSpace/"/>
+    <id>http://easyliu.com/2020/06/07/algorithm/repalceSpace/</id>
+    <published>2020-06-07T07:37:57.000Z</published>
+    <updated>2020-06-07T07:39:54.679Z</updated>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请实现一个函数，把字符串中的每个空格替换为”%20”。</p>
+<h5 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h5><p>“We are happy”</p>
+<h5 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h5><p>“We%20are%20happy”</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">replaceSpace</span><span class="params">(String input)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (input == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="string">""</span>.equals(input)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//计算空格的个数</span></div><div class="line">    <span class="keyword">char</span>[] chars = input.toCharArray();</div><div class="line">    <span class="keyword">int</span> numOfSpace = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> curChar : chars) &#123;</div><div class="line">        <span class="keyword">if</span> (curChar == <span class="string">' '</span>) &#123;</div><div class="line">            numOfSpace++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//创建一个新的字符数组</span></div><div class="line">    <span class="keyword">char</span>[] newChars = <span class="keyword">new</span> <span class="keyword">char</span>[chars.length + numOfSpace * <span class="number">2</span>];</div><div class="line">    <span class="keyword">int</span> indexOfNewChar = -<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> curChar : chars) &#123;</div><div class="line">        <span class="keyword">if</span> (curChar != <span class="string">' '</span>) &#123;</div><div class="line">            newChars[++indexOfNewChar] = curChar;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            newChars[++indexOfNewChar] = <span class="string">'%'</span>;</div><div class="line">            newChars[++indexOfNewChar] = <span class="string">'2'</span>;</div><div class="line">            newChars[++indexOfNewChar] = <span class="string">'0'</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> Arrays.toString(newChars);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2>]]></content>
+    
+    <summary type="html">
+    
+      替换空格
+    
+    </summary>
+    
+      <category term="每周一题" scheme="http://easyliu.com/categories/%E6%AF%8F%E5%91%A8%E4%B8%80%E9%A2%98/"/>
+    
+    
+      <category term="算法" scheme="http://easyliu.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Android studio 快捷键</title>
@@ -65,7 +92,7 @@
     <link href="http://easyliu.com/2020/05/17/ios/xcode_shortcut/"/>
     <id>http://easyliu.com/2020/05/17/ios/xcode_shortcut/</id>
     <published>2020-05-17T09:34:22.000Z</published>
-    <updated>2020-05-17T09:36:20.037Z</updated>
+    <updated>2020-05-30T05:15:02.829Z</updated>
     
     <content type="html"><![CDATA[<p>1、cmd+shift+j  在左边文件管理区定位到当前文件</p>
 <p>2、cmd+shift+o 快速查找某个类，对应Android studio开发的话是shift+shift</p>

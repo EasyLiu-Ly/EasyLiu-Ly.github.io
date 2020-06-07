@@ -6,14 +6,14 @@
     
 
     
-    <title>分类: Android源码解析 | EasyLiu</title>
+    <title>分类: 每周一题 | EasyLiu</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="description" content="欢迎来到我的博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="EasyLiu">
-<meta property="og:url" content="http://easyliu.com/categories/Android源码解析/index.html">
+<meta property="og:url" content="http://easyliu.com/categories/每周一题/index.html">
 <meta property="og:site_name" content="EasyLiu">
 <meta property="og:description" content="欢迎来到我的博客">
 <meta name="twitter:card" content="summary">
@@ -130,7 +130,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-folder-open"></i>分类: <em class="page-title-link">Android源码解析</em>
+    <i class="icon fa fa-folder-open"></i>分类: <em class="page-title-link">每周一题</em>
     </h1>
 </div>
 
@@ -143,7 +143,7 @@
         
         <section class="archives-wrap">
             <div class="archive-year-wrap">
-                <a href="/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
+                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
             </div>
             <div class="archives">
     
@@ -154,20 +154,13 @@
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2017/04/24/android/ViewDispatchTouchEvent/" class="thumbnail">
+        <a href="/2020/06/07/algorithm/repalceSpace/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
     
     
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://easyliu.com/2017/04/24/android/ViewDispatchTouchEvent/">0</span>
-    
-</span>
-
 
     
 </a>
@@ -175,116 +168,23 @@
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/Android源码解析/">Android源码解析</a>
+            <a class="article-category-link" href="/categories/每周一题/">每周一题</a>
             </div>
-            <div class="date"><time datetime="2017-04-24T14:39:11.000Z" itemprop="datePublished">2017-04-24</time></div>
+            <div class="date"><time datetime="2020-06-07T07:37:57.000Z" itemprop="datePublished">2020-06-07</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2017/04/24/android/ViewDispatchTouchEvent/">Android应用层View触摸事件分发机制</a>
+        <a href="/2020/06/07/algorithm/repalceSpace/">replaceSpace</a>
         </h1>
     
 
         <p class="article-excerpt">
-            概述前两篇博客从源码的角度对View绘制流程进行了分析，那么当用户需要跟View进行交互的时候，比如点击按钮的时候，按钮是如何得到点击事件的呢？当用户在屏幕上进行点击或触摸的时候，事件是如何传递到各个View的呢？这个就是本篇博客研究的点：View事件分发机制。只有同时掌握View事件分发机和View绘制流程，并辅以一定的练习，才能真正掌握自定义View。下面开始进入正题！注：源码基于API25。
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/04/22/android/ViewInvalidteProcessTwo/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://easyliu.com/2017/04/22/android/ViewInvalidteProcessTwo/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Android源码解析/">Android源码解析</a>
-            </div>
-            <div class="date"><time datetime="2017-04-22T13:20:18.000Z" itemprop="datePublished">2017-04-22</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/04/22/android/ViewInvalidteProcessTwo/">Android应用层View绘制流程之measure,layout,draw三步曲</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            概述上一篇博文对DecorView和ViewRootImpl的关系进行了剖析，这篇文章主要是来剖析View绘制的三个基本流程:measure,layout,draw，只有把这三个基本流程搞清楚了，平时在自定义View的时候才会有清晰的思路！开始进入正题。
-View的measure过程三个流程均是从ViewRootImpl的performTraversals方法开始的，如下所示：1234567891
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/04/22/android/ViewInvalidteProcessOne/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://easyliu.com/2017/04/22/android/ViewInvalidteProcessOne/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Android源码解析/">Android源码解析</a>
-            </div>
-            <div class="date"><time datetime="2017-04-22T09:22:24.000Z" itemprop="datePublished">2017-04-22</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/04/22/android/ViewInvalidteProcessOne/">Android应用层View绘制流程之DecorView与ViewRootImpl</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            概述一直对Android中View的整个绘制流程不是很了解，View是怎么添加到Activity当中去的？当View中的内容发生改变的时候是怎样执行界面的刷新的？因此，今天准备从源码的角度来对View的整个绘制流程来进行分析，源码基于API25。由于篇幅限制，这篇文章只分析顶层视图DecorView的显示逻辑，具体的View树绘制三部曲:measure,layout,draw将在下篇博文进行深入剖
+            [TOC]
+题目请实现一个函数，把字符串中的每个空格替换为”%20”。
+输入“We are happy”
+输出“We%20are%20happy”
+实现1234567891011121314151617181920212223242526272829public static String replaceSpace(String input) &#123;    if (input == null
         </p>
     </div>
 </article>
