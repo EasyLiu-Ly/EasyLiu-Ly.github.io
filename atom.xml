@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://easyliu.com/"/>
-  <updated>2020-06-08T06:53:17.754Z</updated>
+  <updated>2020-06-08T06:55:09.643Z</updated>
   <id>http://easyliu.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://easyliu.com/2020/06/07/algorithm/repalceSpace/"/>
     <id>http://easyliu.com/2020/06/07/algorithm/repalceSpace/</id>
     <published>2020-06-07T07:37:57.000Z</published>
-    <updated>2020-06-08T06:53:17.754Z</updated>
+    <updated>2020-06-08T06:55:09.643Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请实现一个函数，把字符串中的每个空格替换为”%20”。</p>
 <h5 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h5><p>“We are happy”</p>
