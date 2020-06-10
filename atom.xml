@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://easyliu.com/"/>
-  <updated>2020-06-08T11:33:15.800Z</updated>
+  <updated>2020-06-10T03:03:50.187Z</updated>
   <id>http://easyliu.com/</id>
   
   <author>
@@ -16,11 +16,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>findFirstOneTimeChar</title>
+    <link href="http://easyliu.com/2020/06/10/algorithm/findFirstOneTimeChar/"/>
+    <id>http://easyliu.com/2020/06/10/algorithm/findFirstOneTimeChar/</id>
+    <published>2020-06-10T03:00:22.000Z</published>
+    <updated>2020-06-10T03:03:50.187Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请实现一个函数，输入一个字符串，找出第一个只出现一次的字符。</p>
+<h5 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h5><p>“asdfasdfo”</p>
+<h5 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h5><p>‘o’</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">char</span> <span class="title">findFirstOneTimeChar</span><span class="params">(String input)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (input == <span class="keyword">null</span> || input.length() &lt;= <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">char</span>[] chars = input.toCharArray();</div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span>[] numArray = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> curChar : chars) &#123;</div><div class="line">        numArray[curChar]++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> curChar : chars) &#123;</div><div class="line">        <span class="keyword">if</span> (numArray[curChar] == <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">return</span> curChar;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FindFirstOneTimeCharTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testNulInput</span><span class="params">()</span> </span>&#123;</div><div class="line">        Assert.assertEquals(FindFirstOneTimeChar.findFirstOneTimeChar(<span class="keyword">null</span>), <span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testEmptyInput</span><span class="params">()</span> </span>&#123;</div><div class="line">        Assert.assertEquals(FindFirstOneTimeChar.findFirstOneTimeChar(<span class="string">""</span>), <span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSpaceInput</span><span class="params">()</span> </span>&#123;</div><div class="line">        Assert.assertEquals(FindFirstOneTimeChar.findFirstOneTimeChar(<span class="string">" "</span>), <span class="string">' '</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testNormalInput</span><span class="params">()</span> </span>&#123;</div><div class="line">        String input = <span class="string">"asdfasdfo"</span>;</div><div class="line">        <span class="keyword">char</span> expect = <span class="string">'o'</span>;</div><div class="line">        <span class="keyword">char</span> result = FindFirstOneTimeChar.findFirstOneTimeChar(input);</div><div class="line">        Assert.assertEquals(expect, result);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      找到第一个只出现一次的字符
+    
+    </summary>
+    
+      <category term="每周三题" scheme="http://easyliu.com/categories/%E6%AF%8F%E5%91%A8%E4%B8%89%E9%A2%98/"/>
+    
+    
+      <category term="算法" scheme="http://easyliu.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>replaceSpace</title>
     <link href="http://easyliu.com/2020/06/07/algorithm/repalceSpace/"/>
     <id>http://easyliu.com/2020/06/07/algorithm/repalceSpace/</id>
     <published>2020-06-07T07:37:57.000Z</published>
-    <updated>2020-06-08T11:33:15.800Z</updated>
+    <updated>2020-06-08T11:34:39.105Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请实现一个函数，把字符串中的每个空格替换为”%20”。</p>
 <h5 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h5><p>“We are happy”</p>
