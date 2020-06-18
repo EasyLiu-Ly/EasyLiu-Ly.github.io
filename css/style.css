@@ -387,7 +387,6 @@ code {
   text-shadow: 0 1px rgba(0,0,0,0.2);
   display: block;
   padding: 20px 15px;
-  -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
 }
 .nav-container .nav-icon:hover,
@@ -515,7 +514,6 @@ code {
   outline: none !important;
   background: none !important;
   line-height: 1.6em;
-  -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
   font: 16px "Titillium Web", "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", sans-serif;
   color: rgba(255,255,255,0.7);
@@ -641,7 +639,6 @@ code {
   color: #aaa;
   padding: 16px 40px 24px;
   border-bottom: 1px solid #ddd;
-  -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
   text-align: center;
   text-decoration: none;
@@ -759,7 +756,6 @@ code {
   font-size: 12px;
   margin-right: 6px;
   font-family: FontAwesome;
-  -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
 .widget-list ul li a:hover:before,
@@ -800,7 +796,6 @@ code {
 #recent-post li .item-thumbnail {
   opacity: 1;
   margin-left: -94px;
-  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   float: left;
 }
@@ -849,7 +844,6 @@ code {
 }
 #recent-post li .item-inner .item-title a {
   color: #444;
-  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 #recent-post li .item-inner .item-date {
@@ -965,7 +959,6 @@ code {
   opacity: 1;
   background-size: cover;
   background-position: center;
-  -webkit-transition: opacity 0.3s ease-in;
   transition: opacity 0.3s ease-in;
 }
 .article-summary .article-summary-inner .thumbnail .thumbnail-none {
@@ -982,7 +975,6 @@ code {
   word-wrap: break-word;
 }
 .article-summary .article-summary-inner .article-title a {
-  -webkit-transition: color 0.3s ease-in;
   transition: color 0.3s ease-in;
   color: #444;
 }
@@ -1016,7 +1008,6 @@ code {
   letter-spacing: -1px;
   color: #555;
   line-height: 1.3em;
-  -webkit-transition: color 0.2s;
   transition: color 0.2s;
   margin-bottom: 10px;
 }
@@ -1472,20 +1463,17 @@ a.article-title:hover {
   margin-right: 8px;
 }
 .archives {
-  -webkit-column-gap: 10px;
   -moz-column-gap: 10px;
   column-gap: 10px;
 }
 @media mq-tablet {
   .archives {
-    -webkit-column-count: 2;
     -moz-column-count: 2;
     column-count: 2;
   }
 }
 @media mq-normal {
   .archives {
-    -webkit-column-count: 3;
     -moz-column-count: 3;
     column-count: 3;
   }
@@ -1498,7 +1486,6 @@ a.article-title:hover {
   text-decoration: none;
   font-weight: bold;
   color: #555;
-  -webkit-transition: color 0.2s;
   transition: color 0.2s;
   line-height: 1.6em;
 }
@@ -1557,7 +1544,6 @@ a.article-title:hover {
   border-bottom: 3px solid #ddd;
   border-top: 1px solid #f1f1f1;
   font-weight: 600;
-  -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
 }
 #page-nav .page-number:hover,
@@ -1622,7 +1608,6 @@ i.icon {
   text-align: center;
 }
 i.icon:before {
-  -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
 }
 .ins-search {
@@ -1869,7 +1854,6 @@ i.icon:before {
     position: absolute;
     overflow: hidden;
     width: 50px;
-    -webkit-transition: width 0.2s ease-in 0.2s;
     transition: width 0.2s ease-in 0.2s;
   }
   .main-body-inner #sidebar:before,
@@ -1912,14 +1896,12 @@ i.icon:before {
   .main-body-inner #sidebar .widgets-container,
   .main-body-inner #sidebar .sidebar-top {
     opacity: 0;
-    -webkit-transition: opacity 0.2s ease-in;
     transition: opacity 0.2s ease-in;
   }
   .main-body-inner #sidebar.expend {
     width: 340px;
     overflow-y: auto;
     z-index: 2;
-    -webkit-transition: width 0.2s ease-in;
     transition: width 0.2s ease-in;
   }
   .main-body-inner #sidebar.expend .toggle:before {
@@ -1929,7 +1911,6 @@ i.icon:before {
   .main-body-inner #sidebar.expend .widgets-container,
   .main-body-inner #sidebar.expend .sidebar-top {
     opacity: 1;
-    -webkit-transition: opacity 0.2s ease-in 0.2s;
     transition: opacity 0.2s ease-in 0.2s;
   }
   .main-body-inner #sidebar.expend .sidebar-top {
