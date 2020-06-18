@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
 
     
 
@@ -10,14 +10,16 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="Android" />
+    <meta name="keywords" content="Android">
     
     <meta name="description" content="SimpleSlidingMenu">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SimpleSlidingMenu">
 <meta property="og:url" content="http://easyliu.com/2017/05/14/android/SimpleSlidingMenu/index.html">
 <meta property="og:site_name" content="EasyLiu">
 <meta property="og:description" content="SimpleSlidingMenu">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://easyliu.com/2017/05/14/android/SimpleSlidingMenu/simpleSlidingMenu.gif">
 <meta property="og:updated_time" content="2017-06-01T15:59:40.000Z">
 <meta name="twitter:card" content="summary">
@@ -50,7 +52,7 @@
 
 
 </head>
-
+</html>
 <body>
     <div id="wrap">
         <header id="header">
@@ -183,14 +185,17 @@
             <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>一个简单的Android侧滑菜单，支持left, right,left_right三种菜单模式，支持edge,all两种滑动模式，支持设置菜单的宽度，支持滑动动画</p>
 <h2 id="效果如下"><a href="#效果如下" class="headerlink" title="效果如下"></a>效果如下</h2><p>每个Fragment里面是一个RecyclerView，解决了滑动冲突问题，包含滑动动画</p>
 <p><img src="/2017/05/14/android/SimpleSlidingMenu/simpleSlidingMenu.gif" alt="菜单滑动效果"></p>
-<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> SlidingMenuLayout mSlideMenuLayout;</div><div class="line"></div><div class="line"> <span class="meta">@Override</span> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">   <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">   mSlideMenuLayout = <span class="keyword">new</span> SlidingMenuLayout(<span class="keyword">this</span>);</div><div class="line">   setContentView(mSlideMenuLayout);</div><div class="line">   initSlideMenuLayout();</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSlideMenuLayout</span><span class="params">()</span> </span>&#123;</div><div class="line">       getSupportFragmentManager().beginTransaction()</div><div class="line">               .replace(SlidingMenuLayout.LEFT_TAG, ItemFragment.newInstance(<span class="number">1</span>))</div><div class="line">               .commit();</div><div class="line">       getSupportFragmentManager().beginTransaction()</div><div class="line">               .replace(SlidingMenuLayout.MIDDLE_TAG, ItemFragment.newInstance(<span class="number">1</span>))</div><div class="line">               .commit();</div><div class="line">       getSupportFragmentManager().beginTransaction()</div><div class="line">               .replace(SlidingMenuLayout.RIGHT_TAG, ItemFragment.newInstance(<span class="number">1</span>))</div><div class="line">               .commit();</div><div class="line">       mSlideMenuLayout.setBackgroundColor(Color.parseColor(<span class="string">"#4876FF"</span>));</div><div class="line">       mSlideMenuLayout.setMenuMode(SlidingMenuLayout.MenuMode.LEFT_RIGHT);</div><div class="line">       mSlideMenuLayout.setSlidingMode(SlidingMenuLayout.SlidingMode.ALL);</div><div class="line">       mSlideMenuLayout.setSlideEnable(<span class="keyword">true</span>);</div><div class="line">       mSlideMenuLayout.setMenuContentWidthRation(<span class="number">0.75f</span>);</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> SlidingMenuLayout mSlideMenuLayout;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">   mSlideMenuLayout = <span class="keyword">new</span> SlidingMenuLayout(<span class="keyword">this</span>);</span><br><span class="line">   setContentView(mSlideMenuLayout);</span><br><span class="line">   initSlideMenuLayout();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSlideMenuLayout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       getSupportFragmentManager().beginTransaction()</span><br><span class="line">               .replace(SlidingMenuLayout.LEFT_TAG, ItemFragment.newInstance(<span class="number">1</span>))</span><br><span class="line">               .commit();</span><br><span class="line">       getSupportFragmentManager().beginTransaction()</span><br><span class="line">               .replace(SlidingMenuLayout.MIDDLE_TAG, ItemFragment.newInstance(<span class="number">1</span>))</span><br><span class="line">               .commit();</span><br><span class="line">       getSupportFragmentManager().beginTransaction()</span><br><span class="line">               .replace(SlidingMenuLayout.RIGHT_TAG, ItemFragment.newInstance(<span class="number">1</span>))</span><br><span class="line">               .commit();</span><br><span class="line">       mSlideMenuLayout.setBackgroundColor(Color.parseColor(<span class="string">"#4876FF"</span>));</span><br><span class="line">       mSlideMenuLayout.setMenuMode(SlidingMenuLayout.MenuMode.LEFT_RIGHT);</span><br><span class="line">       mSlideMenuLayout.setSlidingMode(SlidingMenuLayout.SlidingMode.ALL);</span><br><span class="line">       mSlideMenuLayout.setSlideEnable(<span class="keyword">true</span>);</span><br><span class="line">       mSlideMenuLayout.setMenuContentWidthRation(<span class="number">0.75f</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>把SlidingMenuLayout作为根布局</li>
 <li>左侧，中间，以及右侧菜单布局都会有一个tag，通过给每一个布局设置一个fragment即可！</li>
 <li>具体参考代码中的：MainActivity.java</li>
 </ul>
-<h2 id="关于滑动动画"><a href="#关于滑动动画" class="headerlink" title="关于滑动动画"></a>关于滑动动画</h2><p>滑动动画主要是给SlideMenuLayout设置IOnMenuOpenListener接口，在接口里面对菜单以及中间视图进行一些缩放、透明度以及平移操作，从而达到动画效果，如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">mSlideMenuLayout.setOnMenuOpenListener(<span class="keyword">new</span> SlidingMenuLayout.IOnMenuOpenListener() &#123;</div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">menuOpen</span><span class="params">(View menuView, View middleView, <span class="keyword">float</span> openPercent, <span class="keyword">boolean</span> isLeftMenu)</span> </span>&#123;</div><div class="line">               <span class="keyword">float</span> menuScale = (<span class="keyword">float</span>) (<span class="number">0.8</span> + <span class="number">0.2</span> * openPercent);<span class="comment">//0.8到1</span></div><div class="line">               <span class="keyword">float</span> contentScale = (<span class="keyword">float</span>) (<span class="number">1</span> - <span class="number">0.2</span> * openPercent);<span class="comment">//1到0.8</span></div><div class="line">               <span class="keyword">float</span> translationXScale = <span class="number">0</span>;</div><div class="line">               <span class="keyword">if</span> (isLeftMenu) &#123;</div><div class="line">                   translationXScale = (<span class="number">1</span> - openPercent) * <span class="number">0.6f</span>;<span class="comment">//范围是0.6到0</span></div><div class="line">               &#125; <span class="keyword">else</span> &#123;</div><div class="line">                   translationXScale = -(<span class="number">1</span> - openPercent) * <span class="number">0.6f</span>;<span class="comment">//范围是-0.6到0</span></div><div class="line">               &#125;</div><div class="line">               menuView.setScaleX(menuScale);</div><div class="line">               menuView.setScaleY(menuScale);</div><div class="line">               menuView.setAlpha(openPercent);</div><div class="line">               menuView.setTranslationX(menuView.getWidth() * translationXScale);</div><div class="line">               middleView.setScaleX(contentScale);</div><div class="line">               middleView.setScaleY(contentScale);</div><div class="line">           &#125;</div><div class="line">       &#125;);</div></pre></td></tr></table></figure></p>
-<p>代码地址：<a href="https://github.com/EasyLiu-Ly/SimpleSlidingMenu.git" target="_blank" rel="external">https://github.com/EasyLiu-Ly/SimpleSlidingMenu.git</a></p>
+<h2 id="关于滑动动画"><a href="#关于滑动动画" class="headerlink" title="关于滑动动画"></a>关于滑动动画</h2><p>滑动动画主要是给SlideMenuLayout设置IOnMenuOpenListener接口，在接口里面对菜单以及中间视图进行一些缩放、透明度以及平移操作，从而达到动画效果，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mSlideMenuLayout.setOnMenuOpenListener(<span class="keyword">new</span> SlidingMenuLayout.IOnMenuOpenListener() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">menuOpen</span><span class="params">(View menuView, View middleView, <span class="keyword">float</span> openPercent, <span class="keyword">boolean</span> isLeftMenu)</span> </span>&#123;</span><br><span class="line">               <span class="keyword">float</span> menuScale = (<span class="keyword">float</span>) (<span class="number">0.8</span> + <span class="number">0.2</span> * openPercent);<span class="comment">//0.8到1</span></span><br><span class="line">               <span class="keyword">float</span> contentScale = (<span class="keyword">float</span>) (<span class="number">1</span> - <span class="number">0.2</span> * openPercent);<span class="comment">//1到0.8</span></span><br><span class="line">               <span class="keyword">float</span> translationXScale = <span class="number">0</span>;</span><br><span class="line">               <span class="keyword">if</span> (isLeftMenu) &#123;</span><br><span class="line">                   translationXScale = (<span class="number">1</span> - openPercent) * <span class="number">0.6f</span>;<span class="comment">//范围是0.6到0</span></span><br><span class="line">               &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                   translationXScale = -(<span class="number">1</span> - openPercent) * <span class="number">0.6f</span>;<span class="comment">//范围是-0.6到0</span></span><br><span class="line">               &#125;</span><br><span class="line">               menuView.setScaleX(menuScale);</span><br><span class="line">               menuView.setScaleY(menuScale);</span><br><span class="line">               menuView.setAlpha(openPercent);</span><br><span class="line">               menuView.setTranslationX(menuView.getWidth() * translationXScale);</span><br><span class="line">               middleView.setScaleX(contentScale);</span><br><span class="line">               middleView.setScaleY(contentScale);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>代码地址：<a href="https://github.com/EasyLiu-Ly/SimpleSlidingMenu.git" target="_blank" rel="noopener">https://github.com/EasyLiu-Ly/SimpleSlidingMenu.git</a></p>
 
         </div>
         <footer class="article-footer">
@@ -198,7 +203,7 @@
 
 
 
-    <a data-url="http://easyliu.com/2017/05/14/android/SimpleSlidingMenu/" data-id="ckb8rulfe000gvvmwwgcxgo9e" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://easyliu.com/2017/05/14/android/SimpleSlidingMenu/" data-id="ckbkogqnc000lqcmwoohhlbzt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -365,6 +370,26 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2020/06/18/algorithm/SecondArrayFind/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/每周三题/">每周三题</a></p>
+                            <p class="item-title"><a href="/2020/06/18/algorithm/SecondArrayFind/" class="title">SecondArrayFind</a></p>
+                            <p class="item-date"><time datetime="2020-06-18T03:40:08.000Z" itemprop="datePublished">2020-06-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2020/06/10/algorithm/findFirstOneTimeChar/" class="thumbnail">
     
     
@@ -442,26 +467,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2020/05/17/ios/xcode_shortcut/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/ios开发/">ios开发</a></p>
-                            <p class="item-title"><a href="/2020/05/17/ios/xcode_shortcut/" class="title">xcode快捷键</a></p>
-                            <p class="item-date"><time datetime="2020-05-17T09:34:22.000Z" itemprop="datePublished">2020-05-17</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -471,7 +476,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android源码解析/">Android源码解析</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android自定义控件/">Android自定义控件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gradle相关/">Gradle相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios开发/">ios开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/代码规范/">代码规范</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/单元测试/">单元测试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/每周三题/">每周三题</a><span class="category-list-count">2</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android源码解析/">Android源码解析</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android自定义控件/">Android自定义控件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gradle相关/">Gradle相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios开发/">ios开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/代码规范/">代码规范</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/单元测试/">单元测试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/每周三题/">每周三题</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -481,7 +486,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -491,7 +496,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios开发/">ios开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码规范/">代码规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios开发/">ios开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码规范/">代码规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -591,7 +596,7 @@
         <script type="text/x-mathjax-config">
             MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
         </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     
 
     
