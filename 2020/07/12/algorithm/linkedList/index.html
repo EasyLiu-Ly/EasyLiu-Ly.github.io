@@ -6,24 +6,24 @@
     
 
     
-    <title>Hello World | EasyLiu</title>
+    <title>linkedList | EasyLiu</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="其他">
+    <meta name="keywords" content="算法">
     
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="其他">
+    <meta name="description" content="链表相关操作">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://easyliu.com/2017/03/18/hello-world/index.html">
+<meta property="og:title" content="linkedList">
+<meta property="og:url" content="http://easyliu.com/2020/07/12/algorithm/linkedList/index.html">
 <meta property="og:site_name" content="EasyLiu">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="链表相关操作">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-03-18T06:51:26.000Z">
+<meta property="og:updated_time" content="2020-07-12T06:55:05.300Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="linkedList">
+<meta name="twitter:description" content="链表相关操作">
     
 
     
@@ -135,19 +135,19 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/杂项/">杂项</a>
+    <a class="page-title-link" href="/categories/每周三题/">每周三题</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-hello-world" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-algorithm/linkedList" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Hello World
+        linkedList
         </h1>
     
 
@@ -158,8 +158,8 @@
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/2017/03/18/hello-world/" class="article-date">
-         <time datetime="2017-03-18T06:51:26.000Z" itemprop="datePublished">2017-03-18</time>
+      <a href="/2020/07/12/algorithm/linkedList/" class="article-date">
+         <time datetime="2020-07-12T06:49:39.000Z" itemprop="datePublished">2020-07-12</time>
       </a>
     </div>
 
@@ -169,7 +169,7 @@
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/其他/">其他</a>
+        <a class="tag-link" href="/tags/算法/">算法</a>
     </div>
 
                 
@@ -180,19 +180,14 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+            <h2 id="链表结构体定义"><a href="#链表结构体定义" class="headerlink" title="链表结构体定义"></a>链表结构体定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line"></span><br><span class="line">    ListNode(<span class="keyword">int</span> x) &#123;</span><br><span class="line">        val = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == o) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="keyword">null</span> || getClass() != o.getClass()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode listNode = (ListNode) o;</span><br><span class="line">        <span class="keyword">boolean</span> valueEqual = val == listNode.val;</span><br><span class="line">        <span class="keyword">boolean</span> nextEqual = (next == <span class="keyword">null</span> &amp;&amp; listNode.next == <span class="keyword">null</span>) || (next != <span class="keyword">null</span> &amp;&amp; next.equals(listNode.next));</span><br><span class="line">        <span class="keyword">return</span> valueEqual &amp;&amp; nextEqual;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Objects.hash(val, next);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h2 id="链表创建"><a href="#链表创建" class="headerlink" title="链表创建"></a>链表创建</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">createList</span><span class="params">(<span class="keyword">int</span>[] arrays)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (arrays == <span class="keyword">null</span> || arrays.length &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode head = <span class="keyword">null</span>;</span><br><span class="line">        ListNode cur = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> val : arrays) &#123;</span><br><span class="line">            ListNode newNode = <span class="keyword">new</span> ListNode(val);</span><br><span class="line">            <span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</span><br><span class="line">                head = newNode;</span><br><span class="line">                cur = head;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur.next = newNode;</span><br><span class="line">                cur = cur.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h2 id="反转链表"><a href="#反转链表" class="headerlink" title="反转链表"></a>反转链表</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReverseList</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 使用stack实现</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">reverseListWithStack</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Stack&lt;ListNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        stack.push(head);</span><br><span class="line">        <span class="keyword">while</span> (head.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            stack.push(head.next);</span><br><span class="line">            head.next = head.next.next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode newHead = stack.pop();</span><br><span class="line">        ListNode pNode = newHead;</span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">            ListNode curNode = stack.pop();</span><br><span class="line">            pNode.next = curNode;</span><br><span class="line">            pNode = curNode;</span><br><span class="line">        &#125;</span><br><span class="line">        pNode.next = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">return</span> newHead;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 使用双指针实现</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">reverseListWithDoublePointer</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode tmp;</span><br><span class="line">        ListNode pre = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</span><br><span class="line">            tmp = head.next;</span><br><span class="line">            head.next = pre;</span><br><span class="line">            pre = head;</span><br><span class="line">            head = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pre;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="反转链表单元测试"><a href="#反转链表单元测试" class="headerlink" title="反转链表单元测试"></a>反转链表单元测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReverseListTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testNullInput</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//arrange</span></span><br><span class="line">        ListNode head = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">//act</span></span><br><span class="line">        ListNode result = ReverseList.reverseListWithStack(head);</span><br><span class="line">        ListNode doubleResult = ReverseList.reverseListWithDoublePointer(head);</span><br><span class="line">        <span class="comment">//verify</span></span><br><span class="line">        Assert.assertNull(result);</span><br><span class="line">        Assert.assertNull(doubleResult);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testNormal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//arrange</span></span><br><span class="line">        ListNode listOne = ListUtils.createList(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;);</span><br><span class="line">        ListNode listTwo = ListUtils.createList(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;);</span><br><span class="line">        <span class="comment">//act</span></span><br><span class="line">        ListNode result = ReverseList.reverseListWithStack(listOne);</span><br><span class="line">        ListNode doubleResult = ReverseList.reverseListWithDoublePointer(listTwo);</span><br><span class="line">        <span class="comment">//verify</span></span><br><span class="line">        ListNode expect = ListUtils.createList(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>&#125;);</span><br><span class="line">        Assert.assertEquals(expect, result);</span><br><span class="line">        Assert.assertEquals(expect, doubleResult);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
         </div>
         <footer class="article-footer">
@@ -200,7 +195,7 @@
 
 
 
-    <a data-url="http://easyliu.com/2017/03/18/hello-world/" data-id="ckciq44uv0000numwuruddzbd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://easyliu.com/2020/07/12/algorithm/linkedList/" data-id="ckciq44xh000fnumwvkesp38a" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -270,32 +265,20 @@
             "@type": "Person",
             "name": "EasyLiu"
         },
-        "headline": "Hello World",
+        "headline": "linkedList",
         "image": "http://easyliu.com",
-        "keywords": "其他",
-        "genre": "杂项",
-        "datePublished": "2017-03-18",
-        "dateCreated": "2017-03-18",
-        "dateModified": "2017-03-18",
-        "url": "http://easyliu.com/2017/03/18/hello-world/",
-        "description": "Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick",
-        "wordCount": 144
+        "keywords": "算法",
+        "genre": "每周三题",
+        "datePublished": "2020-07-12",
+        "dateCreated": "2020-07-12",
+        "dateModified": "2020-07-12",
+        "url": "http://easyliu.com/2020/07/12/algorithm/linkedList/",
+        "description": "链表结构体定义123456789101112131415161718192021222324252627public class ListNode &#123;    int val;    ListNode next;    ListNode(int x) &#123;        val = x;    &#125;    @Override    public boolean equals",
+        "wordCount": 1421
     }
 </script>
 
 </article>
-
-    <section id="comments">
-    
-        
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-
-
-    
-    </section>
 
 
 
@@ -321,20 +304,10 @@ Quick",
         
 <nav id="article-nav">
     
-        <a href="/2017/04/22/android/ViewInvalidteProcessOne/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            Android应用层View绘制流程之DecorView与ViewRootImpl
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2017/03/16/android/CustomizeProgressBar/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2020/06/18/algorithm/SecondArrayFind/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">自定义圆形进度条的实现</p>
+        <p class="article-nav-title">SecondArrayFind</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -345,6 +318,15 @@ Quick",
         
             
                 
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">目录</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#链表结构体定义"><span class="toc-number">1.</span> <span class="toc-text">链表结构体定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链表创建"><span class="toc-number">2.</span> <span class="toc-text">链表创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反转链表"><span class="toc-number">3.</span> <span class="toc-text">反转链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#反转链表单元测试"><span class="toc-number">3.1.</span> <span class="toc-text">反转链表单元测试</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
 
             
                 
@@ -549,13 +531,13 @@ Quick",
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://easyliu.com/2017/03/18/hello-world/';
+    var disqus_url = 'http://easyliu.com/2020/07/12/algorithm/linkedList/';
     
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
