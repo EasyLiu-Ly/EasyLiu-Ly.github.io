@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title><![CDATA[学习路线]]></title>
+      <url>http://easyliu.com/2020/09/18/android/StudyPlan/</url>
+      <content type="html"><![CDATA[<h2 id="学习路线图"><a href="#学习路线图" class="headerlink" title="学习路线图"></a>学习路线图</h2><p><img src="/2020/09/18/android/StudyPlan/study_plan.png" alt="学习路线图"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 学习计划 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 学习计划 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[4、linkedList]]></title>
       <url>http://easyliu.com/2020/07/12/algorithm/linkedList/</url>
       <content type="html"><![CDATA[<h2 id="链表结构体定义"><a href="#链表结构体定义" class="headerlink" title="链表结构体定义"></a>链表结构体定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line"></span><br><span class="line">    ListNode(<span class="keyword">int</span> x) &#123;</span><br><span class="line">        val = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == o) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="keyword">null</span> || getClass() != o.getClass()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode listNode = (ListNode) o;</span><br><span class="line">        <span class="keyword">boolean</span> valueEqual = val == listNode.val;</span><br><span class="line">        <span class="keyword">boolean</span> nextEqual = (next == <span class="keyword">null</span> &amp;&amp; listNode.next == <span class="keyword">null</span>) || (next != <span class="keyword">null</span> &amp;&amp; next.equals(listNode.next));</span><br><span class="line">        <span class="keyword">return</span> valueEqual &amp;&amp; nextEqual;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Objects.hash(val, next);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
