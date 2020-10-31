@@ -21,7 +21,7 @@
 <meta property="og:description" content="Android生命周期感应组件lifecycle">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://easyliu.com/2020/10/31/android_jetpack/lifecycle/lifecycle-state.png">
-<meta property="og:updated_time" content="2020-10-31T10:20:52.078Z">
+<meta property="og:updated_time" content="2020-10-31T14:07:43.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android生命周期感应组件lifecycle">
 <meta name="twitter:description" content="Android生命周期感应组件lifecycle">
@@ -222,16 +222,17 @@
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">performStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ..........</span><br><span class="line">           <span class="keyword">this</span>.mLifecycleRegistry.handleLifecycleEvent(Event.ON_START);</span><br><span class="line">           <span class="keyword">if</span> (<span class="keyword">this</span>.mView != <span class="keyword">null</span>) &#123;</span><br><span class="line">               <span class="keyword">this</span>.mViewLifecycleRegistry.handleLifecycleEvent(Event.ON_START);</span><br><span class="line">           &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">performResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ..............</span><br><span class="line">           <span class="keyword">this</span>.mLifecycleRegistry.handleLifecycleEvent(Event.ON_RESUME);</span><br><span class="line">           <span class="keyword">if</span> (<span class="keyword">this</span>.mView != <span class="keyword">null</span>) &#123;</span><br><span class="line">               <span class="keyword">this</span>.mViewLifecycleRegistry.handleLifecycleEvent(Event.ON_RESUME);</span><br><span class="line">           &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
-<p>可以看出fragment中生命周期是进行主动转发的，主动调用LifecycleRegistry的方法进行转发。</p>
+<p>可以看出fragment中生命周期是主动转发的，主动调用LifecycleRegistry的方法进行转发。</p>
 <p>至此，activity和fragment的生命周期转发机制已经了解清楚了，接下来我们看下生命周期是怎么进一步转发给LifecycleObserver的。</p>
-<h3 id="5、LifecycleObserver响应源码解析"><a href="#5、LifecycleObserver响应源码解析" class="headerlink" title="5、LifecycleObserver响应源码解析"></a>5、LifecycleObserver响应源码解析</h3>
+<h3 id="5、LifecycleObserver响应源码解析"><a href="#5、LifecycleObserver响应源码解析" class="headerlink" title="5、LifecycleObserver响应源码解析"></a>5、LifecycleObserver响应源码解析</h3><p>上面说了activity和fragment里面都持有LifecycleRegistry,通过这个类来进行生命周期转发，接下来对LifecycleRegistry源码进行解析：</p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://easyliu.com/2020/10/31/android_jetpack/lifecycle/" data-id="ckgxjc819001e86mwtmd7u0km" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://easyliu.com/2020/10/31/android_jetpack/lifecycle/" data-id="ckgxrm01n000c9mmwki1osw0w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
