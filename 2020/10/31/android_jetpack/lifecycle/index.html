@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>Android生命周期感应组件lifecycle | EasyLiu</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Android">
+    
+    <meta name="description" content="Android生命周期感应组件lifecycle">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android生命周期感应组件lifecycle">
+<meta property="og:url" content="http://easyliu.com/2020/10/31/android_jetpack/lifecycle/index.html">
+<meta property="og:site_name" content="EasyLiu">
+<meta property="og:description" content="Android生命周期感应组件lifecycle">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://easyliu.com/2020/10/31/android_jetpack/lifecycle/lifecycle-state.png">
+<meta property="og:updated_time" content="2020-10-31T10:16:51.681Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android生命周期感应组件lifecycle">
+<meta name="twitter:description" content="Android生命周期感应组件lifecycle">
+<meta name="twitter:image" content="http://easyliu.com/2020/10/31/android_jetpack/lifecycle/lifecycle-state.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">welcome to my blog</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android架构学习/">Android架构学习</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android源码解析/">Android源码解析</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android自定义控件/">Android自定义控件</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Gradle相关/">Gradle相关</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ios开发/">ios开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/代码规范/">代码规范</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/刷题/">刷题</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/单元测试/">单元测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/学习计划/">学习计划</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/开发工具/">开发工具</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/杂项/">杂项</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Android架构学习/">Android架构学习</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-android_jetpack/lifecycle" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Android生命周期感应组件lifecycle
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/10/31/android_jetpack/lifecycle/" class="article-date">
+         <time datetime="2020-10-31T08:34:04.000Z" itemprop="datePublished">2020-10-31</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Android/">Android</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="1、lifecycle简介"><a href="#1、lifecycle简介" class="headerlink" title="1、lifecycle简介"></a>1、lifecycle简介</h2><p>生命周期感知型组件可执行操作来响应另一个组件（如 Activity 和 Fragment）的生命周期状态的变化。这些组件有助于您写出更有条理且往往更精简的代码，这样的代码更易于维护。</p>
+<p>一种常见的模式是在 Activity 和 Fragment 的生命周期方法中实现依赖组件的操作。但是，这种模式会导致代码条理性很差而且会扩散错误。通过使用生命周期感知型组件，您可以将依赖组件的代码从生命周期方法移入组件本身中。</p>
+<p>androidx.lifecycle 软件包提供了可用于构建生命周期感知型组件的类和接口 - 这些组件可以根据 Activity 或 Fragment 的当前生命周期状态自动调整其行为。<br><a href="https://developer.android.com/jetpack/androidx/releases/lifecycle#java" target="_blank" rel="noopener">导入方法</a></p>
+<p>在 Android 框架中定义的大多数应用组件都存在生命周期。生命周期由操作系统或进程中运行的框架代码管理。它们是 Android 运作方式的核心，应用必须遵循它们。如果不这样做，可能会引发内存泄露甚至应用崩溃。</p>
+<p>假设我们有一个在屏幕上显示设备位置的 Activity。常见的实现可能如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyLocationListener</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyLocationListener</span><span class="params">(Context context, Callback callback)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// connect to system location service</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// disconnect from system location service</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MyLocationListener myLocationListener;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(...)</span> </span>&#123;</span><br><span class="line">        myLocationListener = <span class="keyword">new</span> MyLocationListener(<span class="keyword">this</span>, (location) -&gt; &#123;</span><br><span class="line">            <span class="comment">// update UI</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStart();</span><br><span class="line">        myLocationListener.start();</span><br><span class="line">        <span class="comment">// manage other components that need to respond</span></span><br><span class="line">        <span class="comment">// to the activity lifecycle</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStop();</span><br><span class="line">        myLocationListener.stop();</span><br><span class="line">        <span class="comment">// manage other components that need to respond</span></span><br><span class="line">        <span class="comment">// to the activity lifecycle</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>虽然此示例看起来没问题，但在真实的应用中，最终会有太多管理界面和其他组件的调用，以响应生命周期的当前状态。管理多个组件会在生命周期方法（如 onStart() 和 onStop()）中放置大量的代码，这使得它们难以维护。</p>
+<p>androidx.lifecycle 软件包提供的类和接口可帮助您以弹性和隔离的方式解决这些问题。</p>
+<h2 id="2、生命周期"><a href="#2、生命周期" class="headerlink" title="2、生命周期"></a>2、生命周期</h2><p>Lifecycle 是一个类，用于存储有关组件（如 Activity 或 Fragment）的生命周期状态的信息，并允许其他对象观察此状态。</p>
+<p>Lifecycle 使用两种主要枚举跟踪其关联组件的生命周期状态：</p>
+<ul>
+<li>事件<br>从框架和 Lifecycle 类分派的生命周期事件。这些事件映射到 Activity 和 Fragment 中的回调事件。</li>
+<li>状态<br>由 Lifecycle 对象跟踪的组件的当前状态。</li>
+</ul>
+<p><img src="/2020/10/31/android_jetpack/lifecycle/lifecycle-state.png" alt="构成 Android Activity 生命周期的状态和事件"></p>
+<p>Lifecycle源代码如下，可以看出下Lifecycle类主要是3个方法，分别是：添加oberver、移除oberver以及获取当前的状态，然后类里面有关于Event和State的定义：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Lifecycle</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Adds a LifecycleObserver that will be notified when the LifecycleOwner changes</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> observer The observer to notify.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@MainThread</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">addObserver</span><span class="params">(@NonNull LifecycleObserver observer)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Removes the given observer from the observers list.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> observer The observer to be removed.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@MainThread</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">removeObserver</span><span class="params">(@NonNull LifecycleObserver observer)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Returns the current state of the Lifecycle.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> The current state of the Lifecycle.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@MainThread</span></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> State <span class="title">getCurrentState</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"WeakerAccess"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> Event &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Constant for onCreate event of the &#123;<span class="doctag">@link</span> LifecycleOwner&#125;.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        ON_CREATE,</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Constant for onStart event of the &#123;<span class="doctag">@link</span> LifecycleOwner&#125;.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        ON_START,</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Constant for onResume event of the &#123;<span class="doctag">@link</span> LifecycleOwner&#125;.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        ON_RESUME,</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Constant for onPause event of the &#123;<span class="doctag">@link</span> LifecycleOwner&#125;.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        ON_PAUSE,</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Constant for onStop event of the &#123;<span class="doctag">@link</span> LifecycleOwner&#125;.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        ON_STOP,</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Constant for onDestroy event of the &#123;<span class="doctag">@link</span> LifecycleOwner&#125;.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        ON_DESTROY,</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * An &#123;<span class="doctag">@link</span> Event Event&#125; constant that can be used to match all events.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        ON_ANY</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Lifecycle states. You can consider the states as the nodes in a graph and</span></span><br><span class="line"><span class="comment">     * &#123;<span class="doctag">@link</span> Event&#125;s as the edges between these nodes.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"WeakerAccess"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> State &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Destroyed state for a LifecycleOwner. After this event, this Lifecycle will not dispatch</span></span><br><span class="line"><span class="comment">         * any more events. For instance, for an &#123;<span class="doctag">@link</span> android.app.Activity&#125;, this state is reached</span></span><br><span class="line"><span class="comment">         * &lt;b&gt;right before&lt;/b&gt; Activity's &#123;<span class="doctag">@link</span> android.app.Activity#onDestroy() onDestroy&#125; call.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        DESTROYED,</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Initialized state for a LifecycleOwner. For an &#123;<span class="doctag">@link</span> android.app.Activity&#125;, this is</span></span><br><span class="line"><span class="comment">         * the state when it is constructed but has not received</span></span><br><span class="line"><span class="comment">         * &#123;<span class="doctag">@link</span> android.app.Activity#onCreate(android.os.Bundle) onCreate&#125; yet.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        INITIALIZED,</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Created state for a LifecycleOwner. For an &#123;<span class="doctag">@link</span> android.app.Activity&#125;, this state</span></span><br><span class="line"><span class="comment">         * is reached in two cases:</span></span><br><span class="line"><span class="comment">         * &lt;ul&gt;</span></span><br><span class="line"><span class="comment">         *     &lt;li&gt;after &#123;<span class="doctag">@link</span> android.app.Activity#onCreate(android.os.Bundle) onCreate&#125; call;</span></span><br><span class="line"><span class="comment">         *     &lt;li&gt;&lt;b&gt;right before&lt;/b&gt; &#123;<span class="doctag">@link</span> android.app.Activity#onStop() onStop&#125; call.</span></span><br><span class="line"><span class="comment">         * &lt;/ul&gt;</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        CREATED,</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Started state for a LifecycleOwner. For an &#123;<span class="doctag">@link</span> android.app.Activity&#125;, this state</span></span><br><span class="line"><span class="comment">         * is reached in two cases:</span></span><br><span class="line"><span class="comment">         * &lt;ul&gt;</span></span><br><span class="line"><span class="comment">         *     &lt;li&gt;after &#123;<span class="doctag">@link</span> android.app.Activity#onStart() onStart&#125; call;</span></span><br><span class="line"><span class="comment">         *     &lt;li&gt;&lt;b&gt;right before&lt;/b&gt; &#123;<span class="doctag">@link</span> android.app.Activity#onPause() onPause&#125; call.</span></span><br><span class="line"><span class="comment">         * &lt;/ul&gt;</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        STARTED,</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Resumed state for a LifecycleOwner. For an &#123;<span class="doctag">@link</span> android.app.Activity&#125;, this state</span></span><br><span class="line"><span class="comment">         * is reached after &#123;<span class="doctag">@link</span> android.app.Activity#onResume() onResume&#125; is called.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        RESUMED;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Compares if this State is greater or equal to the given &#123;<span class="doctag">@code</span> state&#125;.</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> state State to compare with</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@return</span> true if this State is greater or equal to the given &#123;<span class="doctag">@code</span> state&#125;</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAtLeast</span><span class="params">(@NonNull State state)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> compareTo(state) &gt;= <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>类可以通过向其方法添加注解来监控组件的生命周期状态。然后，可以通过调用 Lifecycle 类的 addObserver() 方法并传递观察者的实例来添加观察者，如以下示例中所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyObserver</span> <span class="keyword">implements</span> <span class="title">LifecycleObserver</span> </span>&#123;</span><br><span class="line">    <span class="meta">@OnLifecycleEvent</span>(Lifecycle.Event.ON_RESUME)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connectListener</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OnLifecycleEvent</span>(Lifecycle.Event.ON_PAUSE)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">disconnectListener</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">myLifecycleOwner.getLifecycle().addObserver(<span class="keyword">new</span> MyObserver());</span><br></pre></td></tr></table></figure>
+
+<p>在上面的示例中，myLifecycleOwner 对象实现了 LifecycleOwner 接口 ,接下来讲一下LifecycleOwner接口：</p>
+<h2 id="3、LifecycleOwner"><a href="#3、LifecycleOwner" class="headerlink" title="3、LifecycleOwner"></a>3、LifecycleOwner</h2><p>首先来看下LifecycleOwner接口的源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A class that has an Android lifecycle. These events can be used by custom components to</span></span><br><span class="line"><span class="comment"> * handle lifecycle changes without implementing any code inside the Activity or the Fragment.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Lifecycle</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SuppressWarnings</span>(&#123;<span class="string">"WeakerAccess"</span>, <span class="string">"unused"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">LifecycleOwner</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Returns the Lifecycle of the provider.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> The lifecycle of the provider.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="function">Lifecycle <span class="title">getLifecycle</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Android源码中，Activity以及Fragment均实现了这个LifecycleOwner接口，这样使用就非常简单了，直接使用getLifecycle().addObserver(new MyObserver())就可以把Observer注册到Lifecycle上，自动感应生命周期了。</p>
+<h2 id="4、生命周期自动感应原理解析"><a href="#4、生命周期自动感应原理解析" class="headerlink" title="4、生命周期自动感应原理解析"></a>4、生命周期自动感应原理解析</h2><p>那么问题来了，fragment或者activity是怎么把自身的生命周期分发给每一个Observer的呢？生命周期自动感应是怎么工作的呢？解析来我们通过解析源码来找到答案。</p>
+<p>查看SupportActivity的源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SupportActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">LifecycleOwner</span>, <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> SimpleArrayMap&lt;Class&lt;? extends SupportActivity.ExtraData&gt;, </span><br><span class="line">    <span class="keyword">private</span> LifecycleRegistry mLifecycleRegistry = <span class="keyword">new</span> LifecycleRegistry(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SupportActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        ReportFragment.injectIfNeededIn(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@CallSuper</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mLifecycleRegistry.markState(State.CREATED);</span><br><span class="line">        <span class="keyword">super</span>.onSaveInstanceState(outState);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Lifecycle <span class="title">getLifecycle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.mLifecycleRegistry;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出在activity的onCreate方法调用了一个方法： ReportFragment.injectIfNeededIn(activity)，接下来看下这个init做了什么事情：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReportFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String REPORT_FRAGMENT_TAG = <span class="string">"android.arch.lifecycle"</span></span><br><span class="line">            + <span class="string">".LifecycleDispatcher.report_fragment_tag"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">injectIfNeededIn</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ProcessLifecycleOwner should always correctly work and some activities may not extend</span></span><br><span class="line">        <span class="comment">// FragmentActivity from support lib, so we use framework fragments for activities</span></span><br><span class="line">        android.app.FragmentManager manager = activity.getFragmentManager();</span><br><span class="line">        <span class="keyword">if</span> (manager.findFragmentByTag(REPORT_FRAGMENT_TAG) == <span class="keyword">null</span>) &#123;</span><br><span class="line">            manager.beginTransaction().add(<span class="keyword">new</span> ReportFragment(), REPORT_FRAGMENT_TAG).commit();</span><br><span class="line">            <span class="comment">// Hopefully, we are the first to make a transaction.</span></span><br><span class="line">            manager.executePendingTransactions();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onActivityCreated(savedInstanceState);</span><br><span class="line">        dispatchCreate(mProcessListener);</span><br><span class="line">        dispatch(Lifecycle.Event.ON_CREATE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStart();</span><br><span class="line">        dispatchStart(mProcessListener);</span><br><span class="line">        dispatch(Lifecycle.Event.ON_START);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onResume();</span><br><span class="line">        dispatchResume(mProcessListener);</span><br><span class="line">        dispatch(Lifecycle.Event.ON_RESUME);</span><br><span class="line">    &#125;</span><br><span class="line">.....................</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        dispatch(Lifecycle.Event.ON_DESTROY);</span><br><span class="line">        <span class="comment">// just want to be sure that we won't leak reference to an activity</span></span><br><span class="line">        mProcessListener = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dispatch</span><span class="params">(Lifecycle.Event event)</span> </span>&#123;</span><br><span class="line">        Activity activity = getActivity();</span><br><span class="line">        <span class="keyword">if</span> (activity <span class="keyword">instanceof</span> LifecycleRegistryOwner) &#123;</span><br><span class="line">            ((LifecycleRegistryOwner) activity).getLifecycle().handleLifecycleEvent(event);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (activity <span class="keyword">instanceof</span> LifecycleOwner) &#123;</span><br><span class="line">            Lifecycle lifecycle = ((LifecycleOwner) activity).getLifecycle();</span><br><span class="line">            <span class="keyword">if</span> (lifecycle <span class="keyword">instanceof</span> LifecycleRegistry) &#123;</span><br><span class="line">                ((LifecycleRegistry) lifecycle).handleLifecycleEvent(event);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个代码就比较清晰了：在activity上面挂了一个ReportFragment专门用来感应activity的生命周期，把activity的生命周期分发给activity里面的Lifecycle,其中activity里面的Lifecycle是一个LifecycleRegistry对象。通过这种方式就完成了activity生命周期到Lifecycle的转发。</p>
+<blockquote>
+<p>到这里大家可能会有一个疑问了：那么fragment的生命周期是怎么感应的呢？因为fragment的生命周期是可能比activity的生命周期要短的，这个我们从fragment源码中寻找答案：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">performStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ..........</span><br><span class="line">           <span class="keyword">this</span>.mLifecycleRegistry.handleLifecycleEvent(Event.ON_START);</span><br><span class="line">           <span class="keyword">if</span> (<span class="keyword">this</span>.mView != <span class="keyword">null</span>) &#123;</span><br><span class="line">               <span class="keyword">this</span>.mViewLifecycleRegistry.handleLifecycleEvent(Event.ON_START);</span><br><span class="line">           &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">performResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ..............</span><br><span class="line">           <span class="keyword">this</span>.mLifecycleRegistry.handleLifecycleEvent(Event.ON_RESUME);</span><br><span class="line">           <span class="keyword">if</span> (<span class="keyword">this</span>.mView != <span class="keyword">null</span>) &#123;</span><br><span class="line">               <span class="keyword">this</span>.mViewLifecycleRegistry.handleLifecycleEvent(Event.ON_RESUME);</span><br><span class="line">           &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出fragment中生命周期是进行主动转发的，主动调用LifecycleRegistry的方法进行转发。</p>
+<p>至此，activity和fragment的生命周期转发机制已经了解清楚了，接下来我们看下生命周期是怎么进一步转发给LifecycleObserver的。</p>
+<h3 id="5、LifecycleObserver响应源码解析"><a href="#5、LifecycleObserver响应源码解析" class="headerlink" title="5、LifecycleObserver响应源码解析"></a>5、LifecycleObserver响应源码解析</h3>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://easyliu.com/2020/10/31/android_jetpack/lifecycle/" data-id="ckgxj6xyn000b2smw3vnb0g63" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "EasyLiu"
+        },
+        "headline": "Android生命周期感应组件lifecycle",
+        "image": "http://easyliu.com/2020/10/31/android_jetpack/lifecycle/lifecycle-state.png",
+        "keywords": "Android",
+        "genre": "Android架构学习",
+        "datePublished": "2020-10-31",
+        "dateCreated": "2020-10-31",
+        "dateModified": "2020-10-31",
+        "url": "http://easyliu.com/2020/10/31/android_jetpack/lifecycle/",
+        "description": "1、lifecycle简介生命周期感知型组件可执行操作来响应另一个组件（如 Activity 和 Fragment）的生命周期状态的变化。这些组件有助于您写出更有条理且往往更精简的代码，这样的代码更易于维护。
+一种常见的模式是在 Activity 和 Fragment 的生命周期方法中实现依赖组件的操作。但是，这种模式会导致代码条理性很差而且会扩散错误。通过使用生命周期感知型组件，您可以将依赖组件",
+        "wordCount": 3228
+    }
+</script>
+
+</article>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/EasyLiu-Ly" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/10/31/android_jetpack/jetpack_intro/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Android Jetpack简介</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">目录</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、lifecycle简介"><span class="toc-number">1.</span> <span class="toc-text">1、lifecycle简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、生命周期"><span class="toc-number">2.</span> <span class="toc-text">2、生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、LifecycleOwner"><span class="toc-number">3.</span> <span class="toc-text">3、LifecycleOwner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、生命周期自动感应原理解析"><span class="toc-number">4.</span> <span class="toc-text">4、生命周期自动感应原理解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5、LifecycleObserver响应源码解析"><span class="toc-number">4.1.</span> <span class="toc-text">5、LifecycleObserver响应源码解析</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/10/31/android_jetpack/lifecycle/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2020/10/31/android_jetpack/lifecycle/lifecycle-state.png)" alt="Android生命周期感应组件lifecycle" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android架构学习/">Android架构学习</a></p>
+                            <p class="item-title"><a href="/2020/10/31/android_jetpack/lifecycle/" class="title">Android生命周期感应组件lifecycle</a></p>
+                            <p class="item-date"><time datetime="2020-10-31T08:34:04.000Z" itemprop="datePublished">2020-10-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/10/31/android_jetpack/jetpack_intro/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2020/10/31/android_jetpack/jetpack_intro/intro.png)" alt="Android Jetpack简介" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android架构学习/">Android架构学习</a></p>
+                            <p class="item-title"><a href="/2020/10/31/android_jetpack/jetpack_intro/" class="title">Android Jetpack简介</a></p>
+                            <p class="item-date"><time datetime="2020-10-31T07:31:26.000Z" itemprop="datePublished">2020-10-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/09/20/android_architecture/component/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android架构学习/">Android架构学习</a></p>
+                            <p class="item-title"><a href="/2020/09/20/android_architecture/component/" class="title">android组件化</a></p>
+                            <p class="item-date"><time datetime="2020-09-19T16:21:14.000Z" itemprop="datePublished">2020-09-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/09/20/study_plan/2020.9-2020.12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2020/09/20/study_plan/2020.9-2020.12/study_plan.png)" alt="2020.9-2020.12学习计划" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/学习计划/">学习计划</a></p>
+                            <p class="item-title"><a href="/2020/09/20/study_plan/2020.9-2020.12/" class="title">2020.9-2020.12学习计划</a></p>
+                            <p class="item-date"><time datetime="2020-09-19T16:06:37.000Z" itemprop="datePublished">2020-09-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/09/18/android/StudyPlan/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2020/09/18/android/StudyPlan/study_plan.png)" alt="学习路线" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/学习计划/">学习计划</a></p>
+                            <p class="item-title"><a href="/2020/09/18/android/StudyPlan/" class="title">学习路线</a></p>
+                            <p class="item-date"><time datetime="2020-09-18T03:38:59.000Z" itemprop="datePublished">2020-09-18</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android架构学习/">Android架构学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android源码解析/">Android源码解析</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android自定义控件/">Android自定义控件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gradle相关/">Gradle相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios开发/">ios开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/代码规范/">代码规范</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/刷题/">刷题</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/单元测试/">单元测试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习计划/">学习计划</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios开发/">ios开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码规范/">代码规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习计划/">学习计划</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://github.com/EasyLiu-Ly">我的github</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://blog.csdn.net/liuyi1207164339">我的csdn博客</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://blog.csdn.net/lmj623565791">鸿洋大神</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 EasyLiu</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://easyliu.com/2020/10/31/android_jetpack/lifecycle/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+</body>
+</html>
