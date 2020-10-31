@@ -6,24 +6,26 @@
     
 
     
-    <title>java代码规范 | EasyLiu</title>
+    <title>Android Jetpack简介 | EasyLiu</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="代码规范">
+    <meta name="keywords" content="Android">
     
-    <meta name="description" content="java代码规范">
-<meta name="keywords" content="代码规范">
+    <meta name="description" content="Android Jetpack简介">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java代码规范">
-<meta property="og:url" content="http://easyliu.com/2020/05/26/code/java_code_style/index.html">
+<meta property="og:title" content="Android Jetpack简介">
+<meta property="og:url" content="http://easyliu.com/2020/10/31/android_jetpack/jetpack_intro/index.html">
 <meta property="og:site_name" content="EasyLiu">
-<meta property="og:description" content="java代码规范">
+<meta property="og:description" content="Android Jetpack简介">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-30T04:27:58.837Z">
+<meta property="og:image" content="http://easyliu.com/2020/10/31/android_jetpack/jetpack_intro/intro.png">
+<meta property="og:updated_time" content="2020-10-31T08:24:44.176Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java代码规范">
-<meta name="twitter:description" content="java代码规范">
+<meta name="twitter:title" content="Android Jetpack简介">
+<meta name="twitter:description" content="Android Jetpack简介">
+<meta name="twitter:image" content="http://easyliu.com/2020/10/31/android_jetpack/jetpack_intro/intro.png">
     
 
     
@@ -135,19 +137,19 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/代码规范/">代码规范</a>
+    <a class="page-title-link" href="/categories/Android结构学习/">Android结构学习</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-code/java_code_style" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-android_jetpack/jetpack_intro" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        java代码规范
+        Android Jetpack简介
         </h1>
     
 
@@ -158,8 +160,8 @@
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/2020/05/26/code/java_code_style/" class="article-date">
-         <time datetime="2020-05-26T13:31:58.000Z" itemprop="datePublished">2020-05-26</time>
+      <a href="/2020/10/31/android_jetpack/jetpack_intro/" class="article-date">
+         <time datetime="2020-10-31T07:31:26.000Z" itemprop="datePublished">2020-10-31</time>
       </a>
     </div>
 
@@ -169,7 +171,7 @@
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/代码规范/">代码规范</a>
+        <a class="tag-link" href="/tags/Android/">Android</a>
     </div>
 
                 
@@ -180,14 +182,65 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h3 id="1、减少嵌套层级，提前返回"><a href="#1、减少嵌套层级，提前返回" class="headerlink" title="1、减少嵌套层级，提前返回"></a>1、减少嵌套层级，提前返回</h3><h3 id="2、一行不大于100个字符"><a href="#2、一行不大于100个字符" class="headerlink" title="2、一行不大于100个字符"></a>2、一行不大于100个字符</h3><h3 id="3、函数参数个数不宜过多，太多了考虑抽象成类"><a href="#3、函数参数个数不宜过多，太多了考虑抽象成类" class="headerlink" title="3、函数参数个数不宜过多，太多了考虑抽象成类"></a>3、函数参数个数不宜过多，太多了考虑抽象成类</h3><h3 id="4、private成员变量以m为前缀"><a href="#4、private成员变量以m为前缀" class="headerlink" title="4、private成员变量以m为前缀"></a>4、private成员变量以m为前缀</h3><h3 id="5、常量为全大写，以下划线拼接"><a href="#5、常量为全大写，以下划线拼接" class="headerlink" title="5、常量为全大写，以下划线拼接"></a>5、常量为全大写，以下划线拼接</h3><h3 id="6、静态成员变量以s为前缀"><a href="#6、静态成员变量以s为前缀" class="headerlink" title="6、静态成员变量以s为前缀"></a>6、静态成员变量以s为前缀</h3><h3 id="7、单个函数行数不宜过多，超过20-line就考虑抽取函数"><a href="#7、单个函数行数不宜过多，超过20-line就考虑抽取函数" class="headerlink" title="7、单个函数行数不宜过多，超过20 line就考虑抽取函数"></a>7、单个函数行数不宜过多，超过20 line就考虑抽取函数</h3><h3 id="8、经常进行重构"><a href="#8、经常进行重构" class="headerlink" title="8、经常进行重构"></a>8、经常进行重构</h3><h3 id="9、时常考虑抽象、封装、多态"><a href="#9、时常考虑抽象、封装、多态" class="headerlink" title="9、时常考虑抽象、封装、多态"></a>9、时常考虑抽象、封装、多态</h3><h3 id="10、命名规则：精简但能清楚表达语义"><a href="#10、命名规则：精简但能清楚表达语义" class="headerlink" title="10、命名规则：精简但能清楚表达语义"></a>10、命名规则：精简但能清楚表达语义</h3><h3 id="11、写函数的时候从方便单测的角度进行考虑，进行单测覆盖"><a href="#11、写函数的时候从方便单测的角度进行考虑，进行单测覆盖" class="headerlink" title="11、写函数的时候从方便单测的角度进行考虑，进行单测覆盖"></a>11、写函数的时候从方便单测的角度进行考虑，进行单测覆盖</h3>
+            <h2 id="Jetpack简介"><a href="#Jetpack简介" class="headerlink" title="Jetpack简介"></a>Jetpack简介</h2><p>Jetpack 是一个由多个库组成的套件，可帮助开发者遵循最佳做法，减少样板代码并编写可在各种 Android 版本和设备中一致运行的代码，让开发者精力集中编写重要的代码。</p>
+<p>Jetpack 包含与平台 API 解除捆绑的 androidx.* 软件包库。这意味着，它可以提供向后兼容性，且比 Android 平台的更新频率更高，以此确保您始终可以获取最新且最好的 Jetpack 组件版本。</p>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><h3 id="加速开发"><a href="#加速开发" class="headerlink" title="加速开发"></a>加速开发</h3><p>组件可以单独采用（不过这些组件是为协同工作而构建的），同时利用 Kotlin 语言功能帮助您提高工作效率。</p>
+<h3 id="消除样板代码"><a href="#消除样板代码" class="headerlink" title="消除样板代码"></a>消除样板代码</h3><p>Android Jetpack 可管理繁琐的 Activity（如后台任务、导航和生命周期管理），以便您可以专注于如何让您的应用出类拔萃。</p>
+<h3 id="构建高质量的强大应用"><a href="#构建高质量的强大应用" class="headerlink" title="构建高质量的强大应用"></a>构建高质量的强大应用</h3><p>Android Jetpack 组件围绕现代化设计实践构建而成，具有向后兼容性，可以减少崩溃和内存泄漏。</p>
+<p>以下是jetpack包含的内容：<br><img src="/2020/10/31/android_jetpack/jetpack_intro/intro.png" alt="简介"></p>
+<p><a href="https://developer.android.com/jetpack#foundation-components" target="_blank" rel="noopener">jetpack文档</a></p>
+<p><a href="https://www.youtube.com/watch?v=LmkKFCfmnhQ&feature=youtu.be" target="_blank" rel="noopener">jetpack视频介绍</a></p>
+<h2 id="Jetpack架构组件设计思路"><a href="#Jetpack架构组件设计思路" class="headerlink" title="Jetpack架构组件设计思路"></a>Jetpack架构组件设计思路</h2><p><a href="https://developer.android.com/jetpack/guide" target="_blank" rel="noopener">应用架构指南</a></p>
+<h3 id="基于移动应用用户体验"><a href="#基于移动应用用户体验" class="headerlink" title="基于移动应用用户体验"></a>基于移动应用用户体验</h3><p>在大多数情况下，桌面应用会在桌面或程序启动器中有一个入口点，且作为一个单体式进程运行。Android 应用则不然，它们的结构要复杂得多。典型的 Android 应用包含多个应用组件，包括 Activity、Fragment、Service、内容提供程序和广播接收器。</p>
+<p>您需要在应用清单中声明其中的大多数应用组件。Android 操作系统随后会使用此文件来决定如何将您的应用集成到设备的整体用户体验中。鉴于正确编写的 Android 应用包含多个组件，并且用户经常会在短时间内与多个应用进行互动，因此应用需要适应不同类型的用户驱动型工作流和任务。</p>
+<p>例如，思考一下当您在自己喜欢的社交网络应用中分享照片时会发生什么：</p>
+<ul>
+<li><p>该应用将触发相机 intent。Android 操作系统随后会启动相机应用来处理请求。此时，用户已离开社交网络应用，但他们的体验仍然是无缝的。</p>
+</li>
+<li><p>相机应用可能会触发其他 intent（如启动文件选择器），而这可能会再启动一个应用。</p>
+</li>
+<li><p>最后，用户返回社交网络应用并分享照片。</p>
+</li>
+</ul>
+<p>在此过程中，用户随时可能会被电话或通知打断。处理之后，用户希望能够返回并继续分享照片。这种应用跳跃行为在移动设备上很常见，因此您的应用必须正确处理这些流程。</p>
+<p>请注意，移动设备的资源也很有限，因此操作系统可能会随时终止某些应用进程，以便为新的进程腾出空间。</p>
+<p>鉴于这种环境条件，您的应用组件可以不按顺序地单独启动，并且操作系统或用户可以随时销毁它们。由于这些事件不受您的控制，因此您不应在应用组件中存储任何应用数据或状态，并且应用组件不应相互依赖。</p>
+<h3 id="常见的架构原则"><a href="#常见的架构原则" class="headerlink" title="常见的架构原则"></a>常见的架构原则</h3><p>如果您不应使用应用组件存储应用数据和状态，那么您应该如何设计应用呢？</p>
+<h3 id="关注分离点"><a href="#关注分离点" class="headerlink" title="关注分离点"></a>关注分离点</h3><p>要遵循的最重要的原则是分离关注点。一种常见的错误是在一个 Activity 或 Fragment 中编写所有代码。这些基于界面的类应仅包含处理界面和操作系统交互的逻辑。您应使这些类尽可能保持精简，这样可以避免许多与生命周期相关的问题。</p>
+<p>请注意，您并非拥有 Activity 和 Fragment 的实现；它们只是表示 Android 操作系统与应用之间关系的粘合类。操作系统可能会根据用户互动或因内存不足等系统条件随时销毁它们。为了提供令人满意的用户体验和更易于管理的应用维护体验，您最好尽量减少对它们的依赖。</p>
+<h3 id="通过模型驱动界面"><a href="#通过模型驱动界面" class="headerlink" title="通过模型驱动界面"></a>通过模型驱动界面</h3><p>另一个重要原则是您应该通过模型驱动界面（最好是持久性模型）。模型是负责处理应用数据的组件。它们独立于应用中的 View 对象和应用组件，因此不受应用的生命周期以及相关的关注点的影响。</p>
+<p>持久性是理想之选，原因如下：</p>
+<ul>
+<li>如果 Android 操作系统销毁应用以释放资源，用户不会丢失数据。</li>
+<li>当网络连接不稳定或不可用时，应用会继续工作。</li>
+</ul>
+<p>应用所基于的模型类应明确定义数据管理职责，这样将使应用更可测试且更一致。</p>
+<p>基于以上讨论就演变出来了如何使用Jetpack架构组件构建应用，如下所示：<br><img src="/2020/10/31/android_jetpack/jetpack_intro/final-architecture.png" alt="推荐架构图"></p>
+<p>请注意，每个组件仅依赖于其下一级的组件。例如，Activity 和 Fragment 仅依赖于视图模型。存储区是唯一依赖于其他多个类的类；在本例中，存储区依赖于持久性数据模型和远程后端数据源。</p>
+<p>这种设计打造了一致且愉快的用户体验。无论用户上次使用应用是在几分钟前还是几天之前，现在回到应用时都会立即看到应用在本地保留的用户信息。如果此数据已过时，则应用的存储区模块将开始在后台更新数据。</p>
+<h2 id="Jetpack架构组件介绍"><a href="#Jetpack架构组件介绍" class="headerlink" title="Jetpack架构组件介绍"></a>Jetpack架构组件介绍</h2><p><a href="https://developer.android.com/topic/libraries/architecture" target="_blank" rel="noopener">Jetpack架构组件</a></p>
+<p>Android 架构组件是一组库，可帮助您设计稳健、可测试且易维护的应用。您可以从管理界面组件生命周期和处理数据持久性的类着手。</p>
+<ul>
+<li><p>通过应用架构指南，学习有关汇编稳健应用的基础知识。</p>
+</li>
+<li><p>管理应用的生命周期。新的生命周期感知型组件可帮助您管理 Activity 和 Fragment 的生命周期。在配置更改后继续有效、避免内存泄漏，以及轻松加载数据到界面中。</p>
+</li>
+<li><p>使用 LiveData 构建数据对象，在基础数据库改变时通知视图。</p>
+</li>
+<li><p>ViewModel 存储界面相关的数据，这些数据不会在应用轮转时销毁。</p>
+</li>
+<li><p>Room 是一个 SQLite 对象映射库。它可用来避免样板代码，并轻松地将 SQLite 表数据转换为 Java 对象。Room 提供 SQLite 语句的编译时检查，并且可以返回 RxJava、Flowable 和 LiveData 可观察对象。</p>
+</li>
+</ul>
+<p>以上就是对Jetpack组件的介绍，接下来会对Jetpack里面的架构组件进行剖析讲解。</p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://easyliu.com/2020/05/26/code/java_code_style/" data-id="ckgxf89o3001m8rmwktyx0er4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://easyliu.com/2020/10/31/android_jetpack/jetpack_intro/" data-id="ckgxf89ni000c8rmwyqhr84yc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -257,16 +310,17 @@
             "@type": "Person",
             "name": "EasyLiu"
         },
-        "headline": "java代码规范",
-        "image": "http://easyliu.com",
-        "keywords": "代码规范",
-        "genre": "代码规范",
-        "datePublished": "2020-05-26",
-        "dateCreated": "2020-05-26",
-        "dateModified": "2020-05-30",
-        "url": "http://easyliu.com/2020/05/26/code/java_code_style/",
-        "description": "1、减少嵌套层级，提前返回2、一行不大于100个字符3、函数参数个数不宜过多，太多了考虑抽象成类4、private成员变量以m为前缀5、常量为全大写，以下划线拼接6、静态成员变量以s为前缀7、单个函数行数不宜过多，超过20 line就考虑抽取函数8、经常进行重构9、时常考虑抽象、封装、多态10、命名规则：精简但能清楚表达语义11、写函数的时候从方便单测的角度进行考虑，进行单测覆盖",
-        "wordCount": 47
+        "headline": "Android Jetpack简介",
+        "image": "http://easyliu.com/2020/10/31/android_jetpack/jetpack_intro/intro.png",
+        "keywords": "Android",
+        "genre": "Android结构学习",
+        "datePublished": "2020-10-31",
+        "dateCreated": "2020-10-31",
+        "dateModified": "2020-10-31",
+        "url": "http://easyliu.com/2020/10/31/android_jetpack/jetpack_intro/",
+        "description": "Jetpack简介Jetpack 是一个由多个库组成的套件，可帮助开发者遵循最佳做法，减少样板代码并编写可在各种 Android 版本和设备中一致运行的代码，让开发者精力集中编写重要的代码。
+Jetpack 包含与平台 API 解除捆绑的 androidx.* 软件包库。这意味着，它可以提供向后兼容性，且比 Android 平台的更新频率更高，以此确保您始终可以获取最新且最好的 Jetpack 组",
+        "wordCount": 129
     }
 </script>
 
@@ -296,20 +350,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2020/05/30/android/as_shortcut/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            Android studio 快捷键
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2020/05/17/ios/xcode_shortcut/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2020/09/20/android_architecture/component/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">xcode快捷键</p>
+        <p class="article-nav-title">android组件化</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -324,7 +368,7 @@
     <h3 class="widget-title">目录</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、减少嵌套层级，提前返回"><span class="toc-number">1.</span> <span class="toc-text">1、减少嵌套层级，提前返回</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、一行不大于100个字符"><span class="toc-number">2.</span> <span class="toc-text">2、一行不大于100个字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、函数参数个数不宜过多，太多了考虑抽象成类"><span class="toc-number">3.</span> <span class="toc-text">3、函数参数个数不宜过多，太多了考虑抽象成类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、private成员变量以m为前缀"><span class="toc-number">4.</span> <span class="toc-text">4、private成员变量以m为前缀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、常量为全大写，以下划线拼接"><span class="toc-number">5.</span> <span class="toc-text">5、常量为全大写，以下划线拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、静态成员变量以s为前缀"><span class="toc-number">6.</span> <span class="toc-text">6、静态成员变量以s为前缀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、单个函数行数不宜过多，超过20-line就考虑抽取函数"><span class="toc-number">7.</span> <span class="toc-text">7、单个函数行数不宜过多，超过20 line就考虑抽取函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、经常进行重构"><span class="toc-number">8.</span> <span class="toc-text">8、经常进行重构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9、时常考虑抽象、封装、多态"><span class="toc-number">9.</span> <span class="toc-text">9、时常考虑抽象、封装、多态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10、命名规则：精简但能清楚表达语义"><span class="toc-number">10.</span> <span class="toc-text">10、命名规则：精简但能清楚表达语义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11、写函数的时候从方便单测的角度进行考虑，进行单测覆盖"><span class="toc-number">11.</span> <span class="toc-text">11、写函数的时候从方便单测的角度进行考虑，进行单测覆盖</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Jetpack简介"><span class="toc-number">1.</span> <span class="toc-text">Jetpack简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优势"><span class="toc-number">2.</span> <span class="toc-text">优势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加速开发"><span class="toc-number">2.1.</span> <span class="toc-text">加速开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消除样板代码"><span class="toc-number">2.2.</span> <span class="toc-text">消除样板代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建高质量的强大应用"><span class="toc-number">2.3.</span> <span class="toc-text">构建高质量的强大应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jetpack架构组件设计思路"><span class="toc-number">3.</span> <span class="toc-text">Jetpack架构组件设计思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基于移动应用用户体验"><span class="toc-number">3.1.</span> <span class="toc-text">基于移动应用用户体验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的架构原则"><span class="toc-number">3.2.</span> <span class="toc-text">常见的架构原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关注分离点"><span class="toc-number">3.3.</span> <span class="toc-text">关注分离点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过模型驱动界面"><span class="toc-number">3.4.</span> <span class="toc-text">通过模型驱动界面</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jetpack架构组件介绍"><span class="toc-number">4.</span> <span class="toc-text">Jetpack架构组件介绍</span></a></li></ol>
         </div>
     </div>
 </div>
@@ -533,7 +577,7 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://easyliu.com/2020/05/26/code/java_code_style/';
+    var disqus_url = 'http://easyliu.com/2020/10/31/android_jetpack/jetpack_intro/';
     
     (function() {
     var dsq = document.createElement('script');
