@@ -4,6 +4,26 @@
   
     
     <entry>
+      <title><![CDATA[My Car——博瑞GE PHEV]]></title>
+      <url>http://easyliu.com/2020/11/01/life/my_car/</url>
+      <content type="html"><![CDATA[<h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
+      
+        <categories>
+            
+            <category> 车子 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 日常生活 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[早起龙城公园爬山——2020.11.1]]></title>
       <url>http://easyliu.com/2020/11/01/life/11_1_longcheng_park/</url>
       <content type="html"><![CDATA[<h2 id="空气新鲜"><a href="#空气新鲜" class="headerlink" title="空气新鲜"></a>空气新鲜</h2><p><img src="/2020/11/01/life/11_1_longcheng_park/scenery_one.jpeg" alt="scenery_one"><br><img src="/2020/11/01/life/11_1_longcheng_park/scenery_two.jpeg" alt="scenery_two"><br><img src="/2020/11/01/life/11_1_longcheng_park/scenery_three.jpeg" alt="scenery_three"><br><img src="/2020/11/01/life/11_1_longcheng_park/scenery_four.jpeg" alt="scenery_four"></p>
@@ -213,7 +233,7 @@
     <entry>
       <title><![CDATA[2020.9-2020.12学习计划]]></title>
       <url>http://easyliu.com/2020/09/20/study_plan/2020.9-2020.12/</url>
-      <content type="html"><![CDATA[<h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><p><img src="/2020/09/20/study_plan/2020.9-2020.12/study_plan.png" alt="study_plan"></p>
+      <content type="html"><![CDATA[<h2 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h2><p><img src="/2020/09/20/study_plan/2020.9-2020.12/study_plan.jpg" alt="study_plan"></p>
 <h2 id="执行情况"><a href="#执行情况" class="headerlink" title="执行情况"></a>执行情况</h2><h3 id="组件化-已完成"><a href="#组件化-已完成" class="headerlink" title="组件化     已完成"></a>组件化     已完成</h3><h3 id="MVVM-学习中"><a href="#MVVM-学习中" class="headerlink" title="MVVM      学习中"></a>MVVM      <font color="Red">学习中</font></h3><h3 id="Leakcanary-学习中"><a href="#Leakcanary-学习中" class="headerlink" title="Leakcanary 学习中"></a>Leakcanary <font color="Red">学习中</font></h3>]]></content>
       
         <categories>
