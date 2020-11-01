@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://easyliu.com/"/>
-  <updated>2020-11-01T08:55:06.601Z</updated>
+  <updated>2020-11-01T09:13:15.766Z</updated>
   <id>http://easyliu.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>早起龙城公园爬山——2020.11.1</title>
+    <link href="http://easyliu.com/2020/11/01/life/11_1_longcheng_park/"/>
+    <id>http://easyliu.com/2020/11/01/life/11_1_longcheng_park/</id>
+    <published>2020-11-01T08:59:16.000Z</published>
+    <updated>2020-11-01T09:13:15.766Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="空气新鲜"><a href="#空气新鲜" class="headerlink" title="空气新鲜"></a>空气新鲜</h2><p><img src="/2020/11/01/life/11_1_longcheng_park/scenery_one.jpeg" alt="scenery_one"><br><img src="/2020/11/01/life/11_1_longcheng_park/scenery_two.jpeg" alt="scenery_two"><br><img src="/2020/11/01/life/11_1_longcheng_park/scenery_three.jpeg" alt="scenery_three"><br><img src="/2020/11/01/life/11_1_longcheng_park/scenery_four.jpeg" alt="scenery_four"></p><h2 id="你大爷还是你大爷"><a href="#你大爷还是你大爷" class="headerlink" title="你大爷还是你大爷"></a>你大爷还是你大爷</h2><p><img src="/2020/11/01/life/11_1_longcheng_park/uncle.jpeg" alt="uncle_one"><br><img src="/2020/11/01/life/11_1_longcheng_park/uncle_two.jpeg" alt="uncle_two"></p>]]></content>
+    
+    <summary type="html">
+    
+      龙城公园爬山——2020.11.1
+    
+    </summary>
+    
+      <category term="周末活动" scheme="http://easyliu.com/categories/%E5%91%A8%E6%9C%AB%E6%B4%BB%E5%8A%A8/"/>
+    
+    
+      <category term="日常生活" scheme="http://easyliu.com/tags/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>Android生命周期感应组件lifecycle</title>
@@ -431,31 +453,6 @@
     
     
       <category term="Android" scheme="http://easyliu.com/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://easyliu.com/2017/03/18/hello-world/"/>
-    <id>http://easyliu.com/2017/03/18/hello-world/</id>
-    <published>2017-03-18T06:51:26.000Z</published>
-    <updated>2017-03-18T06:51:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
-      <category term="杂项" scheme="http://easyliu.com/categories/%E6%9D%82%E9%A1%B9/"/>
-    
-    
-      <category term="其他" scheme="http://easyliu.com/tags/%E5%85%B6%E4%BB%96/"/>
     
   </entry>
   
