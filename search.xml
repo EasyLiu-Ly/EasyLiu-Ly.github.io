@@ -43,8 +43,8 @@ var dp = new DPlayer({{
     volume: 0.2,
     mutex: true,
     video: {
-        url: '11_1_longcheng_park/scenery.mp4',
-        pic: '11_1_longcheng_park/scenery_one.jpeg',
+        url: '/11_1_longcheng_park/scenery.mp4',
+        pic: '/11_1_longcheng_park/scenery_one.jpeg',
         thumbnails: 'thumbnails.jpg',
         type: 'auto'
     },
