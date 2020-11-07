@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://easyliu.com/"/>
-  <updated>2020-11-01T14:09:43.100Z</updated>
+  <updated>2020-11-07T10:07:19.936Z</updated>
   <id>http://easyliu.com/</id>
   
   <author>
@@ -17,24 +17,18 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>My Car——博瑞GE PHEV</title>
-    <link href="http://easyliu.com/2020/11/01/life/my_car/"/>
-    <id>http://easyliu.com/2020/11/01/life/my_car/</id>
-    <published>2020-11-01T10:03:36.000Z</published>
-    <updated>2020-11-01T14:09:43.100Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
+    <title>livedata</title>
+    <link href="http://easyliu.com/2020/11/07/android_jetpack/livedata/"/>
+    <id>http://easyliu.com/2020/11/07/android_jetpack/livedata/</id>
+    <published>2020-11-07T10:07:19.000Z</published>
+    <updated>2020-11-07T10:07:19.936Z</updated>
     
     <summary type="html">
     
-      My Car——博瑞GE PHEV
+      livedata
     
     </summary>
     
-      <category term="车子" scheme="http://easyliu.com/categories/%E8%BD%A6%E5%AD%90/"/>
-    
-    
-      <category term="日常生活" scheme="http://easyliu.com/tags/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
