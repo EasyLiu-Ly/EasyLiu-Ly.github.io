@@ -15,8 +15,8 @@
 <blockquote>
 <p>npm install hexo-tag-aplayer</p>
 <p>npm install hexo-tag-dplayer</p>
-<p>关于aplayer以及dplayer语法，参考：</p>
 </blockquote>
+<p>关于aplayer以及dplayer语法，参考：</p>
 <p><a href="https://github.com/MoePlayer/hexo-tag-aplayer" target="_blank" rel="noopener">hexo-tag-aplayer</a></p>
 <p><a href="https://github.com/MoePlayer/hexo-tag-dplayer" target="_blank" rel="noopener">hexo-tag-dplayer</a></p>
 <p><a href="https://www.jianshu.com/p/26a7fc7cc185" target="_blank" rel="noopener">Hexo博客中插入音乐/视频/</a></p>
