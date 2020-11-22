@@ -4,6 +4,45 @@
   
     
     <entry>
+      <title><![CDATA[hexo插入音频和视频]]></title>
+      <url>http://easyliu.com/2020/11/22/hexo/insert_video/</url>
+      <content type="html"><![CDATA[<h2 id="音视频准备"><a href="#音视频准备" class="headerlink" title="音视频准备"></a>音视频准备</h2><h3 id="在线音视频"><a href="#在线音视频" class="headerlink" title="在线音视频"></a>在线音视频</h3><p>如果是在线音视频的话，只要有url就行</p>
+<h3 id="本地音视频"><a href="#本地音视频" class="headerlink" title="本地音视频"></a>本地音视频</h3><p>在public文件夹下面新建一个resources目录，把视频和音频放在这个目录里面，这里我把视频放在video子目录下面，把音频放在audio子目录下面。</p>
+<blockquote>
+<p>为啥要把资源放在public？只有把资源放在public文件夹下面，网页才能访问！！最开始就是在这里卡了很久一直没法播放，原来是路径设置不对导致没法访问</p>
+</blockquote>
+<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>安装aplayer以及dplayer:</p>
+<blockquote>
+<p>npm install hexo-tag-aplayer</p>
+<p>npm install hexo-tag-dplayer</p>
+<p>关于aplayer以及dplayer语法，参考：</p>
+</blockquote>
+<p><a href="https://github.com/MoePlayer/hexo-tag-aplayer" target="_blank" rel="noopener">hexo-tag-aplayer</a></p>
+<p><a href="https://github.com/MoePlayer/hexo-tag-dplayer" target="_blank" rel="noopener">hexo-tag-dplayer</a></p>
+<p><a href="https://www.jianshu.com/p/26a7fc7cc185" target="_blank" rel="noopener">Hexo博客中插入音乐/视频/</a></p>
+<p>然后在md文件中插入如下代码，视频就正常加载起播了，这里播放的是本地视频！</p>
+<div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/image/scenery_three.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+
+<p>插入音频代码,音频就正常加载起播了，这里播放的是在线音频！</p>
+<p>aplayer安装不了，先注释：</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 开发工具 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hexo进阶 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[厦门——2020.11.22-24]]></title>
       <url>http://easyliu.com/2020/11/22/life/2020_11_22-24-xiamen/</url>
       <content type="html"><![CDATA[<p><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG18.jpeg" alt="WechatIMG18"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG19.jpeg" alt="WechatIMG19"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG20.jpeg" alt="WechatIMG20"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG21.jpeg" alt="WechatIMG21"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG22.jpeg" alt="WechatIMG22"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG23.jpeg" alt="WechatIMG23"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG24.jpeg" alt="WechatIMG24"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG25.jpeg" alt="WechatIMG25"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG26.jpeg" alt="WechatIMG26"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG27.jpeg" alt="WechatIMG27"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG28.jpeg" alt="WechatIMG28"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG29.jpeg" alt="WechatIMG29"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG30.jpeg" alt="WechatIMG30"></p>
@@ -70,7 +109,7 @@
     <entry>
       <title><![CDATA[早起龙城公园爬山——2020.11.1]]></title>
       <url>http://easyliu.com/2020/11/01/life/2020_11_1_longcheng_park/</url>
-      <content type="html"><![CDATA[<h2 id="空气新鲜"><a href="#空气新鲜" class="headerlink" title="空气新鲜"></a>空气新鲜</h2><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/image/scenery_three.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+      <content type="html"><![CDATA[<h2 id="空气新鲜"><a href="#空气新鲜" class="headerlink" title="空气新鲜"></a>空气新鲜</h2><div id="dplayer1" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer1"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/image/scenery_three.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
 <p><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_one.jpeg" alt="scenery_one"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_two.jpeg" alt="scenery_two"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_three.jpeg" alt="scenery_three"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_four.jpeg" alt="scenery_four"></p>
 <h2 id="你大爷还是你大爷"><a href="#你大爷还是你大爷" class="headerlink" title="你大爷还是你大爷"></a>你大爷还是你大爷</h2><p><img src="/2020/11/01/life/2020_11_1_longcheng_park/uncle.jpeg" alt="uncle_one"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/uncle_two.jpeg" alt="uncle_two"></p>
@@ -1402,7 +1441,7 @@
     
     <entry>
       <title><![CDATA[Hexo搭建个人博客]]></title>
-      <url>http://easyliu.com/2017/03/15/hexo/</url>
+      <url>http://easyliu.com/2017/03/15/hexo/hexo/</url>
       <content type="html"><![CDATA[<p>您好，欢迎来到easyliu的技术博客！</p>
 <p>相关链接：</p>
 <p><a href="http://www.tuicool.com/articles/umEBVfI" target="_blank" rel="noopener">在 hexo 中无痛使用本地图片</a></p>
@@ -1412,7 +1451,6 @@
 <p><a href="https://github.com/maximegris/angular-electron/issues/298" target="_blank" rel="noopener">npm install reports error “npm ERR! Unexpected end of JSON input while parsing near </a></p>
 <p><a href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">hueman-theme</a></p>
 <p><a href="https://moxuan.xyz/2019/12/02/%E5%85%B3%E4%BA%8Ehexo%E4%B8%AD%E4%BD%BF%E7%94%A8-%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_blank" rel="noopener">关于hexo中使用连续{报错的解决方案:把括号进行隔开即可</a></p>
-<p><a href="https://www.jianshu.com/p/26a7fc7cc185" target="_blank" rel="noopener">Hexo博客中插入音乐/视频/</a></p>
 <p>相关笔记：</p>
 <ul>
 <li><p>代码块高亮的方式为三个```之后加上语言，记得之间的空格，不然无效</p>
