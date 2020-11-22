@@ -20,6 +20,8 @@
 <p><a href="https://github.com/MoePlayer/hexo-tag-aplayer" target="_blank" rel="noopener">hexo-tag-aplayer</a></p>
 <p><a href="https://github.com/MoePlayer/hexo-tag-dplayer" target="_blank" rel="noopener">hexo-tag-dplayer</a></p>
 <p><a href="https://www.jianshu.com/p/26a7fc7cc185" target="_blank" rel="noopener">Hexo博客中插入音乐/视频/</a></p>
+<p><a href="https://github.com/DIYgod/DPlayer" target="_blank" rel="noopener">DPlayer</a></p>
+<p><a href="http://dplayer.js.org/guide.html#quick-start" target="_blank" rel="noopener">http://dplayer.js.org/guide.html#quick-start</a></p>
 <p>然后在md文件中插入如下代码，视频就正常加载起播了，这里播放的是本地视频！</p>
 <div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/image/scenery_three.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
@@ -109,7 +111,7 @@
     <entry>
       <title><![CDATA[早起龙城公园爬山——2020.11.1]]></title>
       <url>http://easyliu.com/2020/11/01/life/2020_11_1_longcheng_park/</url>
-      <content type="html"><![CDATA[<h2 id="空气新鲜"><a href="#空气新鲜" class="headerlink" title="空气新鲜"></a>空气新鲜</h2><div id="dplayer1" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer1"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/image/scenery_three.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+      <content type="html"><![CDATA[<h2 id="空气新鲜"><a href="#空气新鲜" class="headerlink" title="空气新鲜"></a>空气新鲜</h2><div id="dplayer1" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer1"),"autoplay":true,"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/image/scenery_three.jpeg"},"danmaku":{"id":"9E2E3368B56CDBB4","api":"https://api.prprpr.me/dplayer/","token":"tokendemo","maximum":1000,"addition":["['https://api.prprpr.me/dplayer/v3/bilibili?aid=4157142']"]}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
 <p><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_one.jpeg" alt="scenery_one"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_two.jpeg" alt="scenery_two"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_three.jpeg" alt="scenery_three"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_four.jpeg" alt="scenery_four"></p>
 <h2 id="你大爷还是你大爷"><a href="#你大爷还是你大爷" class="headerlink" title="你大爷还是你大爷"></a>你大爷还是你大爷</h2><p><img src="/2020/11/01/life/2020_11_1_longcheng_park/uncle.jpeg" alt="uncle_one"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/uncle_two.jpeg" alt="uncle_two"></p>
