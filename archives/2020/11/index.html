@@ -288,7 +288,7 @@
         <a href="/2020/11/07/android_jetpack/livedata/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/2020/11/07/android_jetpack/livedata/final-architecture.png)" alt="Android MVVM框架之Livedata以及ViewModel" class="thumbnail-image"></span>
     
     
         
@@ -311,7 +311,9 @@
     
 
         <p class="article-excerpt">
-            背景
+            背景场景1:假设现在我们在Activity或者fragment当中会监听数据Model的回调，在回调里面会更新一些UI的状态，那么就会存在以下问题：
+
+1、当页面不可见的时候也是能收到回调的，相当于在后台进行UI刷新，这个其实是不对的。一般情况下如果想解决这个问题的话就需要在onStop的时候反注册Model监听，然后等页面回来onStart的时候重新注册Model监听且需要主动读取一次Model
         </p>
     </div>
 </article>
@@ -464,7 +466,7 @@
                             <a href="/2020/11/07/android_jetpack/livedata/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/2020/11/07/android_jetpack/livedata/final-architecture.png)" alt="Android MVVM框架之Livedata以及ViewModel" class="thumbnail-image"></span>
     
     
 </a>
