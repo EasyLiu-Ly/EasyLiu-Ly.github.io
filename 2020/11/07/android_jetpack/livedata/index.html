@@ -21,7 +21,7 @@
 <meta property="og:description" content="Android MVVM框架之Livedata以及ViewModel">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://easyliu.com/2020/11/07/android_jetpack/livedata/final-architecture.png">
-<meta property="og:updated_time" content="2020-11-22T15:53:13.766Z">
+<meta property="og:updated_time" content="2020-11-22T15:58:39.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android MVVM框架之Livedata以及ViewModel">
 <meta name="twitter:description" content="Android MVVM框架之Livedata以及ViewModel">
@@ -277,10 +277,10 @@
 <p>可以看出这个ViewModelStores是一个工具类，用于生成ViewModelStore，而这个ViewModelStore就是从HolderFragment获取的，这个HolderFragment就挂载在这个fragment或者activity上面，接下来看下ViewModelStores的of方法调用的地方：</p>
 <h4 id="ViewModelProviders"><a href="#ViewModelProviders" class="headerlink" title="ViewModelProviders"></a>ViewModelProviders</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewModelProviders</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@MainThread</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ViewModelProvider <span class="title">of</span><span class="params">(@NonNull Fragment fragment)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> of(fragment, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@MainThread</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ViewModelProvider <span class="title">of</span><span class="params">(@NonNull FragmentActivity activity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> of(activity, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@MainThread</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ViewModelProvider <span class="title">of</span><span class="params">(@NonNull Fragment fragment, @Nullable Factory factory)</span> </span>&#123;</span><br><span class="line">        Application application = checkApplication(checkActivity(fragment));</span><br><span class="line">        <span class="keyword">if</span> (factory == <span class="keyword">null</span>) &#123;</span><br><span class="line">            factory = ViewModelProvider.AndroidViewModelFactory.getInstance(application);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewModelProvider(ViewModelStores.of(fragment), factory);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@MainThread</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ViewModelProvider <span class="title">of</span><span class="params">(@NonNull FragmentActivity activity,</span></span></span><br><span class="line"><span class="function"><span class="params">            @Nullable Factory factory)</span> </span>&#123;</span><br><span class="line">        Application application = checkApplication(activity);</span><br><span class="line">        <span class="keyword">if</span> (factory == <span class="keyword">null</span>) &#123;</span><br><span class="line">            factory = ViewModelProvider.AndroidViewModelFactory.getInstance(application);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewModelProvider(ViewModelStores.of(activity), factory);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>可以看出这个ViewModelProviders是一个工具类，用于生成ViewModelProvider，这里面就会调用ViewModelStores的of方法获取ViewModelStore，而我们刚刚也说了这个of方法里面就会挂载一个HolderFragment用于感应对应页面的生命周期。因此，要想自定义ViewModel在页面销毁的时候能够自动调用onCleared()方法，得通过ViewModelProviders来获取：</p>
+<p>可以看出这个ViewModelProviders是一个工具类，用于生成ViewModelProvider，这里面就会调用ViewModelStores的of方法获取ViewModelStore，而我们刚刚也说了这个of方法里面就会挂载一个HolderFragment用于感应对应页面的生命周期。因此，要想自定义的ViewModel在页面销毁的时候能够自动调用onCleared()方法，得通过ViewModelProviders来获取：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">viewModelProvider= ViewModelProviders.of(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
 
-<p>至此ViewModel源码分析完成</p>
+<p>至此ViewModel源码分析完成,更多高级玩法参考：<br><a href="https://developer.android.com/topic/libraries/architecture/viewmodel" target="_blank" rel="noopener">https://developer.android.com/topic/libraries/architecture/viewmodel</a></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此LiveData+ViewModel源码已经分析完成，结合之前的<a href="https://easyliu-ly.github.io/2020/10/31/android_jetpack/lifecycle/" target="_blank" rel="noopener">Android生命周期感应组件lifecycle</a>,整个就组成了MVVM架构。</p>
 <p>这个架构里面很多思想值得我们细细品味～～</p>
 
@@ -290,7 +290,7 @@
 
 
 
-    <a data-url="http://easyliu.com/2020/11/07/android_jetpack/livedata/" data-id="ckhtawbdk001kfbmwknefxygz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://easyliu.com/2020/11/07/android_jetpack/livedata/" data-id="ckhtb39i70019okmwpai51eik" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -371,7 +371,7 @@
         "description": "背景场景1:假设现在我们在Activity或者fragment当中会监听数据Model的回调，在回调里面会更新一些UI的状态，那么就会存在以下问题：
 
 1、当页面不可见的时候也是能收到回调的，相当于在后台进行UI刷新，这个其实是不对的。一般情况下如果想解决这个问题的话就需要在onStop的时候反注册Model监听，然后等页面回来onStart的时候重新注册Model监听且需要主动读取一次Model",
-        "wordCount": 4737
+        "wordCount": 4740
     }
 </script>
 
