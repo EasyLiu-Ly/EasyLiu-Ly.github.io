@@ -21,7 +21,7 @@
 <meta property="og:description" content="Android MVVM框架之Livedata以及ViewModel">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://easyliu.com/2020/11/07/android_jetpack/livedata/final-architecture.png">
-<meta property="og:updated_time" content="2020-11-28T09:17:09.019Z">
+<meta property="og:updated_time" content="2020-11-28T09:23:24.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android MVVM框架之Livedata以及ViewModel">
 <meta name="twitter:description" content="Android MVVM框架之Livedata以及ViewModel">
@@ -285,10 +285,11 @@
 <p>这个架构里面很多思想值得我们细细品味～～</p>
 <blockquote>
 <p>如果您觉得写的还不错，欢迎打赏：</p>
-<img src="/2020/11/07/android_jetpack/livedata/wechat_pay.jpeg" width="100" align="center/">
+<p align="center">
+<img src="/2020/11/07/android_jetpack/livedata/image/wechat_pay.jpeg" width="100">
+<img src="/2020/11/07/android_jetpack/livedata/image/ali_pay.jpeg" width="100/">
+</p>
 </blockquote>
-<blockquote>
-<img src="/2020/11/07/android_jetpack/livedata/ali_pay.jpeg" width="100" align="center/"></blockquote>
 
         </div>
         <footer class="article-footer">
@@ -296,7 +297,7 @@
 
 
 
-    <a data-url="http://easyliu.com/2020/11/07/android_jetpack/livedata/" data-id="cki1he0pu000uqxmw6lai8k9i" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://easyliu.com/2020/11/07/android_jetpack/livedata/" data-id="cki1hm0rj001g18mw9jbp0kpw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -377,7 +378,7 @@
         "description": "背景场景1:假设现在我们在Activity或者fragment当中会监听数据Model的回调，在回调里面会更新一些UI的状态，那么就会存在以下问题：
 
 1、当页面不可见的时候也是能收到回调的，相当于在后台进行UI刷新，这个其实是不对的。一般情况下如果想解决这个问题的话就需要在onStop的时候反注册Model监听，然后等页面回来onStart的时候重新注册Model监听且需要主动读取一次Model",
-        "wordCount": 4746
+        "wordCount": 4745
     }
 </script>
 
