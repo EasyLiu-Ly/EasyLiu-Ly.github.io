@@ -27,12 +27,6 @@
 
 <p>插入音频代码,音频就正常加载起播了，这里播放的是在线音频！</p>
 <p>aplayer安装不了，先注释：</p>
-<blockquote>
-<p>如果您觉得写的还不错，欢迎打赏：</p>
-<img src="/2020/11/22/hexo/insert_video/resources/image/wechat_pay.jpeg" width="100" align="center/">
-</blockquote>
-<blockquote>
-<img src="/2020/11/22/hexo/insert_video/resources/image/ali_pay.jpeg" width="100" align="center/"></blockquote>
 ]]></content>
       
         <categories>
@@ -198,6 +192,12 @@
 <p>至此ViewModel源码分析完成,更多高级玩法参考：<br><a href="https://developer.android.com/topic/libraries/architecture/viewmodel" target="_blank" rel="noopener">https://developer.android.com/topic/libraries/architecture/viewmodel</a></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此LiveData+ViewModel源码已经分析完成，结合之前的<a href="https://easyliu-ly.github.io/2020/10/31/android_jetpack/lifecycle/" target="_blank" rel="noopener">Android生命周期感应组件lifecycle</a>,整个就组成了MVVM架构。</p>
 <p>这个架构里面很多思想值得我们细细品味～～</p>
+<blockquote>
+<p>如果您觉得写的还不错，欢迎打赏：</p>
+<img src="/2020/11/07/android_jetpack/livedata/wechat_pay.jpeg" width="100" align="center/">
+</blockquote>
+<blockquote>
+<img src="/2020/11/07/android_jetpack/livedata/ali_pay.jpeg" width="100" align="center/"></blockquote>
 ]]></content>
       
         <categories>
