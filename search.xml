@@ -192,7 +192,8 @@
 <p>至此ViewModel源码分析完成,更多高级玩法参考：<br><a href="https://developer.android.com/topic/libraries/architecture/viewmodel" target="_blank" rel="noopener">https://developer.android.com/topic/libraries/architecture/viewmodel</a></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此LiveData+ViewModel源码已经分析完成，结合之前的<a href="https://easyliu-ly.github.io/2020/10/31/android_jetpack/lifecycle/" target="_blank" rel="noopener">Android生命周期感应组件lifecycle</a>,整个就组成了MVVM架构。</p>
 <p>这个架构里面很多思想值得我们细细品味～～</p>
-<p><font size="3" color="red">如果您觉得写的还不错，感谢打赏：</font></p>
+<hr align="center" width="“100%”" color="#0e0e0e" size="1">
+<font size="3" color="red">如果您觉得写的还不错，感谢打赏：</font>
 <p align="center">
 <img src="/resources/images/wechat_pay.jpeg" width="150"><img src="/resources/images/ali_pay.jpeg" width="150/">
 </p>
