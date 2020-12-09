@@ -21,7 +21,7 @@
 <meta property="og:description" content="Android MVVM框架之Livedata以及ViewModel">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://easyliu.com/2020/11/07/android_jetpack/livedata/final-architecture.png">
-<meta property="og:updated_time" content="2020-11-28T10:05:28.950Z">
+<meta property="og:updated_time" content="2020-12-09T09:55:03.054Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android MVVM框架之Livedata以及ViewModel">
 <meta name="twitter:description" content="Android MVVM框架之Livedata以及ViewModel">
@@ -283,6 +283,8 @@
 <p>至此ViewModel源码分析完成,更多高级玩法参考：<br><a href="https://developer.android.com/topic/libraries/architecture/viewmodel" target="_blank" rel="noopener">https://developer.android.com/topic/libraries/architecture/viewmodel</a></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此LiveData+ViewModel源码已经分析完成，结合之前的<a href="https://easyliu-ly.github.io/2020/10/31/android_jetpack/lifecycle/" target="_blank" rel="noopener">Android生命周期感应组件lifecycle</a>,整个就组成了MVVM架构。</p>
 <p>这个架构里面很多思想值得我们细细品味～～</p>
+<p>基于这个LiveData这些优良的特性，美团技术团队开发了一个LiveDataEventBus来代替传统的EventBus、RxJava等消息框架,感兴趣的可以看看：<br><a href="https://tech.meituan.com/2018/07/26/android-livedatabus.html" target="_blank" rel="noopener">https://tech.meituan.com/2018/07/26/android-livedatabus.html</a></p>
+<p><a href="https://github.com/JeremyLiao/LiveEventBus" target="_blank" rel="noopener">https://github.com/JeremyLiao/LiveEventBus</a></p>
 <hr align="center" width="“100%”" color="#0e0e0e" size="1">
 <font size="3" color="red">如果您觉得写的还不错，感谢打赏：</font>
 <p align="center">
@@ -296,7 +298,7 @@
 
 
 
-    <a data-url="http://easyliu.com/2020/11/07/android_jetpack/livedata/" data-id="ckiem5gvh0019dimwmue5q3nq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://easyliu.com/2020/11/07/android_jetpack/livedata/" data-id="ckih8lcku001210mw9hsv45y5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -372,12 +374,12 @@
         "genre": "Android架构学习",
         "datePublished": "2020-11-07",
         "dateCreated": "2020-11-07",
-        "dateModified": "2020-11-28",
+        "dateModified": "2020-12-09",
         "url": "http://easyliu.com/2020/11/07/android_jetpack/livedata/",
         "description": "背景场景1:假设现在我们在Activity或者fragment当中会监听数据Model的回调，在回调里面会更新一些UI的状态，那么就会存在以下问题：
 
 1、当页面不可见的时候也是能收到回调的，相当于在后台进行UI刷新，这个其实是不对的。一般情况下如果想解决这个问题的话就需要在onStop的时候反注册Model监听，然后等页面回来onStart的时候重新注册Model监听且需要主动读取一次Model",
-        "wordCount": 4753
+        "wordCount": 4759
     }
 </script>
 
