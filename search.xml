@@ -52,6 +52,7 @@
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上只是Jetpack Compose的一个简单使用，还有很多高级的知识点没有涉及，包括ConstraintLayout、自定义布局、内置 Material组件、主题，状态以及框架的实现原理等，感兴趣的同学可以花时间进行深入研究一番，应该会有收获。</p>
 <p>总体使用下来的感受的话，结合kotlin搭配使用还是挺灵活的，第一次接触这种声明式UI的写法，还是觉得挺新奇的，做为一个新的知识点还是值得学习一下的～～～。</p>
+<p>官方Sample里面有很多优秀的案例可以参考：<br><a href="https://github.com/android/compose-samples" target="_blank" rel="noopener">https://github.com/android/compose-samples</a></p>
 <p>参考：<br><a href="https://developer.android.com/jetpack/compose" target="_blank" rel="noopener">https://developer.android.com/jetpack/compose</a><br><a href="https://developer.android.com/jetpack/compose/layout" target="_blank" rel="noopener">https://developer.android.com/jetpack/compose/layout</a><br><a href="https://developer.android.com/jetpack/compose/mental-model" target="_blank" rel="noopener">https://developer.android.com/jetpack/compose/mental-model</a></p>
 <hr align="center" width="“100%”" color="#0e0e0e" size="1">
 <font size="3" color="red">如果您觉得写的还不错，感谢打赏：</font>
