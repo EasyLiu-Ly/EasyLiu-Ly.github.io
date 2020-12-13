@@ -21,7 +21,7 @@
 <meta property="og:description" content="Jetpack Compose初体验">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://easyliu.com/2020/12/12/android_jetpack/compose/compose_feature.png">
-<meta property="og:updated_time" content="2020-12-13T04:24:46.016Z">
+<meta property="og:updated_time" content="2020-12-13T04:28:51.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jetpack Compose初体验">
 <meta name="twitter:description" content="Jetpack Compose初体验">
@@ -226,7 +226,9 @@
 <p>这个ScrollableColumn就类似于Android的ScrollView，如果要显示的元素很少，这种方法效果很好，但对于大型数据集，很快就会出现性能问题。如需仅显示屏幕上可见的部分元素，可以使用LazyColumnFor或LazyRowFor：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function">fun <span class="title">Feed</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">  feedItems: List&lt;Artist&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">  onSelected: (Artist)</span> -&gt; Unit</span></span><br><span class="line"><span class="function">) </span>&#123;</span><br><span class="line">  Surface(Modifier.fillMaxSize()) &#123;</span><br><span class="line">    LazyColumnFor(feedItems) &#123; item -&gt;</span><br><span class="line">      ArtistCard(item, onSelected(item))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上只是Jetpack Compose的一个简单使用，还有很多高级的知识点没有涉及，包括ConstraintLayout、自定义布局、内置 Material组件、主题，状态以及框架的实现原理等，感兴趣的同学可以花时间进行深入研究一番，应该会有收获。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上只是Jetpack Compose的一个简单使用，还有很多高级的知识点没有涉及，包括ConstraintLayout、自定义布局、内置 Material组件、动画、主题，状态以及框架的实现原理等，如下所示：</p>
+<p><img src="/2020/12/12/android_jetpack/compose/compose_pack.png" alt="compose_pack"></p>
+<p>感兴趣的同学可以花时间进行深入研究一番，应该会有收获。</p>
 <p>总体使用下来的感受的话，结合kotlin搭配使用还是挺灵活的，第一次接触这种声明式UI的写法，还是觉得挺新奇的，做为一个新的知识点还是值得学习一下的～～～。</p>
 <p>官方Sample里面有很多优秀的案例可以参考：<br><a href="https://github.com/android/compose-samples" target="_blank" rel="noopener">https://github.com/android/compose-samples</a></p>
 <p>参考：<br><a href="https://developer.android.com/jetpack/compose" target="_blank" rel="noopener">https://developer.android.com/jetpack/compose</a><br><a href="https://developer.android.com/jetpack/compose/layout" target="_blank" rel="noopener">https://developer.android.com/jetpack/compose/layout</a><br><a href="https://developer.android.com/jetpack/compose/mental-model" target="_blank" rel="noopener">https://developer.android.com/jetpack/compose/mental-model</a></p>
@@ -242,7 +244,7 @@
 
 
 
-    <a data-url="http://easyliu.com/2020/12/12/android_jetpack/compose/" data-id="ckimmju3h0006c8mwe4id8i2f" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://easyliu.com/2020/12/12/android_jetpack/compose/" data-id="ckimmphj40012i2mwx7fujy03" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -322,7 +324,7 @@
         "url": "http://easyliu.com/2020/12/12/android_jetpack/compose/",
         "description": "关于Jetpack Compose
 Android Jetpack Compose是2019 Google/IO大会上推出的一种声明式的UI开发框架，经过一年左右的演进，现在到了alpha阶段。Jetpack Compose是用于构建原生界面的新款Android工具包。它可简化并加快Android上的界面开发。使用更少的代码、强大的工具和直观的KotlinAPI，快速让应用生动而精彩，从此不再需要",
-        "wordCount": 2724
+        "wordCount": 2726
     }
 </script>
 
