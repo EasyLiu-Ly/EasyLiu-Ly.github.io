@@ -6,24 +6,26 @@
     
 
     
-    <title>1、replaceSpace | EasyLiu</title>
+    <title>LeakCanary源码解析之——内存泄漏监测 | EasyLiu</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="算法">
+    <meta name="keywords" content="Android">
     
-    <meta name="description" content="替换空格">
-<meta name="keywords" content="算法">
+    <meta name="description" content="LeakCanary源码解析之——内存泄漏监测">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1、replaceSpace">
-<meta property="og:url" content="http://easyliu.com/2020/06/07/algorithm/repalceSpace/index.html">
+<meta property="og:title" content="LeakCanary源码解析之——内存泄漏监测">
+<meta property="og:url" content="http://easyliu.com/2020/12/19/android_source_analysis/leakcanary/index.html">
 <meta property="og:site_name" content="EasyLiu">
-<meta property="og:description" content="替换空格">
+<meta property="og:description" content="LeakCanary源码解析之——内存泄漏监测">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-12T07:01:48.844Z">
+<meta property="og:image" content="http://easyliu.com/resources/images/wechat_pay.png">
+<meta property="og:updated_time" content="2020-12-19T13:27:26.636Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1、replaceSpace">
-<meta name="twitter:description" content="替换空格">
+<meta name="twitter:title" content="LeakCanary源码解析之——内存泄漏监测">
+<meta name="twitter:description" content="LeakCanary源码解析之——内存泄漏监测">
+<meta name="twitter:image" content="http://easyliu.com/resources/images/wechat_pay.png">
     
 
     
@@ -135,19 +137,19 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/刷题/">刷题</a>
+    <a class="page-title-link" href="/categories/Android源码解析/">Android源码解析</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-algorithm/repalceSpace" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-android_source_analysis/leakcanary" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        1、replaceSpace
+        LeakCanary源码解析之——内存泄漏监测
         </h1>
     
 
@@ -158,8 +160,8 @@
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/2020/06/07/algorithm/repalceSpace/" class="article-date">
-         <time datetime="2020-06-07T07:37:57.000Z" itemprop="datePublished">2020-06-07</time>
+      <a href="/2020/12/19/android_source_analysis/leakcanary/" class="article-date">
+         <time datetime="2020-12-19T12:51:55.000Z" itemprop="datePublished">2020-12-19</time>
       </a>
     </div>
 
@@ -169,7 +171,7 @@
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/算法/">算法</a>
+        <a class="tag-link" href="/tags/Android/">Android</a>
     </div>
 
                 
@@ -180,13 +182,27 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请实现一个函数，把字符串中的每个空格替换为”%20”。</p>
-<h5 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h5><p>“We are happy”</p>
-<h5 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h5><p>“We%20are%20happy”</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">replaceSpace</span><span class="params">(String input)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (input == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">""</span>.equals(input)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//计算空格的个数</span></span><br><span class="line">    <span class="keyword">char</span>[] chars = input.toCharArray();</span><br><span class="line">    <span class="keyword">int</span> numOfSpace = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> curChar : chars) &#123;</span><br><span class="line">        <span class="keyword">if</span> (curChar == <span class="string">' '</span>) &#123;</span><br><span class="line">            numOfSpace++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//创建一个新的字符数组</span></span><br><span class="line">    <span class="keyword">char</span>[] newChars = <span class="keyword">new</span> <span class="keyword">char</span>[chars.length + numOfSpace * <span class="number">2</span>];</span><br><span class="line">    <span class="keyword">int</span> indexOfNewChar = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> curChar : chars) &#123;</span><br><span class="line">        <span class="keyword">if</span> (curChar != <span class="string">' '</span>) &#123;</span><br><span class="line">            newChars[++indexOfNewChar] = curChar;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            newChars[++indexOfNewChar] = <span class="string">'%'</span>;</span><br><span class="line">            newChars[++indexOfNewChar] = <span class="string">'2'</span>;</span><br><span class="line">            newChars[++indexOfNewChar] = <span class="string">'0'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> String.valueOf(newChars);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在日常开发中，肯定都使用过LeakCanary这个库来检测app的内存泄漏问题。LeakCanary会自动监测、分析以及上报内存泄漏，其工作主要是分为以下四步：</p>
+<blockquote>
+<p>1、监测泄漏的对象</p>
+<p>2、dump堆栈</p>
+<p>3、分析堆栈</p>
+<p>4、对泄漏进行归类,然后通过通知的方式上报内存泄漏</p>
+</blockquote>
+<p>那么LeakCanary监测内存泄漏的原理是什么呢，怎么判断一个Activity或者Fragment被泄漏了呢？本篇文章就从源码的角度来对LeakCanary工作的第一步：监测泄漏的对象 来进行分析。</p>
+<p>本次分析源码基于：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">  debugImplementation <span class="string">'com.squareup.leakcanary:leakcanary-android:2.5'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.easyliu.test.replace_space;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Assert;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReplaceSpaceTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testNullInput</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Assert.assertNull(ReplaceSpace.replaceSpace(<span class="keyword">null</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testEmptyInput</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Assert.assertNull(ReplaceSpace.replaceSpace(<span class="string">""</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testNormalSpace</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String expect = <span class="string">"we%20are%20happy"</span>;</span><br><span class="line">        String result = ReplaceSpace.replaceSpace(<span class="string">"we are happy"</span>);</span><br><span class="line">        Assert.assertEquals(expect, result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMultiSpace</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String expect = <span class="string">"we%20%20are%20%20happy"</span>;</span><br><span class="line">        String result = ReplaceSpace.replaceSpace(<span class="string">"we  are  happy"</span>);</span><br><span class="line">        Assert.assertEquals(expect, result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSingleSpace</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String expect = <span class="string">"%20"</span>;</span><br><span class="line">        String result = ReplaceSpace.replaceSpace(<span class="string">" "</span>);</span><br><span class="line">        Assert.assertEquals(expect, result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testNoSpace</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String expect = <span class="string">"we"</span>;</span><br><span class="line">        String result = ReplaceSpace.replaceSpace(<span class="string">"we"</span>);</span><br><span class="line">        Assert.assertEquals(expect, result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>对应的github官网：<a href="https://github.com/square/leakcanary" target="_blank" rel="noopener">https://github.com/square/leakcanary</a></p>
+<p>有一个需要注意的点：</p>
+<p>LeakCanary 2.x版本相比之前的1.x版本相比有比较大的改动，包括集成方式的改变以及使用kotlin进行了重写，如果之前项目中集成的是1.x版本，想升级到2.x版本的话，可以参考官网的升级文档：<br><a href="https://square.github.io/leakcanary/upgrading-to-leakcanary-2.0/" target="_blank" rel="noopener">https://square.github.io/leakcanary/upgrading-to-leakcanary-2.0/</a></p>
+<p>本次源码分析是基于kotlin的，如果对kotlin不太了解，可以上kotlin中文官网学习一下：<br><a href="https://www.kotlincn.net/docs/reference/" target="_blank" rel="noopener">https://www.kotlincn.net/docs/reference/</a></p>
+<p>关于LeakCanary更多资料参考官网：<a href="https://square.github.io/leakcanary/" target="_blank" rel="noopener">https://square.github.io/leakcanary/</a></p>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><hr align="center" width="“100%”" color="#0e0e0e" size="1">
+<font size="3" color="red">如果您觉得写的还不错，感谢打赏：</font>
+<p align="center">
+<img src="/resources/images/wechat_pay.png" width="150" alt="微信支付"><img src="/resources/images/ali_pay.jpeg" width="150" alt="支付宝">
+</p>
 
         </div>
         <footer class="article-footer">
@@ -194,7 +210,7 @@
 
 
 
-    <a data-url="http://easyliu.com/2020/06/07/algorithm/repalceSpace/" data-id="ckivqkres001sf7mwi7xc52aq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://easyliu.com/2020/12/19/android_source_analysis/leakcanary/" data-id="ckivqkrec000gf7mwk63b7xwo" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -264,19 +280,23 @@
             "@type": "Person",
             "name": "EasyLiu"
         },
-        "headline": "1、replaceSpace",
-        "image": "http://easyliu.com",
-        "keywords": "算法",
-        "genre": "刷题",
-        "datePublished": "2020-06-07",
-        "dateCreated": "2020-06-07",
-        "dateModified": "2020-07-12",
-        "url": "http://easyliu.com/2020/06/07/algorithm/repalceSpace/",
-        "description": "题目请实现一个函数，把字符串中的每个空格替换为”%20”。
-输入“We are happy”
-输出“We%20are%20happy”
-实现1234567891011121314151617181920212223242526272829 public static String replaceSpace(String input) &#123;    if (input == null) &#1",
-        "wordCount": 750
+        "headline": "LeakCanary源码解析之——内存泄漏监测",
+        "image": "http://easyliu.com/resources/images/wechat_pay.png",
+        "keywords": "Android",
+        "genre": "Android源码解析",
+        "datePublished": "2020-12-19",
+        "dateCreated": "2020-12-19",
+        "dateModified": "2020-12-19",
+        "url": "http://easyliu.com/2020/12/19/android_source_analysis/leakcanary/",
+        "description": "前言在日常开发中，肯定都使用过LeakCanary这个库来检测app的内存泄漏问题。LeakCanary会自动监测、分析以及上报内存泄漏，其工作主要是分为以下四步：
+
+1、监测泄漏的对象
+2、dump堆栈
+3、分析堆栈
+4、对泄漏进行归类,然后通过通知的方式上报内存泄漏
+
+那么LeakCanary监测内存泄漏的原理是什么呢，怎么判断一个Activity或者Fragment被泄漏了呢？本篇文章就从源",
+        "wordCount": 52
     }
 </script>
 
@@ -306,20 +326,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2020/06/10/algorithm/findFirstOneTimeChar/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            2、findFirstOneTimeChar
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2020/05/30/android/as_shortcut/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2020/12/12/android_jetpack/compose/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Android studio 快捷键</p>
+        <p class="article-nav-title">Jetpack Compose初体验</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -334,7 +344,7 @@
     <h3 class="widget-title">目录</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#输入"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#输出"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">输出</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">2.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试"><span class="toc-number">3.</span> <span class="toc-text">单元测试</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码分析"><span class="toc-number">2.</span> <span class="toc-text">源码分析</span></a></li></ol>
         </div>
     </div>
 </div>
@@ -543,7 +553,7 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://easyliu.com/2020/06/07/algorithm/repalceSpace/';
+    var disqus_url = 'http://easyliu.com/2020/12/19/android_source_analysis/leakcanary/';
     
     (function() {
     var dsq = document.createElement('script');
