@@ -21,7 +21,7 @@
 <meta property="og:description" content="Glide系列之——初识Glide">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://easyliu.com/resources/images/wechat_pay.png">
-<meta property="og:updated_time" content="2021-01-16T13:23:49.369Z">
+<meta property="og:updated_time" content="2021-01-16T14:57:08.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Glide系列之——初识Glide">
 <meta name="twitter:description" content="Glide系列之——初识Glide">
@@ -273,11 +273,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> &lt;Y extends Target&lt;TranscodeType&gt;&gt; <span class="function">Y <span class="title">into</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">     @NonNull Y target,</span></span></span><br><span class="line"><span class="function"><span class="params">     @Nullable RequestListener&lt;TranscodeType&gt; targetListener,</span></span></span><br><span class="line"><span class="function"><span class="params">     BaseRequestOptions&lt;?&gt; options,</span></span></span><br><span class="line"><span class="function"><span class="params">     Executor callbackExecutor)</span> </span>&#123;</span><br><span class="line">   Preconditions.checkNotNull(target);</span><br><span class="line">   <span class="keyword">if</span> (!isModelSet) &#123;</span><br><span class="line">     <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"You must call #load() before calling #into()"</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   Request request = buildRequest(target, targetListener, options, callbackExecutor);</span><br><span class="line"></span><br><span class="line">   Request previous = target.getRequest();</span><br><span class="line">   <span class="keyword">if</span> (request.isEquivalentTo(previous)</span><br><span class="line">       &amp;&amp; !isSkipMemoryCacheWithCompletePreviousRequest(options, previous)) &#123;</span><br><span class="line">     <span class="comment">// If the request is completed, beginning again will ensure the result is re-delivered,</span></span><br><span class="line">     <span class="comment">// triggering RequestListeners and Targets. If the request is failed, beginning again will</span></span><br><span class="line">     <span class="comment">// restart the request, giving it another chance to complete. If the request is already</span></span><br><span class="line">     <span class="comment">// running, we can let it continue running without interruption.</span></span><br><span class="line">     <span class="keyword">if</span> (!Preconditions.checkNotNull(previous).isRunning()) &#123;</span><br><span class="line">       <span class="comment">// Use the previous request rather than the new one to allow for optimizations like skipping</span></span><br><span class="line">       <span class="comment">// setting placeholders, tracking and un-tracking Targets, and obtaining View dimensions</span></span><br><span class="line">       <span class="comment">// that are done in the individual Request.</span></span><br><span class="line">       previous.begin();</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> target;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   requestManager.clear(target);</span><br><span class="line">   target.setRequest(request);</span><br><span class="line">   requestManager.track(target, request);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> target;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
 <p>可以看出，首先会创建一个Request对象，最后通过requestManager.track(target, request)发起request请求加载图片。</p>
+<p>到此，这篇文章就接近尾声了，总结一下：</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇文章主要讲了一下Glide的使用方式、Glide生命周期及网络变化自动化监听处理，对Glide的with、load以及into方法进行了初步的分析。通过这篇文章相信大家对Glide应该有了一个整体的认识，后续的文章会对Glide进行进一步的分析，主要分为：</p>
 <p>1、Glide单例对象的创建过程</p>
-<p>2、Glide整个数据流向，包括：数据获取 -&gt; 数据解码 -&gt; Transformation转换 -&gt; 转码 -&gt; 编码等系列流程</p>
-<p>3、分析Glide里面的设计模式，学习优秀代码精髓</p>
-<p>4、分析Transformation，自定义Transformation实现圆环的效果</p>
+<p>2、Glide的Request执行流程</p>
+<p>3、Glide缓存</p>
+<p>4、Glide图片变换功能Transformation，自定义Transformation实现</p>
 <p>本篇文章到此就结束了，感谢耐心阅读，不对之处，敬请指出～</p>
 <hr align="center" width="“100%”" color="#0e0e0e" size="1">
 <font size="3" color="red">如果您觉得写的还不错，感谢打赏：</font>
@@ -291,7 +292,7 @@
 
 
 
-    <a data-url="http://easyliu.com/2021/01/16/android_source_analysis/glide_use/" data-id="ckjzqti97001spmmwjdgoae2j" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://easyliu.com/2021/01/16/android_source_analysis/glide_use/" data-id="ckjzu4bij000pcxmw4em1o7y7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -371,7 +372,7 @@
         "url": "http://easyliu.com/2021/01/16/android_source_analysis/glide_use/",
         "description": "前言Glide是一个优秀的开源图片加载组件，广泛应用在各大App当中，并且也是Google官方强力推荐的一个图片加载库，根据官方文档介绍：
 Glide是一个快速高效的Android图片加载库，注重于平滑的滚动。Glide提供了易用的API，高性能、可扩展的图片解码管道（decode pipeline），以及自动的资源池技术。Glide 支持拉取，解码和展示视频快照，图片，和GIF动画。Glide的",
-        "wordCount": 5149
+        "wordCount": 5141
     }
 </script>
 
