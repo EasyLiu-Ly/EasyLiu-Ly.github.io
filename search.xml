@@ -105,7 +105,7 @@
 <p>4、<a href>Glide系列之——图片变换功能Transformation</a></p>
 <p>本篇文章到此就结束了，感谢耐心阅读，不对之处，敬请指出～</p>
 <hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢打赏：</font>
+<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
 <p align="center">
 <img src="/resources/images/wechat_pay.png" width="150" alt="微信支付"><img src="/resources/images/ali_pay.jpeg" width="150" alt="支付宝">
 </p>
@@ -142,7 +142,7 @@
 <h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><p>年初的时候搬进了新家，终于在深圳有了自己的新家，虽然远了点，但还是挺幸福的，小区环境还是挺不错的，容积率也比较低</p>
 <p>平时也偶尔开始开车上班了，中途6月份以及国庆的时候也和媳妇一起开车回了两趟老家，一趟来回1600km～</p>
 <p>这一年车子也出了几次险，总结下来还是自己开车太快或者分神导致的，这个还是要引以为戒，后续不要再犯了</p>
-<p>考虑到媳妇平时上班太远了，12月初的时候在媳妇公司附近租了一个房子，这样早上上班可以晚点起，一天也不至于这么来回折腾。我上班也差不多近了一半的路径，早上可以睡到8:20然后坐地铁来公司上班了</p>
+<p>考虑到媳妇平时上班太远了，12月初的时候在媳妇公司附近租了一个房子，这样早上上班可以晚点起，一天也不至于这么来回折腾。我上班也差不多近了一半的路程，早上可以睡到8:20然后坐地铁来公司上班了</p>
 <p>本来想着把现在的房子卖了换一个近一点的，但是目前的房子卖不到一个好的价钱，还是再等等吧，等明年房子价格起来了，再考虑置换吧</p>
 <p>这一年也开始进行理财了，包括基金以及定期理财，这个也得长期坚持下去，在自己风险承受范围之内可以多投入一些</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>希望2021年能够继续保持初心，持续学习，继续执行每周的学习计划，继续理财，更好的工作，更好的生活</p>
@@ -218,7 +218,7 @@
 <p>可以看出如果heapDumpFile存在就会调用下面的analyzeHeap方法，在这个方法里面最终会new一个HeapAnalyzer对象，然后调用analyze方法进行堆栈分析。</p>
 <p>到这里，整个dump堆栈的分析过程就结束了。</p>
 <hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢打赏：</font>
+<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
 <p align="center">
 <img src="/resources/images/wechat_pay.png" width="150" alt="微信支付"><img src="/resources/images/ali_pay.jpeg" width="150" alt="支付宝">
 </p>
@@ -302,7 +302,7 @@
 <p>Leakcanary监控到有内存泄漏只是第一步，后续还有dump堆栈，分析堆栈等，后续有时间也会对这些部分进行学习。</p>
 <p>做为一个开源库，Leakcanary框架源码还是挺值得学习的，其思想非常值得我们学习，并且个人觉得里面的kotlin代码还是写的挺好的，是学习kotlin的好材料。</p>
 <hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢打赏：</font>
+<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
 <p align="center">
 <img src="/resources/images/wechat_pay.png" width="150" alt="微信支付"><img src="/resources/images/ali_pay.jpeg" width="150" alt="支付宝">
 </p>
@@ -379,7 +379,7 @@
 <p>官方Sample里面有很多优秀的案例可以参考：<br><a href="https://github.com/android/compose-samples" target="_blank" rel="noopener">https://github.com/android/compose-samples</a></p>
 <p>参考：<br><a href="https://developer.android.com/jetpack/compose" target="_blank" rel="noopener">https://developer.android.com/jetpack/compose</a><br><a href="https://developer.android.com/jetpack/compose/layout" target="_blank" rel="noopener">https://developer.android.com/jetpack/compose/layout</a><br><a href="https://developer.android.com/jetpack/compose/mental-model" target="_blank" rel="noopener">https://developer.android.com/jetpack/compose/mental-model</a></p>
 <hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢打赏：</font>
+<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
 <p align="center">
 <img src="/resources/images/wechat_pay.png" width="150" alt="微信支付"><img src="/resources/images/ali_pay.jpeg" width="150" alt="支付宝">
 </p>
@@ -423,12 +423,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;% </span><br><span class="line">    dplayer     </span><br><span class="line">    <span class="string">"url=/resources/video/scenery.mp4"</span>  <span class="comment">//设置视频目录，这里我放在了网站根目录下面，也就是public目录下面 </span></span><br><span class="line">    <span class="string">"pic=/resources/images/scenery_three.jpeg"</span> <span class="comment">//设置封面图，同样是放在根目录下面 </span></span><br><span class="line">    <span class="string">"loop=yes"</span>  <span class="comment">//循环播放</span></span><br><span class="line">    <span class="string">"theme=#FADFA3"</span>   <span class="comment">//主题</span></span><br><span class="line">    <span class="string">"autoplay=true"</span>  <span class="comment">//自动播放</span></span><br><span class="line">    <span class="string">"screenshot=true"</span> <span class="comment">//允许截屏</span></span><br><span class="line">    <span class="string">"hotkey=true"</span> <span class="comment">//允许hotKey，比如点击空格暂停视频等操作</span></span><br><span class="line">    <span class="string">"preload=auto"</span> <span class="comment">//预加载：auto</span></span><br><span class="line">    <span class="string">"volume=0.9"</span>  <span class="comment">//初始音量</span></span><br><span class="line">    <span class="string">"playbackSpeed=1"</span><span class="comment">//播放速度1倍速，可以选择1.5,2等</span></span><br><span class="line">    <span class="string">"lang=zh-cn"</span><span class="comment">//语言</span></span><br><span class="line">    <span class="string">"mutex=true"</span><span class="comment">//播放互斥，就比如其他视频播放就会导致这个视频自动暂停</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//下面是弹幕相关</span></span><br><span class="line">    <span class="string">"id=9E2E3368B56CD123BB4"</span></span><br><span class="line">    <span class="string">"api=https://api.prprpr.me/dplayer/"</span></span><br><span class="line">    <span class="string">"token=tokendemo"</span></span><br><span class="line">    <span class="string">"maximum=1000"</span></span><br><span class="line">    <span class="string">"addition=['https://api.prprpr.me/dplayer/v3/bilibili?aid=4157142']"</span></span><br><span class="line">    <span class="string">"user=DIYgod"</span></span><br><span class="line">    <span class="string">"bottom=15%"</span></span><br><span class="line">    <span class="string">"unlimited=true"</span></span><br><span class="line">%&#125;</span><br></pre></td></tr></table></figure>
 
 <p>以上只是部分设置，更多参数设置参考<a href="https://github.com/DIYgod/DPlayer" target="_blank" rel="noopener">DPlayer</a></p>
-<div id="dplayer1" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer1"),"autoplay":true,"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/images/scenery_three.jpeg"},"danmaku":{"id":"9E2E3368B56CD123BB4","api":"https://api.prprpr.me/dplayer/","token":"tokendemo","maximum":1000,"addition":["['https://api.prprpr.me/dplayer/v3/bilibili?aid=4157142']"]}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+<div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"autoplay":true,"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/images/scenery_three.jpeg"},"danmaku":{"id":"9E2E3368B56CD123BB4","api":"https://api.prprpr.me/dplayer/","token":"tokendemo","maximum":1000,"addition":["['https://api.prprpr.me/dplayer/v3/bilibili?aid=4157142']"]}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
 <p>插入音频代码,音频就正常加载起播了，这里播放的是在线音频！</p>
 <p>aplayer安装不了，先注释：</p>
 <hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢打赏：</font>
+<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
 <p align="center">
 <img src="/resources/images/wechat_pay.png" width="150" alt="微信支付"><img src="/resources/images/ali_pay.jpeg" width="150" alt="支付宝">
 </p>]]></content>
@@ -599,7 +599,7 @@
 <p>基于这个LiveData这些优良的特性，美团技术团队开发了一个LiveDataEventBus来代替传统的EventBus、RxJava等消息框架,感兴趣的可以看看：<br><a href="https://tech.meituan.com/2018/07/26/android-livedatabus.html" target="_blank" rel="noopener">https://tech.meituan.com/2018/07/26/android-livedatabus.html</a></p>
 <p><a href="https://github.com/JeremyLiao/LiveEventBus" target="_blank" rel="noopener">https://github.com/JeremyLiao/LiveEventBus</a></p>
 <hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢打赏：</font>
+<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
 <p align="center">
 <img src="/resources/images/wechat_pay.png" width="150" alt="微信支付"><img src="/resources/images/ali_pay.jpeg" width="150" alt="支付宝">
 </p>
@@ -624,7 +624,7 @@
     <entry>
       <title><![CDATA[早起龙城公园爬山——2020.11.1]]></title>
       <url>http://easyliu.com/2020/11/01/life/2020_11_1_longcheng_park/</url>
-      <content type="html"><![CDATA[<h2 id="空气新鲜"><a href="#空气新鲜" class="headerlink" title="空气新鲜"></a>空气新鲜</h2><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/image/scenery_three.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+      <content type="html"><![CDATA[<h2 id="空气新鲜"><a href="#空气新鲜" class="headerlink" title="空气新鲜"></a>空气新鲜</h2><div id="dplayer1" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer1"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/image/scenery_three.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
 <p><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_one.jpeg" alt="scenery_one"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_two.jpeg" alt="scenery_two"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_three.jpeg" alt="scenery_three"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_four.jpeg" alt="scenery_four"></p>
 <h2 id="你大爷还是你大爷"><a href="#你大爷还是你大爷" class="headerlink" title="你大爷还是你大爷"></a>你大爷还是你大爷</h2><p><img src="/2020/11/01/life/2020_11_1_longcheng_park/uncle.jpeg" alt="uncle_one"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/uncle_two.jpeg" alt="uncle_two"></p>
@@ -720,7 +720,7 @@
 
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Lifecycle组件实际上就是对activity或者fragment的生命周期进行自动化监听，然后业务方根据自己的需求可以往Lifecycle组件里面在add或者remove监听，就是一种典型的观察者模式，去掉了以往需要直接在acivity和fragment的生命周期方法中显示调用组件对应方法的过程，让组件代码更有条理，也避免了activity和fragment的代码膨胀，提升代码的可维护性。</p>
 <hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢打赏：</font>
+<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
 <p align="center">
 <img src="/resources/images/wechat_pay.png" width="150" alt="微信支付"><img src="/resources/images/ali_pay.jpeg" width="150" alt="支付宝">
 </p>
