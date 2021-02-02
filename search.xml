@@ -1922,6 +1922,8 @@
 </li>
 <li><p>在_post下面的ios目录下面新建xcode_shortcut.md文件：hexo new –path ios/xcode_shortcut “xcode_shortcut”</p>
 </li>
+<li><p>查看隐藏文件列表：hexo hidden:list</p>
+</li>
 </ul>
 ]]></content>
       
