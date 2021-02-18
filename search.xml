@@ -12,9 +12,9 @@
 <p>本系列主要是分为以下几个部分：</p>
 <p>1、<a href="https://easyliu-ly.github.io/2021/01/16/android_source_analysis/glide_use/" target="_blank" rel="noopener">Glide系列之——初识Glide</a></p>
 <p>2、<a href="https://easyliu-ly.github.io/2021/02/07/android_source_analysis/glide_new/" target="_blank" rel="noopener">Glide系列之——Glide对象创建及功能扩展</a></p>
-<p>3、<a href>Glide系列之——Glide的Request执行流程及回调</a></p>
-<p>4、<a href>Glide系列之——Glide缓存机制</a></p>
-<p>5、<a href>Glide系列之——图片变换功能Transformation</a></p>
+<p>3、Glide系列之——Glide的Request执行流程及回调</p>
+<p>4、Glide系列之——Glide缓存机制</p>
+<p>5、Glide系列之——图片变换功能Transformation</p>
 <p><font size="3" color="red">这篇文章为第二篇：Glide系列之——Glide对象创建及功能扩展</font></p>
 <h2 id="Glide功能扩展"><a href="#Glide功能扩展" class="headerlink" title="Glide功能扩展"></a>Glide功能扩展</h2><p>首先来看下Glide的功能扩展</p>
 <h3 id="GlideModule"><a href="#GlideModule" class="headerlink" title="@GlideModule"></a>@GlideModule</h3><p>通过Glide的使用方式就可以发现Glide是一个全局的对象，在上一篇文章当中，讲到了RequestManagerRetriever对象的获取方式：</p>
@@ -109,9 +109,9 @@
 <p>本系列主要是分为以下几个部分：</p>
 <p>1、<a href="https://easyliu-ly.github.io/2021/01/16/android_source_analysis/glide_use/" target="_blank" rel="noopener">Glide系列之——初识Glide</a></p>
 <p>2、<a href="https://easyliu-ly.github.io/2021/02/07/android_source_analysis/glide_new/" target="_blank" rel="noopener">Glide系列之——Glide对象创建及功能扩展</a></p>
-<p>3、<a href>Glide系列之——Glide的Request执行流程及回调</a></p>
-<p>4、<a href>Glide系列之——Glide缓存机制</a></p>
-<p>5、<a href>Glide系列之——图片变换功能Transformation</a></p>
+<p>3、Glide系列之——Glide的Request执行流程及回调</p>
+<p>4、Glide系列之——Glide缓存机制</p>
+<p>5、Glide系列之——图片变换功能Transformation</p>
 <p><font size="3" color="red">这篇文章为第一篇：Glide系列之——初识Glide</font></p>
 <h2 id="接入及使用"><a href="#接入及使用" class="headerlink" title="接入及使用"></a>接入及使用</h2><p>首先我们来看下Glide的接入以及使用方式，接入方式也比较简单，通过gradle引入即可：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">  google()</span><br><span class="line">  jcenter()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">  implementation <span class="string">'com.github.bumptech.glide:glide:4.11.0'</span></span><br><span class="line">  annotationProcessor <span class="string">'com.github.bumptech.glide:compiler:4.11.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
