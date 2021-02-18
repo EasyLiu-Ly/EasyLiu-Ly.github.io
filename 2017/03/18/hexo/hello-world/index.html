@@ -215,7 +215,7 @@
 
 
 
-    <a data-url="http://easyliu.com/2017/03/18/hexo/hello-world/" data-id="cklarpxus002d7tmwjbxkmhb7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://easyliu.com/2017/03/18/hexo/hello-world/" data-id="cklarxvze002egxmwtutcksdh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -304,9 +304,8 @@ Quick",
     <section id="comments">
     
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+    <!-- Valine -->
+    <div class="vcomments"></div>
 
 
     
@@ -560,19 +559,25 @@ Quick",
     </div>
     
     
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
     <script>
-    var disqus_shortname = 'hexo-theme-hueman';
-    
-    
-    var disqus_url = 'http://easyliu.com/2017/03/18/hexo/hello-world/';
-    
-    (function() {
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+        var GUEST = ['nick','mail','link'];
+        var meta = 'undefined';
+        meta = meta.split(',').filter(function (item) {
+            return GUEST.indexOf(item)>-1;
+        });
+        var avatarcdn = 'https://gravatar.loli.net/avatar/' == true;
+        new Valine({
+            el: '.vcomments',
+            notify: "false",
+            verify: "false",
+            appId: "HTT9HtdG3ACsrMQEd8X7aSD5-gzGzoHsz",
+            appKey: "gEf913xnOAwiO8lVEWztLOQC",
+            placeholder: "Just Do It",
+            avatar:"mm",
+            recordIP:"true",
+            visitor: "true"
+        });
     </script>
 
 
