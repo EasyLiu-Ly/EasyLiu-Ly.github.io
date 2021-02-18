@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[hexo添加评论、字数、阅读时间以及访问量]]></title>
+      <title><![CDATA[hexo博客添加评论、字数、阅读时间以及访问量]]></title>
       <url>http://easyliu.com/2021/02/18/hexo/hexo_comment/</url>
       <content type="html"><![CDATA[<h2 id="hexo添加评论及访问量"><a href="#hexo添加评论及访问量" class="headerlink" title="hexo添加评论及访问量"></a>hexo添加评论及访问量</h2><p>这里我们使用valine评论系统，大部分的hexo主题已经集成了valine评论系统了，关于valine的更多细节，参考：<a href="https://valine.js.org/quickstart.html" target="_blank" rel="noopener">https://valine.js.org/quickstart.html</a></p>
 <p>1、首先去<a href="https://www.leancloud.cn" target="_blank" rel="noopener">https://www.leancloud.cn</a>注册一个账户，注册完以后需要创建一个应用，名字可以随便起，然后 进入应用-&gt;设置-&gt;应用key ,获取你的 appid 和 appkey</p>
