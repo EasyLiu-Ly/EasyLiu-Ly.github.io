@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>PowerMockIo单元测试基础语法 | EasyLiu</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="单元测试">
+    
+    <meta name="description" content="PowerMockIo单元测试基础语法">
+<meta name="keywords" content="单元测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PowerMockIo单元测试基础语法">
+<meta property="og:url" content="http://easyliu.com/2020/05/17/unit_test/unit_test/index.html">
+<meta property="og:site_name" content="EasyLiu">
+<meta property="og:description" content="PowerMockIo单元测试基础语法">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-17T09:14:52.356Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PowerMockIo单元测试基础语法">
+<meta name="twitter:description" content="PowerMockIo单元测试基础语法">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">welcome to easyliu&#39;s blog</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android架构学习/">Android架构学习</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android源码解析/">Android源码解析</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android自定义控件/">Android自定义控件</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Gradle相关/">Gradle相关</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ios开发/">ios开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/代码规范/">代码规范</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/刷题/">刷题</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/单元测试/">单元测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/周末活动/">周末活动</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/学习计划/">学习计划</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/开发工具/">开发工具</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/旅游/">旅游</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/单元测试/">单元测试</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-unit_test/unit_test" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        PowerMockIo单元测试基础语法
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/05/17/unit_test/unit_test/" class="article-date">
+         <time datetime="2020-05-17T09:05:17.000Z" itemprop="datePublished">2020-05-17</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/单元测试/">单元测试</a>
+    </div>
+
+                
+   <span id="/2020/05/17/unit_test/unit_test/" class="leancloud-visitors" data-flag-title="PowerMockIo单元测试基础语法">
+   <i class="fa fa-eye"></i>
+   <span class="post-meta-item-text">阅读次数: </span>
+   <i class="leancloud-visitors-count">1000000</i>
+   </span>
+
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">本文字数: </span>
+      <span class="post-count">230</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">阅读时长: </span>
+      <span class="post-count">1 分钟 </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="1、使用verifyPrivate来验证私有方法被调用"><a href="#1、使用verifyPrivate来验证私有方法被调用" class="headerlink" title="1、使用verifyPrivate来验证私有方法被调用"></a>1、使用verifyPrivate来验证私有方法被调用</h3><p>//arrange<br>SeeVideoBoardTopStartVM fakeVm = PowerMockito.mock(SeeVideoBoardTopStartVM.class);<br>Whitebox.setInternalState(mTestVm, “mSeeVideoBoardTopVM”, fakeVm);<br>//act<br>Whitebox.invokeMethod(mTestVm, “resetPlayer”);<br>//assert<br>PowerMockito.verifyPrivate(mTestVm).invoke(“setPlayStatus”, IUpdatePlayStatus.BEFORE);<br>PowerMockito.verifyPrivate(fakeVm).invoke(“onUnbindView”);</p>
+<h3 id="2、PowerMockIo来mock静态方法："><a href="#2、PowerMockIo来mock静态方法：" class="headerlink" title="2、PowerMockIo来mock静态方法："></a>2、PowerMockIo来mock静态方法：</h3><p>PowerMockito.mockStatic(AdaptiveUI.class);<br>PowerMockito.when(AdaptiveUI.getCurUISizeType(Mockito.any(Context.class))).thenReturn(UISizeType.REGULAR);</p>
+<h3 id="3、调用private方法"><a href="#3、调用private方法" class="headerlink" title="3、调用private方法"></a>3、调用private方法</h3><p>boolean result = Whitebox.invokeMethod(mBasePBSectionController, MOCK_METHOD, section);<br>Assert.assertFalse(result);</p>
+<h3 id="4、模拟私有方法"><a href="#4、模拟私有方法" class="headerlink" title="4、模拟私有方法"></a>4、模拟私有方法</h3><p>PowerMockito.when(mockPrivateClass, “privateFunc”).thenReturn(“test”);</p>
+<h3 id="5、mock公有方法"><a href="#5、mock公有方法" class="headerlink" title="5、mock公有方法"></a>5、mock公有方法</h3><p>PowerMockito.when(mTestVm.getTextViewWidth()).thenReturn(FAKE_TEXT_WIDTH);</p>
+<h3 id="6、设置私有成员变量"><a href="#6、设置私有成员变量" class="headerlink" title="6、设置私有成员变量"></a>6、设置私有成员变量</h3><p>Whitebox.setInternalState(mTestVm, “mSeeVideoBoardTopVM”, fakeVm);</p>
+<h3 id="7、当你需要使用PowerMock强大功能（Mock静态、final、私有方法等）的时候，就需要加注解-PrepareForTest"><a href="#7、当你需要使用PowerMock强大功能（Mock静态、final、私有方法等）的时候，就需要加注解-PrepareForTest" class="headerlink" title="7、当你需要使用PowerMock强大功能（Mock静态、final、私有方法等）的时候，就需要加注解@PrepareForTest"></a>7、当你需要使用PowerMock强大功能（Mock静态、final、私有方法等）的时候，就需要加注解@PrepareForTest</h3><h3 id="8、如果一个对象，只希望mock它的部分方法，而其他方法希望和真实对象的行为一眼，可以使用PowerMockito-spy-Class-clazz-代替PowerMockito-mock-Class-clazz-方法，"><a href="#8、如果一个对象，只希望mock它的部分方法，而其他方法希望和真实对象的行为一眼，可以使用PowerMockito-spy-Class-clazz-代替PowerMockito-mock-Class-clazz-方法，" class="headerlink" title="8、如果一个对象，只希望mock它的部分方法，而其他方法希望和真实对象的行为一眼，可以使用PowerMockito.spy(Class clazz)代替PowerMockito.mock(Class clazz)方法，"></a>8、如果一个对象，只希望mock它的部分方法，而其他方法希望和真实对象的行为一眼，可以使用PowerMockito.spy(Class<t> clazz)代替PowerMockito.mock(Class<t> clazz)方法，</t></t></h3><p>其后的设置依旧，这时，没有通过when设置过的方法，测试调用时，行为和真实对象一样</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://easyliu.com/2020/05/17/unit_test/unit_test/" data-id="cklap5rk3002qs5mw3fhp53ff" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "EasyLiu"
+        },
+        "headline": "PowerMockIo单元测试基础语法",
+        "image": "http://easyliu.com",
+        "keywords": "单元测试",
+        "genre": "单元测试",
+        "datePublished": "2020-05-17",
+        "dateCreated": "2020-05-17",
+        "dateModified": "2020-05-17",
+        "url": "http://easyliu.com/2020/05/17/unit_test/unit_test/",
+        "description": "1、使用verifyPrivate来验证私有方法被调用//arrangeSeeVideoBoardTopStartVM fakeVm = PowerMockito.mock(SeeVideoBoardTopStartVM.class);Whitebox.setInternalState(mTestVm, “mSeeVideoBoardTopVM”, fakeVm);//actWhitebox.in",
+        "wordCount": 52
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/EasyLiu-Ly" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/05/17/ios/xcode_shortcut/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            xcode快捷键
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/02/11/android/Gradle基础之Grovy语法/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Gradle基础之Grovy语法</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">目录</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、使用verifyPrivate来验证私有方法被调用"><span class="toc-number">1.</span> <span class="toc-text">1、使用verifyPrivate来验证私有方法被调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、PowerMockIo来mock静态方法："><span class="toc-number">2.</span> <span class="toc-text">2、PowerMockIo来mock静态方法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、调用private方法"><span class="toc-number">3.</span> <span class="toc-text">3、调用private方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、模拟私有方法"><span class="toc-number">4.</span> <span class="toc-text">4、模拟私有方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、mock公有方法"><span class="toc-number">5.</span> <span class="toc-text">5、mock公有方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、设置私有成员变量"><span class="toc-number">6.</span> <span class="toc-text">6、设置私有成员变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、当你需要使用PowerMock强大功能（Mock静态、final、私有方法等）的时候，就需要加注解-PrepareForTest"><span class="toc-number">7.</span> <span class="toc-text">7、当你需要使用PowerMock强大功能（Mock静态、final、私有方法等）的时候，就需要加注解@PrepareForTest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、如果一个对象，只希望mock它的部分方法，而其他方法希望和真实对象的行为一眼，可以使用PowerMockito-spy-Class-clazz-代替PowerMockito-mock-Class-clazz-方法，"><span class="toc-number">8.</span> <span class="toc-text">8、如果一个对象，只希望mock它的部分方法，而其他方法希望和真实对象的行为一眼，可以使用PowerMockito.spy(Class clazz)代替PowerMockito.mock(Class clazz)方法，</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/02/07/android_source_analysis/glide_new/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2021/02/07/android_source_analysis/glide_new/glide_aop.png)" alt="Glide系列之——Glide对象创建及功能扩展" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android源码解析/">Android源码解析</a></p>
+                            <p class="item-title"><a href="/2021/02/07/android_source_analysis/glide_new/" class="title">Glide系列之——Glide对象创建及功能扩展</a></p>
+                            <p class="item-date"><time datetime="2021-02-07T01:51:51.000Z" itemprop="datePublished">2021-02-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/01/16/android_source_analysis/glide_use/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/resources/images/wechat_pay.png)" alt="Glide系列之——初识Glide" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android源码解析/">Android源码解析</a></p>
+                            <p class="item-title"><a href="/2021/01/16/android_source_analysis/glide_use/" class="title">Glide系列之——初识Glide</a></p>
+                            <p class="item-date"><time datetime="2021-01-16T07:02:12.000Z" itemprop="datePublished">2021-01-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/12/26/android_source_analysis/leakcanary_dump/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/resources/images/wechat_pay.png)" alt="LeakCanary源码解析之——dump堆栈" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android源码解析/">Android源码解析</a></p>
+                            <p class="item-title"><a href="/2020/12/26/android_source_analysis/leakcanary_dump/" class="title">LeakCanary源码解析之——dump堆栈</a></p>
+                            <p class="item-date"><time datetime="2020-12-26T02:11:07.000Z" itemprop="datePublished">2020-12-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/12/19/android_source_analysis/leakcanary/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/resources/images/wechat_pay.png)" alt="LeakCanary源码解析之——内存泄漏监测" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android源码解析/">Android源码解析</a></p>
+                            <p class="item-title"><a href="/2020/12/19/android_source_analysis/leakcanary/" class="title">LeakCanary源码解析之——内存泄漏监测</a></p>
+                            <p class="item-date"><time datetime="2020-12-19T12:51:55.000Z" itemprop="datePublished">2020-12-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/12/12/android_jetpack/compose/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2020/12/12/android_jetpack/compose/compose_feature.png)" alt="Jetpack Compose初体验" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android架构学习/">Android架构学习</a></p>
+                            <p class="item-title"><a href="/2020/12/12/android_jetpack/compose/" class="title">Jetpack Compose初体验</a></p>
+                            <p class="item-date"><time datetime="2020-12-12T14:21:06.000Z" itemprop="datePublished">2020-12-12</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android架构学习/">Android架构学习</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android源码解析/">Android源码解析</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android自定义控件/">Android自定义控件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gradle相关/">Gradle相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios开发/">ios开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/代码规范/">代码规范</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/刷题/">刷题</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/单元测试/">单元测试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/周末活动/">周末活动</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习计划/">学习计划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/旅游/">旅游</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo进阶/">hexo进阶</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios开发/">ios开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码规范/">代码规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习计划/">学习计划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日常生活/">日常生活</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://github.com/EasyLiu-Ly">我的github</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://blog.csdn.net/liuyi1207164339">我的csdn博客</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://blog.csdn.net/lmj623565791">鸿洋大神</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 EasyLiu</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://easyliu.com/2020/05/17/unit_test/unit_test/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+</body>
+</html>
