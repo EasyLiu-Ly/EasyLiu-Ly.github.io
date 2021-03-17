@@ -6,26 +6,26 @@
     
 
     
-    <title>厦门——2020.11.22-24 | EasyLiu</title>
+    <title>ValueAnimator属性动画深入解析 | EasyLiu</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="日常生活">
+    <meta name="keywords" content="Android">
     
-    <meta name="description" content="厦门——2020.11.22-24">
-<meta name="keywords" content="日常生活">
+    <meta name="description" content="ValueAnimator属性动画深入解析">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="厦门——2020.11.22-24">
-<meta property="og:url" content="http://easyliu.com/2020/11/22/life/2020_11_22-24-xiamen/index.html">
+<meta property="og:title" content="ValueAnimator属性动画深入解析">
+<meta property="og:url" content="http://easyliu.com/2021/03/16/android_source_analysis/ValueAnimator/index.html">
 <meta property="og:site_name" content="EasyLiu">
-<meta property="og:description" content="厦门——2020.11.22-24">
+<meta property="og:description" content="ValueAnimator属性动画深入解析">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://easyliu.com/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG18.jpeg">
-<meta property="og:updated_time" content="2021-02-18T11:58:18.067Z">
+<meta property="og:image" content="http://easyliu.com/resources/images/wechat_pay.png">
+<meta property="og:updated_time" content="2021-03-16T02:07:57.246Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="厦门——2020.11.22-24">
-<meta name="twitter:description" content="厦门——2020.11.22-24">
-<meta name="twitter:image" content="http://easyliu.com/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG18.jpeg">
+<meta name="twitter:title" content="ValueAnimator属性动画深入解析">
+<meta name="twitter:description" content="ValueAnimator属性动画深入解析">
+<meta name="twitter:image" content="http://easyliu.com/resources/images/wechat_pay.png">
     
 
     
@@ -137,19 +137,19 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/旅游/">旅游</a>
+    <a class="page-title-link" href="/categories/Android源码解析/">Android源码解析</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-life/2020_11_22-24-xiamen" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-android_source_analysis/ValueAnimator" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        厦门——2020.11.22-24
+        ValueAnimator属性动画深入解析
         </h1>
     
 
@@ -160,8 +160,8 @@
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/2020/11/22/life/2020_11_22-24-xiamen/" class="article-date">
-         <time datetime="2020-11-22T02:39:18.000Z" itemprop="datePublished">2020-11-22</time>
+      <a href="/2021/03/16/android_source_analysis/ValueAnimator/" class="article-date">
+         <time datetime="2021-03-16T01:30:31.000Z" itemprop="datePublished">2021-03-16</time>
       </a>
     </div>
 
@@ -171,11 +171,11 @@
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/日常生活/">日常生活</a>
+        <a class="tag-link" href="/tags/Android/">Android</a>
     </div>
 
                 
-   <span id="/2020/11/22/life/2020_11_22-24-xiamen/" class="leancloud-visitors" data-flag-title="厦门——2020.11.22-24">
+   <span id="/2021/03/16/android_source_analysis/ValueAnimator/" class="leancloud-visitors" data-flag-title="ValueAnimator属性动画深入解析">
    <i class="fa fa-eye"></i>
    <span class="post-meta-item-text">阅读次数: </span>
    <i class="leancloud-visitors-count">0</i>
@@ -186,7 +186,7 @@
    <div class="article-counter">
       <i class="fa fa-file-word-o"></i>
       <span class="post-count-item-text">本文字数: </span>
-      <span class="post-count">0</span>
+      <span class="post-count">228</span>
       <i class="fa fa-clock-o"></i>
       <span class="post-time-item-text">阅读时长: </span>
       <span class="post-count">1 分钟 </span>
@@ -197,7 +197,16 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG18.jpeg" alt="WechatIMG18"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG19.jpeg" alt="WechatIMG19"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG20.jpeg" alt="WechatIMG20"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG21.jpeg" alt="WechatIMG21"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG22.jpeg" alt="WechatIMG22"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG23.jpeg" alt="WechatIMG23"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG24.jpeg" alt="WechatIMG24"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG25.jpeg" alt="WechatIMG25"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG26.jpeg" alt="WechatIMG26"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG27.jpeg" alt="WechatIMG27"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG28.jpeg" alt="WechatIMG28"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG29.jpeg" alt="WechatIMG29"><br><img src="/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG30.jpeg" alt="WechatIMG30"></p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上一篇博文<a href="https://easyliu-ly.github.io/2021/03/06/android_source_analysis/handler/" target="_blank" rel="noopener">Handler消息机制深入解析</a>当中，在最后面说到：</p>
+<blockquote>
+<p>ViewAnimation底层也是通过调用invalidate来实现的，无限循环动画就会导致无限调用invalidate，就会导致idle得不到执行。<br>属性动画的实现原理不同于View动画。View动画的每一帧都是通过invalidate方法来触发重绘，而属性动画每一帧的绘制都是通过Choreographer的回调实现。因此，本质上来说，属性动画少了一个很重要的步骤，就是post一个同步屏障。在属性动画中，没有同步屏障，那么后续的任务能够继续执行，当队列中没有任务时，自然就会回调IdleHandler了。 </p>
+</blockquote>
+<p>今天我们就从源码的角度来对属性动画进行一个深入解析</p>
+<hr align="center" width="“100%”" color="#0e0e0e" size="1">
+<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
+<p align="center">
+<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
+</p>
 
         </div>
         <footer class="article-footer">
@@ -215,17 +224,18 @@
             "@type": "Person",
             "name": "EasyLiu"
         },
-        "headline": "厦门——2020.11.22-24",
-        "image": "http://easyliu.com/2020/11/22/life/2020_11_22-24-xiamen/WechatIMG18.jpeg",
-        "keywords": "日常生活",
-        "genre": "旅游",
-        "datePublished": "2020-11-22",
-        "dateCreated": "2020-11-22",
-        "dateModified": "2021-02-18",
-        "url": "http://easyliu.com/2020/11/22/life/2020_11_22-24-xiamen/",
-        "description": "
-",
-        "wordCount": 27
+        "headline": "ValueAnimator属性动画深入解析",
+        "image": "http://easyliu.com/resources/images/wechat_pay.png",
+        "keywords": "Android",
+        "genre": "Android源码解析",
+        "datePublished": "2021-03-16",
+        "dateCreated": "2021-03-16",
+        "dateModified": "2021-03-16",
+        "url": "http://easyliu.com/2021/03/16/android_source_analysis/ValueAnimator/",
+        "description": "前言在上一篇博文Handler消息机制深入解析当中，在最后面说到：
+
+ViewAnimation底层也是通过调用invalidate来实现的，无限循环动画就会导致无限调用invalidate，就会导致idle得不到执行。属性动画的实现原理不同于View动画。View动画的每一帧都是通过invalidate方法来触发重绘，而属性动画每一帧的绘制都是通过Choreographer的回调实现。因此，本质",
+        "wordCount": 20
     }
 </script>
 
@@ -265,20 +275,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2020/11/22/hexo/insert_video/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            hexo插入音频和视频
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2020/11/22/life/2020_11_21_wutong_mountain/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2021/03/06/android_source_analysis/handler/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">梧桐山——2020.11.21</p>
+        <p class="article-nav-title">Handler消息机制深入解析</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -293,7 +293,7 @@
     <h3 class="widget-title">目录</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol>
         </div>
     </div>
 </div>
