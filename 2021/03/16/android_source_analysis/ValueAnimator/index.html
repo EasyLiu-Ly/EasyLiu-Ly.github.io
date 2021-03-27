@@ -21,7 +21,7 @@
 <meta property="og:description" content="ValueAnimator属性动画深入解析">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://easyliu.com/resources/images/wechat_pay.png">
-<meta property="og:updated_time" content="2021-03-27T05:16:39.716Z">
+<meta property="og:updated_time" content="2021-03-27T05:25:34.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ValueAnimator属性动画深入解析">
 <meta name="twitter:description" content="ValueAnimator属性动画深入解析">
@@ -261,7 +261,7 @@
 
 <p>可以看出在ValueAnimator的一系列of方法里面，就会去初始化这个PropertyValuesHolder数组</p>
 <p>2、通过AnimatorUpdateListener通知给外部调用方</p>
-<p>至此，我们已经分析出了属性动画每一帧绘制onAnimationUpdate回调实现方案:通过在start方法里面监听Choreographer的frameCallback来实现的</p>
+<p>至此，我们已经分析出了属性动画每一帧绘制onAnimationUpdate回调实现方案：通过在start方法里面监听Choreographer的frameCallback来实现的</p>
 <p>接下来看下第2个问题：</p>
 <blockquote>
 <p>对于ObjectAnimator来说，怎么做到根据传入的View属性来自动改变其对应的值</p>
@@ -296,11 +296,11 @@
 <p>比如传入getMethodName(“set”,”alpha”)，那么就会返回字符串:”setAlpha”，然后再通过<br>targetClass.getMethod(methodName, args)就可以得到具体的Method对象了，这个Method对象就会作用于前面说的PropertyValuesHolder的setAnimatedValue方法，用于改变target对应的属性值！</p>
 </blockquote>
 <p>因此，这里就解释了为什么传给ObjectAnimator的属性一定要有对应的set方法了。</p>
-<p>那么问题来了，如果传入的target的属性没有set方法，能不能使用属性动画呢？比如我们想通过动画动画来修改一个View宽度，那根据属性动画的原理的话，View就必须得有一个”setWidth”方法，但是实际上View并没有这个”setWidth”方法，那么还有没有其他办法呢？</p>
+<p>那么问题来了，如果传入的target的属性没有set方法，能不能使用属性动画呢？比如我们想通过动画来修改一个View宽度，那根据属性动画的原理的话，View就必须得有一个”setWidth”方法，但是实际上View并没有这个”setWidth”方法，那么还有没有其他办法呢？</p>
 <p>答案是肯定的，因为这个set方法对应Method是通过反射自动生成的，因此，我们可以通过写一个Wrapper类，在这个Wrapper类里面定义一些set和get方法，然后这些set和get方法里面会去修改真正target的一些属性，然后做属性动画的时候传入这个Wrapper类即可，如下所示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewWrapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> View mTarget;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ViewWrapper</span><span class="params">(View target)</span> </span>&#123;</span><br><span class="line">        mTarget = target;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWidth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mTarget.getLayoutParams().width;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWidth</span><span class="params">(<span class="keyword">int</span> width)</span> </span>&#123;</span><br><span class="line">        android.view.ViewGroup.LayoutParams layoutParams = mTarget.getLayoutParams();</span><br><span class="line">        <span class="keyword">if</span> (layoutParams != <span class="keyword">null</span>) &#123;</span><br><span class="line">            layoutParams.width = width;</span><br><span class="line">            mTarget.requestLayout();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getHeight</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mTarget.getLayoutParams().height;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHeight</span><span class="params">(<span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">        android.view.ViewGroup.LayoutParams layoutParams = mTarget.getLayoutParams();</span><br><span class="line">        <span class="keyword">if</span> (layoutParams != <span class="keyword">null</span> &amp;&amp; layoutParams.height != height) &#123;</span><br><span class="line">            layoutParams.height = height;</span><br><span class="line">            mTarget.requestLayout();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">zoomInAnimator = ObjectAnimatorUtils.ofInt(viewWrapper, <span class="string">"height"</span>, originalHeight, TITLE_BAR_HEIGHT);</span><br></pre></td></tr></table></figure>
 
-<p>通过这种方式，我们就可以通过动画来修改View的宽度和高度了</p>
+<p>通过这种方式，我们就可以通过动画来修改View的宽度和高度了，这样子是不是对属性动画的理解有深入了一层～～</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此，属性动画源码分析就结束了，希望通过这篇文章能够让读者对属性动画能有一个更加深刻的认识～～</p>
 <hr align="center" width="“100%”" color="#0e0e0e" size="1">
 <font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
