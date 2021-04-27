@@ -21,7 +21,7 @@
 <meta property="og:description" content="Android SystemTrace实战">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://easyliu.com/2021/04/27/android_performance/system_trace_use/system_trace.png">
-<meta property="og:updated_time" content="2021-04-27T01:50:07.138Z">
+<meta property="og:updated_time" content="2021-04-27T01:53:43.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android SystemTrace实战">
 <meta name="twitter:description" content="Android SystemTrace实战">
@@ -197,7 +197,10 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="SystemTrace使用"><a href="#SystemTrace使用" class="headerlink" title="SystemTrace使用"></a>SystemTrace使用</h2><p>在命令行输入如下命令：<br>python /Users/easyliu/Library/Android/sdk/platform-tools/systrace/systrace.py –time=10 -o mynewtrace.html</p>
+            <h2 id="SystemTrace使用"><a href="#SystemTrace使用" class="headerlink" title="SystemTrace使用"></a>SystemTrace使用</h2><p>在命令行输入如下命令：</p>
+<blockquote>
+<p>python /Users/easyliu/Library/Android/sdk/platform-tools/systrace/systrace.py –time=10 -o mynewtrace.html</p>
+</blockquote>
 <p>然后启动App，10s之后会在当前目录下面生成一个文件mynewtrace.html文件，这个文件只有使用chrome浏览器才能打开，如果使用chrome浏览器打不开，可以在chrome浏览器里面输入网址：<a href="https://ui.perfetto.dev/#!/viewer" target="_blank" rel="noopener">https://ui.perfetto.dev/#!/viewer</a>，在这个界面里面也可以打开这个trace文件</p>
 <p>关于systrace更复杂的命令使用方式，参考：<br><a href="https://developer.android.com/topic/performance/tracing/custom-events?hl=zh-cn" target="_blank" rel="noopener">https://developer.android.com/topic/performance/tracing/custom-events?hl=zh-cn</a></p>
 <p>在很多情况下，我们需要加入一些自己的event，比如我们想统计自定义Activity的onCreate方法的耗时，可以使用如下方式添加自定义的event：</p>
@@ -250,8 +253,11 @@
         "dateCreated": "2021-04-27",
         "dateModified": "2021-04-27",
         "url": "http://easyliu.com/2021/04/27/android_performance/system_trace_use/",
-        "description": "SystemTrace使用在命令行输入如下命令：python /Users/easyliu/Library/Android/sdk/platform-tools/systrace/systrace.py –time=10 -o mynewtrace.html
-然后启动App，10s之后会在当前目录下面生成一个文件mynewtrace.html文件，这个文件只有使用chrome浏览器才能打开，如果使",
+        "description": "SystemTrace使用在命令行输入如下命令：
+
+python /Users/easyliu/Library/Android/sdk/platform-tools/systrace/systrace.py –time=10 -o mynewtrace.html
+
+然后启动App，10s之后会在当前目录下面生成一个文件mynewtrace.html文件，这个文件只有使用chrome浏览器才能打开，",
         "wordCount": 273
     }
 </script>
