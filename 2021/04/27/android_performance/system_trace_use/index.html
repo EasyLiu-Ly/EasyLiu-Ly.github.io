@@ -21,7 +21,7 @@
 <meta property="og:description" content="Android SystemTrace实战">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://easyliu.com/2021/04/27/android_performance/system_trace_use/system_trace.png">
-<meta property="og:updated_time" content="2021-04-27T01:53:43.831Z">
+<meta property="og:updated_time" content="2021-04-27T01:54:55.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android SystemTrace实战">
 <meta name="twitter:description" content="Android SystemTrace实战">
@@ -215,7 +215,7 @@
 <p>为了让release包也支持自定义的event，可以使用反射的方式修改：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ReflectUtil.invokeMethod(Trace.class, "setAppTracingAllowed",</span><br><span class="line">                  null, new Class[]&#123;boolean.class&#125;, new Object[]&#123;true&#125;);</span><br></pre></td></tr></table></figure>
 
-<h2 id="SystemTrace锁耗时分析"><a href="#SystemTrace锁耗时分析" class="headerlink" title="SystemTrace锁耗时分析"></a>SystemTrace锁耗时分析</h2><p>抓取到trace之后，一般情况下我们都是直接分析UI线程的执行情况,如下所示：<br><img src="/2021/04/27/android_performance/system_trace_use/system_trace.png" alt="system_trace"><br>通过这个图可以很清晰的看到整个app启动过程的一个耗时情况，包括各个阶段的具体耗时情况，比如从上面的图我们发现在SplashVideoDetailActivity#onCreate方法里面两段很耗时的操作，我看来看一下第一段的耗时情况：<br><img src="/2021/04/27/android_performance/system_trace_use/system_trace_lock.png" alt="system_trace_use"><br>选中这个区域，底部会展示出这段时间主线程耗时的具体的信息：</p>
+<h2 id="SystemTrace锁耗时分析"><a href="#SystemTrace锁耗时分析" class="headerlink" title="SystemTrace锁耗时分析"></a>SystemTrace锁耗时分析</h2><p>抓取到trace之后，一般情况下我们都是直接分析UI线程的执行情况,如下所示：<br><img src="/2021/04/27/android_performance/system_trace_use/system_trace.png" alt="system_trace"><br>通过这个图可以很清晰的看到整个app启动过程的一个耗时情况，包括各个阶段的具体耗时情况，比如从上面的图我们发现在SplashVideoDetailActivity#onCreate方法里面两段很耗时的操作，我看来看一下第一段的耗时情况：<br><img src="/2021/04/27/android_performance/system_trace_use/system_trace_lock.png" alt="system_trace_lock"><br>选中这个区域，底部会展示出这段时间主线程耗时的具体的信息：</p>
 <blockquote>
 <p>Name    monitor contention with owner init-thread (32284) waiters=2 blocking from void java.lang.Runtime.load0(java.lang.Class, java.lang.String)(Runtime.java:-1)</p>
 </blockquote>
