@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>WebViewFactory.getProvider耗时问题的一种解决思路 | EasyLiu</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Android">
+    
+    <meta name="description" content="WebViewFactory.getProvider耗时问题的一种解决思路">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebViewFactory.getProvider耗时问题的一种解决思路">
+<meta property="og:url" content="http://easyliu.com/2021/05/10/android_source_analysis/webViewFactory_getProvider/index.html">
+<meta property="og:site_name" content="EasyLiu">
+<meta property="og:description" content="WebViewFactory.getProvider耗时问题的一种解决思路">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://easyliu.com/2021/05/10/android_source_analysis/webViewFactory_getProvider/WebViewFacory_getProvider_trace.png">
+<meta property="og:updated_time" content="2021-05-10T02:34:22.557Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WebViewFactory.getProvider耗时问题的一种解决思路">
+<meta name="twitter:description" content="WebViewFactory.getProvider耗时问题的一种解决思路">
+<meta name="twitter:image" content="http://easyliu.com/2021/05/10/android_source_analysis/webViewFactory_getProvider/WebViewFacory_getProvider_trace.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">welcome to easyliu&#39;s blog</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android性能优化/">Android性能优化</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android架构学习/">Android架构学习</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android源码解析/">Android源码解析</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android疑难杂症/">Android疑难杂症</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android自定义控件/">Android自定义控件</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Gradle相关/">Gradle相关</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ios开发/">ios开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/代码规范/">代码规范</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/刷题/">刷题</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/单元测试/">单元测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/周末活动/">周末活动</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/学习计划/">学习计划</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/开发工具/">开发工具</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/旅游/">旅游</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Android疑难杂症/">Android疑难杂症</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-android_source_analysis/webViewFactory_getProvider" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        WebViewFactory.getProvider耗时问题的一种解决思路
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2021/05/10/android_source_analysis/webViewFactory_getProvider/" class="article-date">
+         <time datetime="2021-05-10T02:11:49.000Z" itemprop="datePublished">2021-05-10</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Android/">Android</a>
+    </div>
+
+                
+   <span id="/2021/05/10/android_source_analysis/webViewFactory_getProvider/" class="leancloud-visitors" data-flag-title="WebViewFactory.getProvider耗时问题的一种解决思路">
+   <i class="fa fa-eye"></i>
+   <span class="post-meta-item-text">阅读次数: </span>
+   <i class="leancloud-visitors-count">0</i>
+   </span>
+
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">本文字数: </span>
+      <span class="post-count">1.4k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">阅读时长: </span>
+      <span class="post-count">6 分钟 </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近在做外部拉起视频底层页整个链路上的一个耗时优化，发现在这个过程中有一个地方挺耗时的，如下所示：<br><img src="/2021/05/10/android_source_analysis/webViewFactory_getProvider/WebViewFacory_getProvider_trace.png" alt="trace"><br><img src="/2021/05/10/android_source_analysis/webViewFactory_getProvider/cost.png" alt="cost"></p>
+<p>可以看到这个WebViewFactory.getProvider()方法耗时了240ms！</p>
+<p>找到WebViewFactory的源码如下所示:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> WebViewFactoryProvider <span class="title">getProvider</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (sProviderLock) &#123;</span><br><span class="line">            <span class="comment">// For now the main purpose of this function (and the factory abstraction) is to keep</span></span><br><span class="line">            <span class="comment">// us honest and minimize usage of WebView internals when binding the proxy.</span></span><br><span class="line">            <span class="keyword">if</span> (sProviderInstance != <span class="keyword">null</span>) <span class="keyword">return</span> sProviderInstance;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> uid = android.os.Process.myUid();</span><br><span class="line">            <span class="keyword">if</span> (uid == android.os.Process.ROOT_UID || uid == android.os.Process.SYSTEM_UID</span><br><span class="line">                    || uid == android.os.Process.PHONE_UID || uid == android.os.Process.NFC_UID</span><br><span class="line">                    || uid == android.os.Process.BLUETOOTH_UID) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(</span><br><span class="line">                        <span class="string">"For security reasons, WebView is not allowed in privileged processes"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!isWebViewSupported()) &#123;</span><br><span class="line">                <span class="comment">// Device doesn't support WebView; don't try to load it, just throw.</span></span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (sWebViewDisabled) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(</span><br><span class="line">                        <span class="string">"WebView.disableWebView() was called: WebView is disabled"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            Trace.traceBegin(Trace.TRACE_TAG_WEBVIEW, <span class="string">"WebViewFactory.getProvider()"</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Class&lt;WebViewFactoryProvider&gt; providerClass = getProviderClass();</span><br><span class="line">                Method staticFactory = <span class="keyword">null</span>;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    staticFactory = providerClass.getMethod(</span><br><span class="line">                        CHROMIUM_WEBVIEW_FACTORY_METHOD, WebViewDelegate<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (DEBUG) &#123;</span><br><span class="line">                        Log.w(LOGTAG, <span class="string">"error instantiating provider with static factory method"</span>, e);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                Trace.traceBegin(Trace.TRACE_TAG_WEBVIEW, <span class="string">"WebViewFactoryProvider invocation"</span>);</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    sProviderInstance = (WebViewFactoryProvider)</span><br><span class="line">                            staticFactory.invoke(<span class="keyword">null</span>, <span class="keyword">new</span> WebViewDelegate());</span><br><span class="line">                    <span class="keyword">if</span> (DEBUG) Log.v(LOGTAG, <span class="string">"Loaded provider: "</span> + sProviderInstance);</span><br><span class="line">                    <span class="keyword">return</span> sProviderInstance;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    Log.e(LOGTAG, <span class="string">"error instantiating provider"</span>, e);</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> AndroidRuntimeException(e);</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    Trace.traceEnd(Trace.TRACE_TAG_WEBVIEW);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                Trace.traceEnd(Trace.TRACE_TAG_WEBVIEW);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>从代码可以看到这个getProvider里面有做处理：如果已经获取到了WebViewFactoryProvider就直接返回，也就是说只有第一次才会往下走，才会耗时。并且从WebViewFactory注释来看：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Top level factory, used creating all the main WebView implementation classes.</span><br></pre></td></tr></table></figure>
+
+<p>这个WebViewFactory应该是跟WebView相关的，WebView的相关操作最终都会走到这个WebViewFactroy里面来。如果是这样的话，那我们能不能在App启动的时候在子线程提前调用这个getProvider方法来初始化一下这个WebViewFactoryProvider，并且这个getProvider是线程安全的方法。这样UI线程真正使用WebView的时候，这个getProvider方法就能直接返回了？答案是可以的，但是这个getProvider并不是一个public方法，只能通过反射调用了，代码如下所示：</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebViewHookManager</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"WebViewHookManager"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 提前在子线程里面调用WebViewFactory.getProvider方法，解决第一次调用耗时问题</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> isMainProcess 是否是主进程</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">initWebViewGetProvider</span><span class="params">(<span class="keyword">boolean</span> isMainProcess)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isMainProcess) &#123;</span><br><span class="line">            ThreadManager.getInstance().post(() -&gt; &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="meta">@SuppressLint</span>(<span class="string">"PrivateApi"</span>)</span><br><span class="line">                    Class&lt;?&gt; webViewFactoryClass = Class.forName(<span class="string">"android.webkit.WebViewFactory"</span>);</span><br><span class="line">                    <span class="meta">@SuppressLint</span>(<span class="string">"DiscouragedPrivateApi"</span>)</span><br><span class="line">                    Method method = webViewFactoryClass.getDeclaredMethod(<span class="string">"getProvider"</span>);</span><br><span class="line">                    method.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                    method.invoke(webViewFactoryClass);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    QQLiveLog.e(TAG, e, <span class="string">"WebViewFactory.getProvider"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>理论上我们在App启动的时候调用一下上述initWebViewGetProvider方法就可以了，但是实际上并不是如此。这个方法调用时机是有讲究的，不能放在Application.attachBaseContext方法里面调用，原因我们得从源码来查找答案。</p>
+<p>在getProvider方法里面调用了一个方法isWebViewSupported：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isWebViewSupported</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// No lock; this is a benign race as Boolean's state is final and the PackageManager call</span></span><br><span class="line">    <span class="comment">// will always return the same value.</span></span><br><span class="line">    <span class="keyword">if</span> (sWebViewSupported == <span class="keyword">null</span>) &#123;</span><br><span class="line">        sWebViewSupported = AppGlobals.getInitialApplication().getPackageManager()</span><br><span class="line">                .hasSystemFeature(PackageManager.FEATURE_WEBVIEW);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sWebViewSupported;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个方法里面会通过AppGlobals.getInitialApplication()来获取到一个Application，全局搜索AppGlobals这个类来看下这个方法实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Return the first Application object made in the process.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">NOTE:</span> Only works on the main thread.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Application <span class="title">getInitialApplication</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ActivityThread.currentApplication();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到这个方法调用了 ActivityThread.currentApplication()方法，继续来看下这个方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Application mInitialApplication;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Application <span class="title">currentApplication</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ActivityThread am = currentActivityThread();</span><br><span class="line">    <span class="keyword">return</span> am != <span class="keyword">null</span> ? am.mInitialApplication : <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到这个currentApplication返回的是ActivityThread里面的成员变量mInitialApplication，继续来看下这个mInitialApplication成员变量赋值的地方，在ActivityThread的handleBindApplication方法里面有如下代码片段：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">// If the app is being launched for full backup or restore, bring it up in</span></span><br><span class="line">           <span class="comment">// a restricted environment with the base application class.</span></span><br><span class="line">           app = data.info.makeApplication(data.restrictedBackupMode, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">           <span class="comment">// Propagate autofill compat state</span></span><br><span class="line">           app.setAutofillCompatibilityEnabled(data.autofillCompatibilityEnabled);</span><br><span class="line"></span><br><span class="line">           mInitialApplication = app;</span><br><span class="line"></span><br><span class="line">           <span class="comment">// don't bring up providers in restricted mode; they may depend on the</span></span><br><span class="line">           <span class="comment">// app's custom Application class</span></span><br><span class="line">           <span class="keyword">if</span> (!data.restrictedBackupMode) &#123;</span><br><span class="line">               <span class="keyword">if</span> (!ArrayUtils.isEmpty(data.providers)) &#123;</span><br><span class="line">                   installContentProviders(app, data.providers);</span><br><span class="line">                   <span class="comment">// For process that contains content providers, we want to</span></span><br><span class="line">                   <span class="comment">// ensure that the JIT is enabled "at some point".</span></span><br><span class="line">                   mH.sendEmptyMessageDelayed(H.ENABLE_JIT, <span class="number">10</span>*<span class="number">1000</span>);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="comment">// Do this after providers, since instrumentation tests generally start their</span></span><br><span class="line">           <span class="comment">// test thread at this point, and we don't want that racing.</span></span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               mInstrumentation.onCreate(data.instrumentationArgs);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(</span><br><span class="line">                   <span class="string">"Exception thrown in onCreate() of "</span></span><br><span class="line">                   + data.instrumentationName + <span class="string">": "</span> + e.toString(), e);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               mInstrumentation.callApplicationOnCreate(app);</span><br><span class="line">           &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">               <span class="keyword">if</span> (!mInstrumentation.onException(app, e)) &#123;</span><br><span class="line">                   <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(</span><br><span class="line">                     <span class="string">"Unable to create application "</span> + app.getClass().getName()</span><br><span class="line">                     + <span class="string">": "</span> + e.toString(), e);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码主要分为3部分：<br>1、app = data.info.makeApplication(data.restrictedBackupMode, null)这句代码里面就会去创建一个Application，并且在里面会调用Application的attachBaseContext方法。执行完这个makeApplication方法之后，这个mInitialApplication才会进行赋值，因此不能在attachBaseContext就去调用WebViewFactory.getProvider方法，因为这个时候ActivityThread里面的mInitialApplication还没有初始化<br>2、installContentProviders方法会挨个执行ContentProvider的onCreate方法<br>3、最后mInstrumentation.callApplicationOnCreate(app)会执行Application的onCreate方法，因此我们可以在Application的onCreate方法里面调用WebViewFactory.getProvider方法</p>
+<p>从上述代码可以看出这三步的一个执行顺序如下：<br>Application.attachBaseContext -&gt; ContentProvider.onCreate -&gt; Application.onCreate</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>通过日志观察WebViewFactory的日志打印，可以看到代码已经执行成功了：<br><img src="/2021/05/10/android_source_analysis/webViewFactory_getProvider/log.png" alt="log"></p>
+<p>但是目前这个getProvider接口已经被列入了greylist里面了，在后续的版本不敢保证还能继续生效，这里只是提供一种解决问题的思路<br><img src="/2021/05/10/android_source_analysis/webViewFactory_getProvider/greylist.png" alt="greylist"></p>
+<p>优化之后的效果如下所示，可以看到UI线程WebViewFactory.getProvider()方法耗时已经没有了：<br><img src="/2021/05/10/android_source_analysis/webViewFactory_getProvider/optimized.png" alt="optimized"></p>
+<hr align="center" width="“100%”" color="#0e0e0e" size="1">
+<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
+<p align="center">
+<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
+</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "EasyLiu"
+        },
+        "headline": "WebViewFactory.getProvider耗时问题的一种解决思路",
+        "image": "http://easyliu.com/2021/05/10/android_source_analysis/webViewFactory_getProvider/WebViewFacory_getProvider_trace.png",
+        "keywords": "Android",
+        "genre": "Android疑难杂症",
+        "datePublished": "2021-05-10",
+        "dateCreated": "2021-05-10",
+        "dateModified": "2021-05-10",
+        "url": "http://easyliu.com/2021/05/10/android_source_analysis/webViewFactory_getProvider/",
+        "description": "背景最近在做外部拉起视频底层页整个链路上的一个耗时优化，发现在这个过程中有一个地方挺耗时的，如下所示：
+可以看到这个WebViewFactory.getProvider()方法耗时了240ms！
+找到WebViewFactory的源码如下所示:
+12345678910111213141516171819202122232425262728293031323334353637383940414243",
+        "wordCount": 2485
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <!-- Valine -->
+    <div class="vcomments"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/EasyLiu-Ly" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2021/04/27/android_performance/system_trace_use/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Android SystemTrace实战</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">目录</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的问题"><span class="toc-number">3.</span> <span class="toc-text">遇到的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果"><span class="toc-number">4.</span> <span class="toc-text">效果</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/10/android_source_analysis/webViewFactory_getProvider/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2021/05/10/android_source_analysis/webViewFactory_getProvider/WebViewFacory_getProvider_trace.png)" alt="WebViewFactory.getProvider耗时问题的一种解决思路" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android疑难杂症/">Android疑难杂症</a></p>
+                            <p class="item-title"><a href="/2021/05/10/android_source_analysis/webViewFactory_getProvider/" class="title">WebViewFactory.getProvider耗时问题的一种解决思路</a></p>
+                            <p class="item-date"><time datetime="2021-05-10T02:11:49.000Z" itemprop="datePublished">2021-05-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/27/android_performance/system_trace_use/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2021/04/27/android_performance/system_trace_use/system_trace.png)" alt="Android SystemTrace实战" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android性能优化/">Android性能优化</a></p>
+                            <p class="item-title"><a href="/2021/04/27/android_performance/system_trace_use/" class="title">Android SystemTrace实战</a></p>
+                            <p class="item-date"><time datetime="2021-04-27T01:44:05.000Z" itemprop="datePublished">2021-04-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/27/android_source_analysis/reportSizeConfigurations_exception/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/resources/images/wechat_pay.png)" alt="ActivityManagerService.reportSizeConfigurations异常问题规避方案" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android疑难杂症/">Android疑难杂症</a></p>
+                            <p class="item-title"><a href="/2021/04/27/android_source_analysis/reportSizeConfigurations_exception/" class="title">ActivityManagerService.reportSizeConfigurations异常问题规避方案</a></p>
+                            <p class="item-date"><time datetime="2021-04-27T01:34:59.000Z" itemprop="datePublished">2021-04-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/16/android_source_analysis/ValueAnimator/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/resources/images/wechat_pay.png)" alt="ValueAnimator属性动画深入解析" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android源码解析/">Android源码解析</a></p>
+                            <p class="item-title"><a href="/2021/03/16/android_source_analysis/ValueAnimator/" class="title">ValueAnimator属性动画深入解析</a></p>
+                            <p class="item-date"><time datetime="2021-03-16T01:30:31.000Z" itemprop="datePublished">2021-03-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/06/android_source_analysis/handler/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/resources/images/wechat_pay.png)" alt="Handler消息机制深入解析" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android源码解析/">Android源码解析</a></p>
+                            <p class="item-title"><a href="/2021/03/06/android_source_analysis/handler/" class="title">Handler消息机制深入解析</a></p>
+                            <p class="item-date"><time datetime="2021-03-06T15:32:32.000Z" itemprop="datePublished">2021-03-06</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android性能优化/">Android性能优化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android架构学习/">Android架构学习</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android源码解析/">Android源码解析</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android疑难杂症/">Android疑难杂症</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android自定义控件/">Android自定义控件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gradle相关/">Gradle相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios开发/">ios开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/代码规范/">代码规范</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/刷题/">刷题</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/单元测试/">单元测试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/周末活动/">周末活动</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习计划/">学习计划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/旅游/">旅游</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo进阶/">hexo进阶</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios开发/">ios开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码规范/">代码规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习计划/">学习计划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日常生活/">日常生活</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://github.com/EasyLiu-Ly">我的github</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://blog.csdn.net/liuyi1207164339">我的csdn博客</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://blog.csdn.net/lmj623565791">鸿洋大神</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 EasyLiu</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+        var GUEST = ['nick','mail','link'];
+        var meta = 'undefined';
+        meta = meta.split(',').filter(function (item) {
+            return GUEST.indexOf(item)>-1;
+        });
+        var avatarcdn = 'https://gravatar.loli.net/avatar/' == true;
+        new Valine({
+            el: '.vcomments',
+            notify: "false",
+            verify: "false",
+            appId: "HTT9HtdG3ACsrMQEd8X7aSD5-gzGzoHsz",
+            appKey: "gEf913xnOAwiO8lVEWztLOQC",
+            placeholder: "just write your comments",
+            avatar:"retro",
+            recordIP:"true",
+            visitor: "true",
+            emojiCDN: '//i0.hdslb.com/bfs/emote/', 
+            emojiMaps: {
+                "doge": "6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png",
+                "亲亲": "a8111ad55953ef5e3be3327ef94eb4a39d535d06.png",
+                "偷笑": "bb690d4107620f1c15cff29509db529a73aee261.png",
+                "再见": "180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png",
+                "冷漠": "b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png",
+                "发怒": "34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png",
+                "发财": "34db290afd2963723c6eb3c4560667db7253a21a.png",
+                "可爱": "9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png",
+                "吐血": "09dd16a7aa59b77baa1155d47484409624470c77.png",
+                "呆": "fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png",
+                "呕吐": "9f996894a39e282ccf5e66856af49483f81870f3.png",
+                "困": "241ee304e44c0af029adceb294399391e4737ef2.png",
+                "坏笑": "1f0b87f731a671079842116e0991c91c2c88645a.png",
+                "大佬": "093c1e2c490161aca397afc45573c877cdead616.png",
+                "大哭": "23269aeb35f99daee28dda129676f6e9ea87934f.png",
+                "委屈": "d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png",
+                "害羞": "a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png",
+                "尴尬": "7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png",
+                "微笑": "70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png",
+                "思考": "90cf159733e558137ed20aa04d09964436f618a1.png",
+                "惊吓": "0d15c7e2ee58e935adc6a7193ee042388adc22af.png"
+            }
+        });
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+</body>
+</html>
