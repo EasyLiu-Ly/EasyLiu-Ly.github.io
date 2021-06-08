@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://easyliu.com/"/>
-  <updated>2021-05-10T02:37:31.493Z</updated>
+  <updated>2021-06-08T02:51:37.623Z</updated>
   <id>http://easyliu.com/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>（一）通过浏览器访问摄像头</title>
+    <link href="http://easyliu.com/2021/06/08/live_study/visit_camare_through_browser/"/>
+    <id>http://easyliu.com/2021/06/08/live_study/visit_camare_through_browser/</id>
+    <published>2021-06-08T02:22:02.000Z</published>
+    <updated>2021-06-08T02:51:37.623Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;WebRTC capture video and audio&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">        &lt;link rel="stylesheet" href="./</span>css/client.css<span class="string">"/&gt;</span></span><br><span class="line"><span class="string">    &lt;/head&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;body&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &lt;video autoplay playsinline id="</span>player<span class="string">"&gt;&lt;/video&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &lt;script src="</span>https:<span class="comment">//webrtc.github.io/adapter/adapter-latest.js"&gt;&lt;/script&gt;</span></span><br><span class="line">        &lt;script src=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">        &lt;script src="./</span>js/client.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure><h2 id="client-js"><a href="#client-js" class="headerlink" title="client.js"></a>client.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> videoplay = <span class="built_in">document</span>.querySelector(<span class="string">'video#player'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mediaStreamContrains = &#123;</span><br><span class="line">    video: &#123;</span><br><span class="line">        frameRate: &#123; <span class="attr">min</span>: <span class="number">20</span> &#125;,</span><br><span class="line">        width: &#123; <span class="attr">min</span>: <span class="number">640</span>, <span class="attr">ideal</span>: <span class="number">1280</span> &#125;,</span><br><span class="line">        height: &#123; <span class="attr">min</span>: <span class="number">360</span>, <span class="attr">ideal</span>: <span class="number">720</span> &#125;,</span><br><span class="line">        aspectRatio: <span class="number">16</span> / <span class="number">9</span>,</span><br><span class="line">        facingMode: <span class="string">'user'</span>,</span><br><span class="line">        resizeMode: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    audio: &#123;</span><br><span class="line">        echoCancellation: <span class="literal">true</span>,</span><br><span class="line">        noiseSuppression: <span class="literal">true</span>,</span><br><span class="line">        autoGainControl: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gotMediaStream</span>(<span class="params">stream</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.stream = stream;</span><br><span class="line">    videoplay.srcObject = stream;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleError</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'getUserMedia error:'</span>, err);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!navigator.mediaDevices ||</span><br><span class="line">        !navigator.mediaDevices.getUserMedia) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'getUserMedia is not supported!'</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        navigator.mediaDevices.getUserMedia(mediaStreamContrains)</span><br><span class="line">            .then(gotMediaStream)</span><br><span class="line">            .catch(handleError);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">start();</span><br></pre></td></tr></table></figure><h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>使用浏览器打开index.html就可以在浏览器里面看到前置摄像头影像了</p><hr align="center" width="“100%”" color="#0e0e0e" size="1"><font size="3" color="red">如果您觉得写的还不错，感谢支持：</font><p align="center"><img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/"></p>]]></content>
+    
+    <summary type="html">
+    
+      （一）通过浏览器访问摄像头
+    
+    </summary>
+    
+      <category term="从0打造音视频直播系统" scheme="http://easyliu.com/categories/%E4%BB%8E0%E6%89%93%E9%80%A0%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="学习笔记" scheme="http://easyliu.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>App启动流程深入分析</title>
+    <link href="http://easyliu.com/2021/05/22/android_source_analysis/activity_start/"/>
+    <id>http://easyliu.com/2021/05/22/android_source_analysis/activity_start/</id>
+    <published>2021-05-22T07:09:35.000Z</published>
+    <updated>2021-05-26T08:21:27.529Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于一个Android App来说，通过在Manifest里面声明如下代码：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=<span class="string">".MainActivity"</span>&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">           &lt;action android:name=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span><br><span class="line">           &lt;category android:name=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span><br><span class="line">     &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure><p>android.intent.action.MAIN：应用的入口Activity，决定启动应用时首先显示哪一个Activity</p><p>android.intent.category.LAUNCHER：表示activity应该被列入系统的启动器Launcher，允许Launcher启动，会在系统桌面展示出来</p><p>当我们点击桌面App图标的时候，就会默认启动这个MainActivity，启动方式其实也是通过Activity.startActivity的方式，这个就是我们开始分析的入口代码</p><p>搞清楚一个App的启动流程，对我们分析一些疑难杂症是非常有帮助的</p><p>接下来开始分析，源码基于API30</p><h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p>首先是启动请求的发起流程：</p><h3 id="发起请求"><a href="#发起请求" class="headerlink" title="发起请求"></a>发起请求</h3><p>发起请求的过程如下所示：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Activity.startActivityForResult</span><br><span class="line">  Instrumentation.execStartActivity</span><br><span class="line">     ActivityTaskManagerService.startActivity</span><br><span class="line">       ActivityStarter.execute</span><br><span class="line">         ActivityStarter.executeRequest</span><br></pre></td></tr></table></figure><hr align="center" width="“100%”" color="#0e0e0e" size="1"><font size="3" color="red">如果您觉得写的还不错，感谢支持：</font><p align="center"><img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/"></p>]]></content>
+    
+    <summary type="html">
+    
+      App启动流程深入分析
+    
+    </summary>
+    
+      <category term="Android源码解析" scheme="http://easyliu.com/categories/Android%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
+    
+    
+      <category term="Android" scheme="http://easyliu.com/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>WebViewFactory.getProvider耗时问题的一种解决思路</title>
@@ -409,50 +453,6 @@
     
     
       <category term="Android" scheme="http://easyliu.com/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android组件化</title>
-    <link href="http://easyliu.com/2020/09/20/android_architecture/component/"/>
-    <id>http://easyliu.com/2020/09/20/android_architecture/component/</id>
-    <published>2020-09-19T16:21:14.000Z</published>
-    <updated>2021-02-18T11:58:18.067Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p><a href="https://www.jianshu.com/p/59822a7b2fad" target="_blank" rel="noopener">Android彻底组件化demo发布</a></p><p><a href="https://cloud.tencent.com/developer/article/1358359" target="_blank" rel="noopener">知乎 Android 客户端组件化实践</a></p><p><a href="https://mp.weixin.qq.com/s/6Q818XA5FaHd7jJMFBG60w" target="_blank" rel="noopener">微信Android模块化架构重构实践</a></p><h3 id="中心思想"><a href="#中心思想" class="headerlink" title="中心思想"></a>中心思想</h3><h5 id="1、代码解耦。如何将一个庞大的工程拆分成有机的整体？"><a href="#1、代码解耦。如何将一个庞大的工程拆分成有机的整体？" class="headerlink" title="1、代码解耦。如何将一个庞大的工程拆分成有机的整体？"></a>1、代码解耦。如何将一个庞大的工程拆分成有机的整体？</h5><h5 id="2、组件单独运行。每个组件都是一个完整的整体，如何让其单独运行和调试呢？"><a href="#2、组件单独运行。每个组件都是一个完整的整体，如何让其单独运行和调试呢？" class="headerlink" title="2、组件单独运行。每个组件都是一个完整的整体，如何让其单独运行和调试呢？"></a>2、组件单独运行。每个组件都是一个完整的整体，如何让其单独运行和调试呢？</h5><h5 id="3、数据传递。因为每个组件都会给其他组件提供的服务，那么主项目（Host）与组件、组件与组件之间如何传递数据？"><a href="#3、数据传递。因为每个组件都会给其他组件提供的服务，那么主项目（Host）与组件、组件与组件之间如何传递数据？" class="headerlink" title="3、数据传递。因为每个组件都会给其他组件提供的服务，那么主项目（Host）与组件、组件与组件之间如何传递数据？"></a>3、数据传递。因为每个组件都会给其他组件提供的服务，那么主项目（Host）与组件、组件与组件之间如何传递数据？</h5><h5 id="4、UI跳转。UI跳转可以认为是一种特殊的数据传递，在实现思路上有啥不同？"><a href="#4、UI跳转。UI跳转可以认为是一种特殊的数据传递，在实现思路上有啥不同？" class="headerlink" title="4、UI跳转。UI跳转可以认为是一种特殊的数据传递，在实现思路上有啥不同？"></a>4、UI跳转。UI跳转可以认为是一种特殊的数据传递，在实现思路上有啥不同？</h5><h5 id="5、组件的生命周期。我们的目标是可以做到对组件可以按需、动态的使用，因此就会涉及到组件加载、卸载和降维的生命周期。"><a href="#5、组件的生命周期。我们的目标是可以做到对组件可以按需、动态的使用，因此就会涉及到组件加载、卸载和降维的生命周期。" class="headerlink" title="5、组件的生命周期。我们的目标是可以做到对组件可以按需、动态的使用，因此就会涉及到组件加载、卸载和降维的生命周期。"></a>5、组件的生命周期。我们的目标是可以做到对组件可以按需、动态的使用，因此就会涉及到组件加载、卸载和降维的生命周期。</h5><h5 id="6、集成调试。在开发阶段如何做到按需的编译组件？一次调试中可能只有一两个组件参与集成，这样编译的时间就会大大降低，提高开发效率。"><a href="#6、集成调试。在开发阶段如何做到按需的编译组件？一次调试中可能只有一两个组件参与集成，这样编译的时间就会大大降低，提高开发效率。" class="headerlink" title="6、集成调试。在开发阶段如何做到按需的编译组件？一次调试中可能只有一两个组件参与集成，这样编译的时间就会大大降低，提高开发效率。"></a>6、集成调试。在开发阶段如何做到按需的编译组件？一次调试中可能只有一两个组件参与集成，这样编译的时间就会大大降低，提高开发效率。</h5><h5 id="7、代码隔离。组件之间的交互如果还是直接引用的话，那么组件之间根本没有做到解耦，如何从根本上避免组件之间的直接引用呢？也就是如何从根本上杜绝耦合的产生呢？只有做到这一点才是彻底的组件化。"><a href="#7、代码隔离。组件之间的交互如果还是直接引用的话，那么组件之间根本没有做到解耦，如何从根本上避免组件之间的直接引用呢？也就是如何从根本上杜绝耦合的产生呢？只有做到这一点才是彻底的组件化。" class="headerlink" title="7、代码隔离。组件之间的交互如果还是直接引用的话，那么组件之间根本没有做到解耦，如何从根本上避免组件之间的直接引用呢？也就是如何从根本上杜绝耦合的产生呢？只有做到这一点才是彻底的组件化。"></a>7、代码隔离。组件之间的交互如果还是直接引用的话，那么组件之间根本没有做到解耦，如何从根本上避免组件之间的直接引用呢？也就是如何从根本上杜绝耦合的产生呢？只有做到这一点才是彻底的组件化。</h5>]]></content>
-    
-    <summary type="html">
-    
-      android组件化
-    
-    </summary>
-    
-      <category term="Android架构学习" scheme="http://easyliu.com/categories/Android%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="Android" scheme="http://easyliu.com/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学习路线</title>
-    <link href="http://easyliu.com/2020/09/18/android/StudyPlan/"/>
-    <id>http://easyliu.com/2020/09/18/android/StudyPlan/</id>
-    <published>2020-09-18T03:38:59.000Z</published>
-    <updated>2021-02-18T11:58:18.067Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="学习路线图"><a href="#学习路线图" class="headerlink" title="学习路线图"></a>学习路线图</h2><p><img src="/2020/09/18/android/StudyPlan/study_plan.png" alt="学习路线图"></p>]]></content>
-    
-    <summary type="html">
-    
-      学习路线
-    
-    </summary>
-    
-      <category term="学习计划" scheme="http://easyliu.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/"/>
-    
-    
-      <category term="学习计划" scheme="http://easyliu.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/"/>
     
   </entry>
   
