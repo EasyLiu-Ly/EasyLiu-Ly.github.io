@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[深圳大鹏7娘山——2021.8.22]]></title>
       <url>http://easyliu.com/2021/09/07/life/2021_8_22_seven_mother_moutain/</url>
-      <content type="html"><![CDATA[<h2 id="风景无敌"><a href="#风景无敌" class="headerlink" title="风景无敌"></a>风景无敌</h2><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/seven_mom_moutain.mp4","pic":"/resources/image/seven_mom_moutain_poster.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+      <content type="html"><![CDATA[<h2 id="风景无敌"><a href="#风景无敌" class="headerlink" title="风景无敌"></a>风景无敌</h2><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/seven_mom_moutain_one.mp4","pic":"/resources/image/seven_mom_moutain_poster.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
 
 <hr align="center" width="“100%”" color="#0e0e0e" size="1">
