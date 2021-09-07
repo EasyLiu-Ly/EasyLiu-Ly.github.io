@@ -4,6 +4,34 @@
   
     
     <entry>
+      <title><![CDATA[深圳大鹏7娘山——2021.8.22]]></title>
+      <url>http://easyliu.com/2021/09/07/life/2021_8_22_seven_mother_moutain/</url>
+      <content type="html"><![CDATA[<h2 id="风景无敌"><a href="#风景无敌" class="headerlink" title="风景无敌"></a>风景无敌</h2><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/seven_mom_moutain.mp4","pic":"/resources/image/seven_mom_moutain_poster.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+
+
+<hr align="center" width="“100%”" color="#0e0e0e" size="1">
+<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
+<p align="center">
+<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
+</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 周末活动 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 日常活动 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[（一）通过浏览器访问摄像头]]></title>
       <url>http://easyliu.com/2021/06/08/live_study/visit_camare_through_browser/</url>
       <content type="html"><![CDATA[<h2 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;WebRTC capture video and audio&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">        &lt;link rel="stylesheet" href="./</span>css/client.css<span class="string">"/&gt;</span></span><br><span class="line"><span class="string">    &lt;/head&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;body&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &lt;video autoplay playsinline id="</span>player<span class="string">"&gt;&lt;/video&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &lt;script src="</span>https:<span class="comment">//webrtc.github.io/adapter/adapter-latest.js"&gt;&lt;/script&gt;</span></span><br><span class="line">        &lt;script src=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">        &lt;script src="./</span>js/client.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
