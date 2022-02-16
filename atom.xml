@@ -61,28 +61,6 @@
   </entry>
   
   <entry>
-    <title>App启动流程深入分析</title>
-    <link href="http://easyliu.com/2021/05/22/android_source_analysis/activity_start/"/>
-    <id>http://easyliu.com/2021/05/22/android_source_analysis/activity_start/</id>
-    <published>2021-05-22T07:09:35.000Z</published>
-    <updated>2021-05-26T08:21:27.529Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于一个Android App来说，通过在Manifest里面声明如下代码：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=<span class="string">".MainActivity"</span>&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">           &lt;action android:name=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span><br><span class="line">           &lt;category android:name=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span><br><span class="line">     &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure><p>android.intent.action.MAIN：应用的入口Activity，决定启动应用时首先显示哪一个Activity</p><p>android.intent.category.LAUNCHER：表示activity应该被列入系统的启动器Launcher，允许Launcher启动，会在系统桌面展示出来</p><p>当我们点击桌面App图标的时候，就会默认启动这个MainActivity，启动方式其实也是通过Activity.startActivity的方式，这个就是我们开始分析的入口代码</p><p>搞清楚一个App的启动流程，对我们分析一些疑难杂症是非常有帮助的</p><p>接下来开始分析，源码基于API30</p><h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p>首先是启动请求的发起流程：</p><h3 id="发起请求"><a href="#发起请求" class="headerlink" title="发起请求"></a>发起请求</h3><p>发起请求的过程如下所示：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Activity.startActivityForResult</span><br><span class="line">  Instrumentation.execStartActivity</span><br><span class="line">     ActivityTaskManagerService.startActivity</span><br><span class="line">       ActivityStarter.execute</span><br><span class="line">         ActivityStarter.executeRequest</span><br></pre></td></tr></table></figure><hr align="center" width="“100%”" color="#0e0e0e" size="1"><font size="3" color="red">如果您觉得写的还不错，感谢支持：</font><p align="center"><img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/"></p>]]></content>
-    
-    <summary type="html">
-    
-      App启动流程深入分析
-    
-    </summary>
-    
-      <category term="Android源码解析" scheme="http://easyliu.com/categories/Android%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
-    
-    
-      <category term="Android" scheme="http://easyliu.com/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
     <title>WebViewFactory.getProvider耗时问题的一种解决思路</title>
     <link href="http://easyliu.com/2021/05/10/android_performance/webViewFactory_getProvider/"/>
     <id>http://easyliu.com/2021/05/10/android_performance/webViewFactory_getProvider/</id>
@@ -446,6 +424,28 @@
     <summary type="html">
     
       Android生命周期感应组件lifecycle
+    
+    </summary>
+    
+      <category term="Android架构学习" scheme="http://easyliu.com/categories/Android%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="Android" scheme="http://easyliu.com/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android Jetpack简介</title>
+    <link href="http://easyliu.com/2020/10/31/android_jetpack/jetpack_intro/"/>
+    <id>http://easyliu.com/2020/10/31/android_jetpack/jetpack_intro/</id>
+    <published>2020-10-31T07:31:26.000Z</published>
+    <updated>2021-02-18T11:58:18.067Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Jetpack简介"><a href="#Jetpack简介" class="headerlink" title="Jetpack简介"></a>Jetpack简介</h2><p>Jetpack 是一个由多个库组成的套件，可帮助开发者遵循最佳做法，减少样板代码并编写可在各种 Android 版本和设备中一致运行的代码，让开发者精力集中编写重要的代码。</p><p>Jetpack 包含与平台 API 解除捆绑的 androidx.* 软件包库。这意味着，它可以提供向后兼容性，且比 Android 平台的更新频率更高，以此确保您始终可以获取最新且最好的 Jetpack 组件版本。</p><h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><h3 id="加速开发"><a href="#加速开发" class="headerlink" title="加速开发"></a>加速开发</h3><p>组件可以单独采用（不过这些组件是为协同工作而构建的），同时利用 Kotlin 语言功能帮助您提高工作效率。</p><h3 id="消除样板代码"><a href="#消除样板代码" class="headerlink" title="消除样板代码"></a>消除样板代码</h3><p>Android Jetpack 可管理繁琐的 Activity（如后台任务、导航和生命周期管理），以便您可以专注于如何让您的应用出类拔萃。</p><h3 id="构建高质量的强大应用"><a href="#构建高质量的强大应用" class="headerlink" title="构建高质量的强大应用"></a>构建高质量的强大应用</h3><p>Android Jetpack 组件围绕现代化设计实践构建而成，具有向后兼容性，可以减少崩溃和内存泄漏。</p><p>以下是jetpack包含的内容：<br><img src="/2020/10/31/android_jetpack/jetpack_intro/intro.png" alt="简介"></p><p><a href="https://developer.android.com/jetpack#foundation-components" target="_blank" rel="noopener">jetpack文档</a></p><p><a href="https://www.youtube.com/watch?v=LmkKFCfmnhQ&feature=youtu.be" target="_blank" rel="noopener">jetpack视频介绍</a></p><h2 id="Jetpack架构组件设计思路"><a href="#Jetpack架构组件设计思路" class="headerlink" title="Jetpack架构组件设计思路"></a>Jetpack架构组件设计思路</h2><p><a href="https://developer.android.com/jetpack/guide" target="_blank" rel="noopener">应用架构指南</a></p><h3 id="基于移动应用用户体验"><a href="#基于移动应用用户体验" class="headerlink" title="基于移动应用用户体验"></a>基于移动应用用户体验</h3><p>在大多数情况下，桌面应用会在桌面或程序启动器中有一个入口点，且作为一个单体式进程运行。Android 应用则不然，它们的结构要复杂得多。典型的 Android 应用包含多个应用组件，包括 Activity、Fragment、Service、内容提供程序和广播接收器。</p><p>您需要在应用清单中声明其中的大多数应用组件。Android 操作系统随后会使用此文件来决定如何将您的应用集成到设备的整体用户体验中。鉴于正确编写的 Android 应用包含多个组件，并且用户经常会在短时间内与多个应用进行互动，因此应用需要适应不同类型的用户驱动型工作流和任务。</p><p>例如，思考一下当您在自己喜欢的社交网络应用中分享照片时会发生什么：</p><ul><li><p>该应用将触发相机 intent。Android 操作系统随后会启动相机应用来处理请求。此时，用户已离开社交网络应用，但他们的体验仍然是无缝的。</p></li><li><p>相机应用可能会触发其他 intent（如启动文件选择器），而这可能会再启动一个应用。</p></li><li><p>最后，用户返回社交网络应用并分享照片。</p></li></ul><p>在此过程中，用户随时可能会被电话或通知打断。处理之后，用户希望能够返回并继续分享照片。这种应用跳跃行为在移动设备上很常见，因此您的应用必须正确处理这些流程。</p><p>请注意，移动设备的资源也很有限，因此操作系统可能会随时终止某些应用进程，以便为新的进程腾出空间。</p><p>鉴于这种环境条件，您的应用组件可以不按顺序地单独启动，并且操作系统或用户可以随时销毁它们。由于这些事件不受您的控制，因此您不应在应用组件中存储任何应用数据或状态，并且应用组件不应相互依赖。</p><h3 id="常见的架构原则"><a href="#常见的架构原则" class="headerlink" title="常见的架构原则"></a>常见的架构原则</h3><p>如果您不应使用应用组件存储应用数据和状态，那么您应该如何设计应用呢？</p><h3 id="关注分离点"><a href="#关注分离点" class="headerlink" title="关注分离点"></a>关注分离点</h3><p>要遵循的最重要的原则是分离关注点。一种常见的错误是在一个 Activity 或 Fragment 中编写所有代码。这些基于界面的类应仅包含处理界面和操作系统交互的逻辑。您应使这些类尽可能保持精简，这样可以避免许多与生命周期相关的问题。</p><p>请注意，您并非拥有 Activity 和 Fragment 的实现；它们只是表示 Android 操作系统与应用之间关系的粘合类。操作系统可能会根据用户互动或因内存不足等系统条件随时销毁它们。为了提供令人满意的用户体验和更易于管理的应用维护体验，您最好尽量减少对它们的依赖。</p><h3 id="通过模型驱动界面"><a href="#通过模型驱动界面" class="headerlink" title="通过模型驱动界面"></a>通过模型驱动界面</h3><p>另一个重要原则是您应该通过模型驱动界面（最好是持久性模型）。模型是负责处理应用数据的组件。它们独立于应用中的 View 对象和应用组件，因此不受应用的生命周期以及相关的关注点的影响。</p><p>持久性是理想之选，原因如下：</p><ul><li>如果 Android 操作系统销毁应用以释放资源，用户不会丢失数据。</li><li>当网络连接不稳定或不可用时，应用会继续工作。</li></ul><p>应用所基于的模型类应明确定义数据管理职责，这样将使应用更可测试且更一致。</p><p>基于以上讨论就演变出来了如何使用Jetpack架构组件构建应用，如下所示：<br><img src="/2020/10/31/android_jetpack/jetpack_intro/final-architecture.png" alt="推荐架构图"></p><p>请注意，每个组件仅依赖于其下一级的组件。例如，Activity 和 Fragment 仅依赖于视图模型。存储区是唯一依赖于其他多个类的类；在本例中，存储区依赖于持久性数据模型和远程后端数据源。</p><p>这种设计打造了一致且愉快的用户体验。无论用户上次使用应用是在几分钟前还是几天之前，现在回到应用时都会立即看到应用在本地保留的用户信息。如果此数据已过时，则应用的存储区模块将开始在后台更新数据。</p><h2 id="Jetpack架构组件介绍"><a href="#Jetpack架构组件介绍" class="headerlink" title="Jetpack架构组件介绍"></a>Jetpack架构组件介绍</h2><p><a href="https://developer.android.com/topic/libraries/architecture" target="_blank" rel="noopener">Jetpack架构组件</a></p><p>Android 架构组件是一组库，可帮助您设计稳健、可测试且易维护的应用。您可以从管理界面组件生命周期和处理数据持久性的类着手。</p><ul><li><p>通过应用架构指南，学习有关汇编稳健应用的基础知识。</p></li><li><p>管理应用的生命周期。新的生命周期感知型组件可帮助您管理 Activity 和 Fragment 的生命周期。在配置更改后继续有效、避免内存泄漏，以及轻松加载数据到界面中。</p></li><li><p>使用 LiveData 构建数据对象，在基础数据库改变时通知视图。</p></li><li><p>ViewModel 存储界面相关的数据，这些数据不会在应用轮转时销毁。</p></li><li><p>Room 是一个 SQLite 对象映射库。它可用来避免样板代码，并轻松地将 SQLite 表数据转换为 Java 对象。Room 提供 SQLite 语句的编译时检查，并且可以返回 RxJava、Flowable 和 LiveData 可观察对象。</p></li></ul><p>以上就是对Jetpack组件的介绍，接下来会对Jetpack里面的架构组件进行剖析讲解。</p>]]></content>
+    
+    <summary type="html">
+    
+      Android Jetpack简介
     
     </summary>
     
