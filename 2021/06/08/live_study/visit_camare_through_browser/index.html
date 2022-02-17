@@ -20,12 +20,10 @@
 <meta property="og:site_name" content="EasyLiu">
 <meta property="og:description" content="（一）通过浏览器访问摄像头">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://easyliu.com/resources/images/wechat_pay.png">
-<meta property="og:updated_time" content="2021-06-08T02:51:37.623Z">
+<meta property="og:updated_time" content="2022-02-17T07:19:14.899Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="（一）通过浏览器访问摄像头">
 <meta name="twitter:description" content="（一）通过浏览器访问摄像头">
-<meta name="twitter:image" content="http://easyliu.com/resources/images/wechat_pay.png">
     
 
     
@@ -186,7 +184,7 @@
    <div class="article-counter">
       <i class="fa fa-file-word-o"></i>
       <span class="post-count-item-text">本文字数: </span>
-      <span class="post-count">244</span>
+      <span class="post-count">230</span>
       <i class="fa fa-clock-o"></i>
       <span class="post-time-item-text">阅读时长: </span>
       <span class="post-count">1 分钟 </span>
@@ -202,11 +200,6 @@
 <h2 id="client-js"><a href="#client-js" class="headerlink" title="client.js"></a>client.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> videoplay = <span class="built_in">document</span>.querySelector(<span class="string">'video#player'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mediaStreamContrains = &#123;</span><br><span class="line">    video: &#123;</span><br><span class="line">        frameRate: &#123; <span class="attr">min</span>: <span class="number">20</span> &#125;,</span><br><span class="line">        width: &#123; <span class="attr">min</span>: <span class="number">640</span>, <span class="attr">ideal</span>: <span class="number">1280</span> &#125;,</span><br><span class="line">        height: &#123; <span class="attr">min</span>: <span class="number">360</span>, <span class="attr">ideal</span>: <span class="number">720</span> &#125;,</span><br><span class="line">        aspectRatio: <span class="number">16</span> / <span class="number">9</span>,</span><br><span class="line">        facingMode: <span class="string">'user'</span>,</span><br><span class="line">        resizeMode: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    audio: &#123;</span><br><span class="line">        echoCancellation: <span class="literal">true</span>,</span><br><span class="line">        noiseSuppression: <span class="literal">true</span>,</span><br><span class="line">        autoGainControl: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gotMediaStream</span>(<span class="params">stream</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.stream = stream;</span><br><span class="line">    videoplay.srcObject = stream;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleError</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'getUserMedia error:'</span>, err);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!navigator.mediaDevices ||</span><br><span class="line">        !navigator.mediaDevices.getUserMedia) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'getUserMedia is not supported!'</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        navigator.mediaDevices.getUserMedia(mediaStreamContrains)</span><br><span class="line">            .then(gotMediaStream)</span><br><span class="line">            .catch(handleError);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">start();</span><br></pre></td></tr></table></figure>
 
 <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>使用浏览器打开index.html就可以在浏览器里面看到前置摄像头影像了</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 
         </div>
         <footer class="article-footer">
@@ -225,15 +218,15 @@
             "name": "EasyLiu"
         },
         "headline": "（一）通过浏览器访问摄像头",
-        "image": "http://easyliu.com/resources/images/wechat_pay.png",
+        "image": "http://easyliu.com",
         "keywords": "学习笔记",
         "genre": "从0打造音视频直播系统",
         "datePublished": "2021-06-08",
         "dateCreated": "2021-06-08",
-        "dateModified": "2021-06-08",
+        "dateModified": "2022-02-17",
         "url": "http://easyliu.com/2021/06/08/live_study/visit_camare_through_browser/",
         "description": "index.html123456789101112131415&lt;html&gt;    &lt;head&gt;        &lt;title&gt;WebRTC capture video and audio&lt;/title&gt;        &lt;link rel="stylesheet" href="./css/client.css"/&gt;    &lt;/head&",
-        "wordCount": 503
+        "wordCount": 492
     }
 </script>
 
@@ -340,7 +333,7 @@
                             <a href="/2021/06/08/live_study/visit_camare_through_browser/" class="thumbnail">
     
     
-        <span style="background-image:url(/resources/images/wechat_pay.png)" alt="（一）通过浏览器访问摄像头" class="thumbnail-image"></span>
+        <span class="thumbnail-image thumbnail-none"></span>
     
     
 </a>
@@ -400,7 +393,7 @@
                             <a href="/2021/04/27/android_source_analysis/reportSizeConfigurations_exception/" class="thumbnail">
     
     
-        <span style="background-image:url(/resources/images/wechat_pay.png)" alt="ActivityManagerService.reportSizeConfigurations异常问题规避方案" class="thumbnail-image"></span>
+        <span class="thumbnail-image thumbnail-none"></span>
     
     
 </a>

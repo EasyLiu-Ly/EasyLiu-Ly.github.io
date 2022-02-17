@@ -20,12 +20,10 @@
 <meta property="og:site_name" content="EasyLiu">
 <meta property="og:description" content="LeakCanary源码解析之——dump堆栈">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://easyliu.com/resources/images/wechat_pay.png">
-<meta property="og:updated_time" content="2021-02-18T11:58:18.067Z">
+<meta property="og:updated_time" content="2022-02-17T07:17:50.412Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeakCanary源码解析之——dump堆栈">
 <meta name="twitter:description" content="LeakCanary源码解析之——dump堆栈">
-<meta name="twitter:image" content="http://easyliu.com/resources/images/wechat_pay.png">
     
 
     
@@ -248,11 +246,6 @@
 
 <p>可以看出如果heapDumpFile存在就会调用下面的analyzeHeap方法，在这个方法里面最终会new一个HeapAnalyzer对象，然后调用analyze方法进行堆栈分析。</p>
 <p>到这里，整个dump堆栈的分析过程就结束了。</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 
         </div>
         <footer class="article-footer">
@@ -271,17 +264,17 @@
             "name": "EasyLiu"
         },
         "headline": "LeakCanary源码解析之——dump堆栈",
-        "image": "http://easyliu.com/resources/images/wechat_pay.png",
+        "image": "http://easyliu.com",
         "keywords": "Android",
         "genre": "Android源码解析",
         "datePublished": "2020-12-26",
         "dateCreated": "2020-12-26",
-        "dateModified": "2021-02-18",
+        "dateModified": "2022-02-17",
         "url": "http://easyliu.com/2020/12/26/android_source_analysis/leakcanary_dump/",
         "description": "前言在前一篇文章LeakCanary源码解析之——内存泄漏监测当中从源码的角度对Leakcanary中内存泄漏监测原理进行了剖析。既然监测到了内存泄漏，那么接下来就是要把堆栈给dump出来，进行堆栈分析，最终以图形化的方式展示内存泄漏堆栈。本篇文章就从源码的角度分析一下dump堆栈的过程。
 本次分析的源码基于：
 123dependencies &#123;  debugImplementation",
-        "wordCount": 3403
+        "wordCount": 3392
     }
 </script>
 
@@ -388,7 +381,7 @@
                             <a href="/2021/06/08/live_study/visit_camare_through_browser/" class="thumbnail">
     
     
-        <span style="background-image:url(/resources/images/wechat_pay.png)" alt="（一）通过浏览器访问摄像头" class="thumbnail-image"></span>
+        <span class="thumbnail-image thumbnail-none"></span>
     
     
 </a>
@@ -448,7 +441,7 @@
                             <a href="/2021/04/27/android_source_analysis/reportSizeConfigurations_exception/" class="thumbnail">
     
     
-        <span style="background-image:url(/resources/images/wechat_pay.png)" alt="ActivityManagerService.reportSizeConfigurations异常问题规避方案" class="thumbnail-image"></span>
+        <span class="thumbnail-image thumbnail-none"></span>
     
     
 </a>

@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[深圳大鹏7娘山——2021.8.22]]></title>
       <url>http://easyliu.com/2021/09/07/life/2021_8_22_seven_mother_moutain/</url>
-      <content type="html"><![CDATA[<h2 id="风景无敌"><a href="#风景无敌" class="headerlink" title="风景无敌"></a>风景无敌</h2><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/seven_mom_moutain_one.mp4","pic":"/resources/image/seven_mom_moutain_poster.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+      <content type="html"><![CDATA[<h2 id="风景无敌"><a href="#风景无敌" class="headerlink" title="风景无敌"></a>风景无敌</h2><div id="dplayer1" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer1"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/seven_mom_moutain_one.mp4","pic":"/resources/image/seven_mom_moutain_poster.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
 <p><img src="/2021/09/07/life/2021_8_22_seven_mother_moutain/pic_1.jpg" alt="pic"></p>
 <p><img src="/2021/09/07/life/2021_8_22_seven_mother_moutain/pic_2.jpg" alt="pic"></p>
@@ -63,11 +63,6 @@
 <h2 id="client-js"><a href="#client-js" class="headerlink" title="client.js"></a>client.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> videoplay = <span class="built_in">document</span>.querySelector(<span class="string">'video#player'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mediaStreamContrains = &#123;</span><br><span class="line">    video: &#123;</span><br><span class="line">        frameRate: &#123; <span class="attr">min</span>: <span class="number">20</span> &#125;,</span><br><span class="line">        width: &#123; <span class="attr">min</span>: <span class="number">640</span>, <span class="attr">ideal</span>: <span class="number">1280</span> &#125;,</span><br><span class="line">        height: &#123; <span class="attr">min</span>: <span class="number">360</span>, <span class="attr">ideal</span>: <span class="number">720</span> &#125;,</span><br><span class="line">        aspectRatio: <span class="number">16</span> / <span class="number">9</span>,</span><br><span class="line">        facingMode: <span class="string">'user'</span>,</span><br><span class="line">        resizeMode: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    audio: &#123;</span><br><span class="line">        echoCancellation: <span class="literal">true</span>,</span><br><span class="line">        noiseSuppression: <span class="literal">true</span>,</span><br><span class="line">        autoGainControl: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gotMediaStream</span>(<span class="params">stream</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.stream = stream;</span><br><span class="line">    videoplay.srcObject = stream;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleError</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'getUserMedia error:'</span>, err);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!navigator.mediaDevices ||</span><br><span class="line">        !navigator.mediaDevices.getUserMedia) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'getUserMedia is not supported!'</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        navigator.mediaDevices.getUserMedia(mediaStreamContrains)</span><br><span class="line">            .then(gotMediaStream)</span><br><span class="line">            .catch(handleError);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">start();</span><br></pre></td></tr></table></figure>
 
 <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>使用浏览器打开index.html就可以在浏览器里面看到前置摄像头影像了</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 ]]></content>
       
         <categories>
@@ -117,11 +112,6 @@
 <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>通过日志观察WebViewFactory的日志打印，可以看到代码已经执行成功了：<br><img src="/2021/05/10/android_performance/webViewFactory_getProvider/log.png" alt="log"></p>
 <p>但是目前这个getProvider接口已经被列入了greylist里面了，在后续的版本不敢保证还能继续生效，这里只是提供一种解决问题的思路<br><img src="/2021/05/10/android_performance/webViewFactory_getProvider/greylist.png" alt="greylist"></p>
 <p>优化之后的效果如下所示，可以看到UI线程WebViewFactory.getProvider()方法耗时已经没有了：<br><img src="/2021/05/10/android_performance/webViewFactory_getProvider/optimized.png" alt="optimized"></p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 ]]></content>
       
         <categories>
@@ -168,11 +158,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">load0</span><span class="params">(Class&lt;?&gt; fromClass, String filename)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!(<span class="keyword">new</span> File(filename).isAbsolute())) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> UnsatisfiedLinkError(</span><br><span class="line">            <span class="string">"Expecting an absolute path of the library: "</span> + filename);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (filename == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"filename == null"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    String error = nativeLoad(filename, fromClass.getClassLoader());</span><br><span class="line">    <span class="keyword">if</span> (error != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> UnsatisfiedLinkError(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>可以看到这个方法确实是有加锁的。既然是这样的话，我们应该可以在工程代码里面找到这个名字叫做init-thread的线程。通过全局查找，找到了这个线程就是启动Task线程池里面的，说明启动task里面有一个子线程的task有loadLibrary的动作，导致主线程去loadLibrary的时候就卡住了。然后再根据UI线程卡住的时间点，就可以缩小范围，最终就能找到loadLibrary的是哪个task，然后就可以再进一步分析了</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 ]]></content>
       
         <categories>
@@ -221,11 +206,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attachBaseContext</span><span class="params">(Context base)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (ApplicationProcessUtils.getInstance().isMainProcess()) &#123;</span><br><span class="line">           HookActivityManager.hook();</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>问题得以解决！</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 ]]></content>
       
         <categories>
@@ -351,11 +331,6 @@
 
 <p>通过这种方式，我们就可以通过动画来修改View的宽度和高度了，这样子是不是对属性动画的理解又深入了一层～～</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此，属性动画源码分析就结束了，希望通过这篇文章能够让读者对属性动画能有一个更加深刻的认识～～</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 ]]></content>
       
         <categories>
@@ -465,11 +440,6 @@
 <p>属性动画的实现原理不同于View动画。View动画的每一帧都是通过invalidate方法来触发重绘，而属性动画每一帧的绘制都是通过Choreographer的回调实现。因此，本质上来说，属性动画少了一个很重要的步骤，就是post一个同步屏障。在属性动画中，没有同步屏障，那么后续的任务能够继续执行，当队列中没有任务时，自然就会回调IdleHandler了。</p>
 <p>关于属性动画的底层实现原理，后续有机会会进行分析</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本篇文章主要是从源码的角度分析了Handler消息机制的底层实现原理，包括阻塞与同步、同步屏障、android屏幕刷新机制、idleHandler得不到执行的问题等，希望通过阅读本篇文章，能够对Handler消息机制有一个全新的认识，能够达到知其然且知其所以然</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 ]]></content>
       
         <categories>
@@ -508,11 +478,6 @@
 <p>表情包效果可以在评论区查看</p>
 <h2 id="字数及阅读时间展示"><a href="#字数及阅读时间展示" class="headerlink" title="字数及阅读时间展示"></a>字数及阅读时间展示</h2><p>安装如下插件即可：</p>
 <p>npm install –save hexo-wordcount</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 ]]></content>
       
         <categories>
@@ -605,11 +570,6 @@
 <p>可以看出，Glide在接收到TriMemory以及lowMemory回调的时候会做一些内存清理操作，降低内存的消耗，这个思想是值得借鉴的。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇文章主要对Glide功能扩展及Glide对象创建进行了简要分析。通过这篇文章相信大家对Glide的扩展功能以及对其对象创建过程有了一定的了解，欢迎继续学习：<a href>Glide系列之——Glide的Request执行流程及回调</a></p>
 <p>本篇文章到此就结束了，感谢耐心阅读，不对之处，敬请指出～</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 ]]></content>
       
         <categories>
@@ -730,11 +690,6 @@
 <p>到此，这篇文章就接近尾声了，总结一下：</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇文章主要讲了一下Glide的使用方式、Glide生命周期及网络变化自动化监听处理，对Glide的with、load以及into方法进行了初步的分析。通过这篇文章相信大家对Glide应该有了一个整体的认识，欢迎继续学习：<a href="https://easyliu-ly.github.io/2021/02/07/android_source_analysis/glide_new/" target="_blank" rel="noopener">Glide系列之——Glide对象创建及功能扩展</a></p>
 <p>本篇文章到此就结束了，感谢耐心阅读，不对之处，敬请指出～</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 ]]></content>
       
         <categories>
@@ -806,11 +761,6 @@
 
 <p>可以看出如果heapDumpFile存在就会调用下面的analyzeHeap方法，在这个方法里面最终会new一个HeapAnalyzer对象，然后调用analyze方法进行堆栈分析。</p>
 <p>到这里，整个dump堆栈的分析过程就结束了。</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 ]]></content>
       
         <categories>
@@ -890,11 +840,6 @@
 <p>3、利用Java当中WeakRefrenece+ReferenceQueue的特性来判断弱引用对象是否被泄漏了</p>
 <p>Leakcanary监控到有内存泄漏只是第一步，后续还有dump堆栈，分析堆栈等，后续有时间也会对这些部分进行学习。</p>
 <p>做为一个开源库，Leakcanary框架源码还是挺值得学习的，其思想非常值得我们学习，并且个人觉得里面的kotlin代码还是写的挺好的，是学习kotlin的好材料。</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 ]]></content>
       
         <categories>
@@ -967,11 +912,6 @@
 <p>总体使用下来的感受的话，结合kotlin搭配使用还是挺灵活的，第一次接触这种声明式UI的写法，还是觉得挺新奇的，做为一个新的知识点还是值得学习一下的～～～。</p>
 <p>官方Sample里面有很多优秀的案例可以参考：<br><a href="https://github.com/android/compose-samples" target="_blank" rel="noopener">https://github.com/android/compose-samples</a></p>
 <p>参考：<br><a href="https://developer.android.com/jetpack/compose" target="_blank" rel="noopener">https://developer.android.com/jetpack/compose</a><br><a href="https://developer.android.com/jetpack/compose/layout" target="_blank" rel="noopener">https://developer.android.com/jetpack/compose/layout</a><br><a href="https://developer.android.com/jetpack/compose/mental-model" target="_blank" rel="noopener">https://developer.android.com/jetpack/compose/mental-model</a></p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 ]]></content>
       
         <categories>
@@ -1187,12 +1127,6 @@
 <p>这个架构里面很多思想值得我们细细品味～～</p>
 <p>基于这个LiveData这些优良的特性，美团技术团队开发了一个LiveDataEventBus来代替传统的EventBus、RxJava等消息框架,感兴趣的可以看看：<br><a href="https://tech.meituan.com/2018/07/26/android-livedatabus.html" target="_blank" rel="noopener">https://tech.meituan.com/2018/07/26/android-livedatabus.html</a></p>
 <p><a href="https://github.com/JeremyLiao/LiveEventBus" target="_blank" rel="noopener">https://github.com/JeremyLiao/LiveEventBus</a></p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
-
 ]]></content>
       
         <categories>
@@ -1213,7 +1147,7 @@
     <entry>
       <title><![CDATA[早起龙城公园爬山——2020.11.1]]></title>
       <url>http://easyliu.com/2020/11/01/life/2020_11_1_longcheng_park/</url>
-      <content type="html"><![CDATA[<h2 id="空气新鲜"><a href="#空气新鲜" class="headerlink" title="空气新鲜"></a>空气新鲜</h2><div id="dplayer1" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer1"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/image/scenery_three.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+      <content type="html"><![CDATA[<h2 id="空气新鲜"><a href="#空气新鲜" class="headerlink" title="空气新鲜"></a>空气新鲜</h2><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/image/scenery_three.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
 <p><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_one.jpeg" alt="scenery_one"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_two.jpeg" alt="scenery_two"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_three.jpeg" alt="scenery_three"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_four.jpeg" alt="scenery_four"></p>
 <h2 id="你大爷还是你大爷"><a href="#你大爷还是你大爷" class="headerlink" title="你大爷还是你大爷"></a>你大爷还是你大爷</h2><p><img src="/2020/11/01/life/2020_11_1_longcheng_park/uncle.jpeg" alt="uncle_one"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/uncle_two.jpeg" alt="uncle_two"></p>
@@ -1308,11 +1242,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">LifecycleOwner</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> LifecycleRegistry lifecycleRegistry;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"></span><br><span class="line">        lifecycleRegistry = <span class="keyword">new</span> LifecycleRegistry(<span class="keyword">this</span>);</span><br><span class="line">        lifecycleRegistry.markState(Lifecycle.State.CREATED);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStart();</span><br><span class="line">        lifecycleRegistry.markState(Lifecycle.State.STARTED);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Lifecycle <span class="title">getLifecycle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lifecycleRegistry;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Lifecycle组件实际上就是对activity或者fragment的生命周期进行自动化监听，然后业务方根据自己的需求可以往Lifecycle组件里面在add或者remove监听，就是一种典型的观察者模式，去掉了以往需要直接在acivity和fragment的生命周期方法中显示调用组件对应方法的过程，让组件代码更有条理，也避免了activity和fragment的代码膨胀，提升代码的可维护性。</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 ]]></content>
       
         <categories>

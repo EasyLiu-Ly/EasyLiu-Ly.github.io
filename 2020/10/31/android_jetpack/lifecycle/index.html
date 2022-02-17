@@ -21,7 +21,7 @@
 <meta property="og:description" content="Android生命周期感应组件lifecycle">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://easyliu.com/2020/10/31/android_jetpack/lifecycle/lifecycle-state.png">
-<meta property="og:updated_time" content="2021-02-18T11:58:18.067Z">
+<meta property="og:updated_time" content="2022-02-17T07:16:49.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android生命周期感应组件lifecycle">
 <meta name="twitter:description" content="Android生命周期感应组件lifecycle">
@@ -268,11 +268,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">LifecycleOwner</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> LifecycleRegistry lifecycleRegistry;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"></span><br><span class="line">        lifecycleRegistry = <span class="keyword">new</span> LifecycleRegistry(<span class="keyword">this</span>);</span><br><span class="line">        lifecycleRegistry.markState(Lifecycle.State.CREATED);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStart();</span><br><span class="line">        lifecycleRegistry.markState(Lifecycle.State.STARTED);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Lifecycle <span class="title">getLifecycle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lifecycleRegistry;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Lifecycle组件实际上就是对activity或者fragment的生命周期进行自动化监听，然后业务方根据自己的需求可以往Lifecycle组件里面在add或者remove监听，就是一种典型的观察者模式，去掉了以往需要直接在acivity和fragment的生命周期方法中显示调用组件对应方法的过程，让组件代码更有条理，也避免了activity和fragment的代码膨胀，提升代码的可维护性。</p>
-<hr align="center" width="“100%”" color="#0e0e0e" size="1">
-<font size="3" color="red">如果您觉得写的还不错，感谢支持：</font>
-<p align="center">
-<img src="/resources/images/wechat_pay.png" width="150/"><img src="/resources/images/ali_pay.jpeg" width="150/">
-</p>
 
         </div>
         <footer class="article-footer">
@@ -296,11 +291,11 @@
         "genre": "Android架构学习",
         "datePublished": "2020-10-31",
         "dateCreated": "2020-10-31",
-        "dateModified": "2021-02-18",
+        "dateModified": "2022-02-17",
         "url": "http://easyliu.com/2020/10/31/android_jetpack/lifecycle/",
         "description": "背景生命周期感知型组件可执行操作来响应另一个组件（如 Activity 和 Fragment）的生命周期状态的变化。这些组件有助于您写出更有条理且往往更精简的代码，这样的代码更易于维护。
 一种常见的模式是在 Activity 和 Fragment 的生命周期方法中实现依赖组件的操作。但是，这种模式会导致代码条理性很差而且会扩散错误。通过使用生命周期感知型组件，您可以将依赖组件的代码从生命周期方法移",
-        "wordCount": 5020
+        "wordCount": 5009
     }
 </script>
 
@@ -407,7 +402,7 @@
                             <a href="/2021/06/08/live_study/visit_camare_through_browser/" class="thumbnail">
     
     
-        <span style="background-image:url(/resources/images/wechat_pay.png)" alt="（一）通过浏览器访问摄像头" class="thumbnail-image"></span>
+        <span class="thumbnail-image thumbnail-none"></span>
     
     
 </a>
@@ -467,7 +462,7 @@
                             <a href="/2021/04/27/android_source_analysis/reportSizeConfigurations_exception/" class="thumbnail">
     
     
-        <span style="background-image:url(/resources/images/wechat_pay.png)" alt="ActivityManagerService.reportSizeConfigurations异常问题规避方案" class="thumbnail-image"></span>
+        <span class="thumbnail-image thumbnail-none"></span>
     
     
 </a>
