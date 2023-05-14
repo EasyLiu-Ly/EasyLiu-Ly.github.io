@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://easyliu.com/"/>
-  <updated>2023-05-14T14:11:00.140Z</updated>
+  <updated>2023-05-14T16:07:27.157Z</updated>
   <id>http://easyliu.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>kotlin接口支持SAM转换</title>
+    <link href="http://easyliu.com/2023/05/14/kotlin/kotlin_sam/"/>
+    <id>http://easyliu.com/2023/05/14/kotlin/kotlin_sam/</id>
+    <published>2023-05-14T15:49:01.000Z</published>
+    <updated>2023-05-14T16:07:27.157Z</updated>
+    
+    <content type="html"><![CDATA[<p>定义一个kotlin接口，如下所示：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IReportPlayerEventListenerFactory</span> </span>&#123;</span><br><span class="line">    <span class="function">fun <span class="title">getPlayerEventListener</span><span class="params">(mediaPlayer: Any?)</span>: ITVKPlayerEventListener?</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure><p>这个接口使用的时候，是只能使用object匿名内部类的方式的，是没法使用SAM转换的：<br><img src="/2023/05/14/kotlin/kotlin_sam/image.png" alt="image"><br>那这个问题要怎么解决呢?<br><a href="https://kotlinlang.org/docs/whatsnew14.html#sam-conversions-for-kotlin-interfaces" target="_blank" rel="noopener">https://kotlinlang.org/docs/whatsnew14.html#sam-conversions-for-kotlin-interfaces</a><br>根据官方文档：kt1.4版本kt也支持SAM转换了:</p><p><img src="/2023/05/14/kotlin/kotlin_sam/image1.png" alt="image"><br>在interface前面添加一个fun关键字即可</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fun <span class="class"><span class="keyword">interface</span> <span class="title">IReportPlayerEventListenerFactory</span> </span>&#123;</span><br><span class="line">    <span class="function">fun <span class="title">getPlayerEventListener</span><span class="params">(mediaPlayer: Any?)</span>: ITVKPlayerEventListener?</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      kotlin接口支持SAM转换
+    
+    </summary>
+    
+      <category term="Kotlin" scheme="http://easyliu.com/categories/Kotlin/"/>
+    
+    
+      <category term="Android" scheme="http://easyliu.com/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>种植小番茄</title>
@@ -431,28 +453,6 @@
     
     
       <category term="Android" scheme="http://easyliu.com/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>早起龙城公园爬山——2020.11.1</title>
-    <link href="http://easyliu.com/2020/11/01/life/2020_11_1_longcheng_park/"/>
-    <id>http://easyliu.com/2020/11/01/life/2020_11_1_longcheng_park/</id>
-    <published>2020-11-01T08:59:16.000Z</published>
-    <updated>2021-02-18T11:58:18.067Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="空气新鲜"><a href="#空气新鲜" class="headerlink" title="空气新鲜"></a>空气新鲜</h2><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/image/scenery_three.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script><p><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_one.jpeg" alt="scenery_one"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_two.jpeg" alt="scenery_two"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_three.jpeg" alt="scenery_three"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_four.jpeg" alt="scenery_four"></p><h2 id="你大爷还是你大爷"><a href="#你大爷还是你大爷" class="headerlink" title="你大爷还是你大爷"></a>你大爷还是你大爷</h2><p><img src="/2020/11/01/life/2020_11_1_longcheng_park/uncle.jpeg" alt="uncle_one"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/uncle_two.jpeg" alt="uncle_two"></p>]]></content>
-    
-    <summary type="html">
-    
-      龙城公园爬山——2020.11.1
-    
-    </summary>
-    
-      <category term="周末活动" scheme="http://easyliu.com/categories/%E5%91%A8%E6%9C%AB%E6%B4%BB%E5%8A%A8/"/>
-    
-    
-      <category term="日常生活" scheme="http://easyliu.com/tags/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
