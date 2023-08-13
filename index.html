@@ -72,7 +72,7 @@
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android性能优化/">Android性能优化</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android架构学习/">Android架构学习</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android源码解析/">Android源码解析</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android疑难杂症/">Android疑难杂症</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android自定义控件/">Android自定义控件</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Gradle相关/">Gradle相关</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Kotlin/">Kotlin</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ios开发/">ios开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/从0打造音视频直播系统/">从0打造音视频直播系统</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/代码规范/">代码规范</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/刷题/">刷题</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/单元测试/">单元测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/周末活动/">周末活动</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/园艺/">园艺</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/学习计划/">学习计划</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/开发工具/">开发工具</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/旅游/">旅游</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android性能优化/">Android性能优化</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android架构学习/">Android架构学习</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android源码解析/">Android源码解析</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android疑难杂症/">Android疑难杂症</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android自定义控件/">Android自定义控件</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Compose/">Compose</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Gradle相关/">Gradle相关</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Kotlin/">Kotlin</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ios开发/">ios开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/从0打造音视频直播系统/">从0打造音视频直播系统</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/代码规范/">代码规范</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/刷题/">刷题</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/单元测试/">单元测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/周末活动/">周末活动</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/园艺/">园艺</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/学习计划/">学习计划</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/开发工具/">开发工具</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/旅游/">旅游</a></li></ul>
                                     
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
@@ -155,6 +155,53 @@
         <article class="article article-summary">
     <div class="article-summary-inner">
         
+        <a href="/2023/08/13/compose/report/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span><a href="http://easyliu.com/2023/08/13/compose/report/#isso-thread"></a></span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Compose/">Compose</a>
+            </div>
+            <div class="date"><time datetime="2023-08-13T05:26:11.000Z" itemprop="datePublished">2023-08-13</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2023/08/13/compose/report/">Composable曝光和反曝光实现</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1、Composable曝光和反曝光实现在Compose开发过程中，需要在进入退出重组以及View可见的场景自定进行@Composable的曝光和反曝光，进入退出重组的话可以通过LaunchedEffect和DisposableEffect来监听，那View可见的场景就得通过Lifecycle来实现了，如下所示：
+123456789101112131415161718192021222324252
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
         <a href="/2023/08/13/android_architecture/MviComposeExtensions/" class="thumbnail">
     
     
@@ -176,7 +223,7 @@
         
         <div class="article-meta">
             <div class="category">
-            
+            <a class="article-category-link" href="/categories/Android架构学习/">Android架构学习</a>
             </div>
             <div class="date"><time datetime="2023-08-13T05:16:43.000Z" itemprop="datePublished">2023-08-13</time></div>
         </div>
@@ -195,10 +242,14 @@
     </div>
 </article>
     
+        </div>
+    
 
     
     
     
+    
+        <div class="article-row">
     
         <article class="article article-summary">
     <div class="article-summary-inner">
@@ -243,14 +294,10 @@
     </div>
 </article>
     
-        </div>
-    
 
     
     
     
-    
-        <div class="article-row">
     
         <article class="article article-summary">
     <div class="article-summary-inner">
@@ -295,6 +342,8 @@
         </p>
     </div>
 </article>
+    
+        </div>
     
 
     
@@ -475,7 +524,7 @@
     
 
         <p class="article-excerpt">
-            风景无敌(function(){var player = new DPlayer({"container":document.getElementById("dplayer1"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/seven_mom_moutain_one.mp4","pic
+            风景无敌(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/seven_mom_moutain_one.mp4","pic
         </p>
     </div>
 </article>
@@ -632,55 +681,6 @@ python /Users/easyliu/Library/Android/sdk/platform-tools/systrace/systrace.py �
         </div>
     
 
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2021/04/27/android_source_analysis/reportSizeConfigurations_exception/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span><a href="http://easyliu.com/2021/04/27/android_source_analysis/reportSizeConfigurations_exception/#isso-thread"></a></span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Android疑难杂症/">Android疑难杂症</a>
-            </div>
-            <div class="date"><time datetime="2021-04-27T01:34:59.000Z" itemprop="datePublished">2021-04-27</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2021/04/27/android_source_analysis/reportSizeConfigurations_exception/">ActivityManagerService.reportSizeConfigurations异常问题规避方案</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            背景在crash平台上上报了以下crash，量还不少：
-12345678910111213141516android.os.RemoteException: Remote stack trace:com.android.server.am.ActivityManagerService.reportSizeConfigurations(ActivityManagerService.java:9443
-        </p>
-    </div>
-</article>
-    
-
 
     </div></section>
 
@@ -725,6 +725,26 @@ python /Users/easyliu/Library/Android/sdk/platform-tools/systrace/systrace.py �
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2023/08/13/compose/report/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Compose/">Compose</a></p>
+                            <p class="item-title"><a href="/2023/08/13/compose/report/" class="title">Composable曝光和反曝光实现</a></p>
+                            <p class="item-date"><time datetime="2023-08-13T05:26:11.000Z" itemprop="datePublished">2023-08-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2023/08/13/android_architecture/MviComposeExtensions/" class="thumbnail">
     
     
@@ -736,7 +756,7 @@ python /Users/easyliu/Library/Android/sdk/platform-tools/systrace/systrace.py �
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android架构学习/">Android架构学习</a></p>
                             <p class="item-title"><a href="/2023/08/13/android_architecture/MviComposeExtensions/" class="title">MviComposeExtensions</a></p>
                             <p class="item-date"><time datetime="2023-08-13T05:16:43.000Z" itemprop="datePublished">2023-08-13</time></p>
                         </div>
@@ -802,26 +822,6 @@ python /Users/easyliu/Library/Android/sdk/platform-tools/systrace/systrace.py �
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2022/05/22/life/grow_pepper/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2022/05/22/life/grow_pepper/week_one.jpeg)" alt="种辣椒" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/园艺/">园艺</a></p>
-                            <p class="item-title"><a href="/2022/05/22/life/grow_pepper/" class="title">种辣椒</a></p>
-                            <p class="item-date"><time datetime="2022-05-22T08:01:07.000Z" itemprop="datePublished">2022-05-22</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -831,7 +831,7 @@ python /Users/easyliu/Library/Android/sdk/platform-tools/systrace/systrace.py �
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android性能优化/">Android性能优化</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android架构学习/">Android架构学习</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android源码解析/">Android源码解析</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android疑难杂症/">Android疑难杂症</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android自定义控件/">Android自定义控件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gradle相关/">Gradle相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios开发/">ios开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/从0打造音视频直播系统/">从0打造音视频直播系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/代码规范/">代码规范</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/刷题/">刷题</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/单元测试/">单元测试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/周末活动/">周末活动</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/园艺/">园艺</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习计划/">学习计划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/旅游/">旅游</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android性能优化/">Android性能优化</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android架构学习/">Android架构学习</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android源码解析/">Android源码解析</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android疑难杂症/">Android疑难杂症</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android自定义控件/">Android自定义控件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Compose/">Compose</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gradle相关/">Gradle相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios开发/">ios开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/从0打造音视频直播系统/">从0打造音视频直播系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/代码规范/">代码规范</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/刷题/">刷题</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/单元测试/">单元测试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/周末活动/">周末活动</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/园艺/">园艺</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习计划/">学习计划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/旅游/">旅游</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -841,7 +841,7 @@ python /Users/easyliu/Library/Android/sdk/platform-tools/systrace/systrace.py �
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -851,7 +851,7 @@ python /Users/easyliu/Library/Android/sdk/platform-tools/systrace/systrace.py �
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo进阶/">hexo进阶</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios开发/">ios开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码规范/">代码规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习计划/">学习计划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日常活动/">日常活动</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日常生活/">日常生活</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">4</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo进阶/">hexo进阶</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios开发/">ios开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码规范/">代码规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习计划/">学习计划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日常活动/">日常活动</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日常生活/">日常生活</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">4</span></li></ul>
         </div>
     </div>
 

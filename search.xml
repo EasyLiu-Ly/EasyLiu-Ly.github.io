@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title><![CDATA[Composable曝光和反曝光实现]]></title>
+      <url>http://easyliu.com/2023/08/13/compose/report/</url>
+      <content type="html"><![CDATA[<h2 id="1、Composable曝光和反曝光实现"><a href="#1、Composable曝光和反曝光实现" class="headerlink" title="1、Composable曝光和反曝光实现"></a>1、Composable曝光和反曝光实现</h2><p>在Compose开发过程中，需要在进入退出重组以及View可见的场景自定进行@Composable的曝光和反曝光，进入退出重组的话可以通过LaunchedEffect和DisposableEffect来监听，那View可见的场景就得通过Lifecycle来实现了，如下所示：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="keyword">internal</span> <span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="title">Report</span><span class="params">(extraParams: <span class="type">Map</span>&lt;<span class="type">String</span>, Any?&gt;? = <span class="literal">null</span>, content: @<span class="type">Composable</span> () -&gt; <span class="type">Unit</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> view = LocalView.current</span><br><span class="line">    <span class="keyword">val</span> lifecycleOwner = remember(view) &#123; view.findViewTreeLifecycleOwner() &#125;</span><br><span class="line">    lifecycleOwner?.let &#123;</span><br><span class="line">        DisposableEffect(<span class="built_in">Unit</span>) &#123;</span><br><span class="line">            <span class="keyword">val</span> observer = LifecycleEventObserver &#123; _, event -&gt;</span><br><span class="line">                <span class="keyword">if</span> (event == Lifecycle.Event.ON_RESUME) &#123;</span><br><span class="line">                    <span class="comment">//曝光</span></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (event == Lifecycle.Event.ON_PAUSE) &#123;</span><br><span class="line">                    <span class="comment">//反曝光</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            lifecycleOwner.lifecycle.addObserver(observer)</span><br><span class="line">            onDispose &#123;</span><br><span class="line">                <span class="comment">//反曝光</span></span><br><span class="line">                lifecycleOwner.lifecycle.removeObserver(observer)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; ?: run &#123;</span><br><span class="line">        LaunchedEffect(<span class="built_in">Unit</span>) &#123;</span><br><span class="line">            <span class="comment">//曝光</span></span><br><span class="line">        &#125;</span><br><span class="line">        DisposableEffect(<span class="built_in">Unit</span>) &#123;</span><br><span class="line">            onDispose &#123;</span><br><span class="line">                <span class="comment">//反曝光</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    content()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、使用方式"><a href="#2、使用方式" class="headerlink" title="2、使用方式"></a>2、使用方式</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Report &#123;</span><br><span class="line">    Text(</span><br><span class="line">        modifier = Modifier.fillMaxHeight(),</span><br><span class="line">        textAlign = TextAlign.Center,</span><br><span class="line">        overflow = TextOverflow.Ellipsis,</span><br><span class="line">        fontSize = <span class="number">16</span>.sp,</span><br><span class="line">        color = Color.White,</span><br><span class="line">        maxLines = <span class="number">1</span>,</span><br><span class="line">        fontWeight = FontWeight(<span class="number">500</span>),</span><br><span class="line">        text = text)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用Report包起来，就自动实现了这个Text的曝光和反曝光逻辑</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Compose </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Android </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[MviComposeExtensions]]></title>
       <url>http://easyliu.com/2023/08/13/android_architecture/MviComposeExtensions/</url>
       <content type="html"><![CDATA[<h2 id="1、MviComposeExtensions"><a href="#1、MviComposeExtensions" class="headerlink" title="1、MviComposeExtensions"></a>1、MviComposeExtensions</h2><p>接上篇MVI架构实践：<a href="https://easyliu-ly.github.io/2023/08/13/android_architecture/mvi/" target="_blank" rel="noopener">MVI架构实践</a></p>
@@ -12,6 +38,18 @@
 
 <h2 id="2、使用"><a href="#2、使用" class="headerlink" title="2、使用"></a>2、使用</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取state</span></span><br><span class="line"><span class="keyword">val</span> closeParams <span class="keyword">by</span> viewModel.collectAsState(PanelUiState::closeParams)</span><br><span class="line">TipsReport(extraParams = closeParams) &#123;</span><br><span class="line">    Image(painter = BitmapPainter(getLocalImageBitmap(R.drawable.qmt_satisfy_tips_close)),</span><br><span class="line">        contentDescription = <span class="literal">null</span>,</span><br><span class="line">        modifier = Modifier</span><br><span class="line">            .height(<span class="number">24</span>.dp)</span><br><span class="line">            .width(<span class="number">24</span>.dp)</span><br><span class="line">            .align(Alignment.TopEnd)</span><br><span class="line">            .onClickExtension(extraParams = closeParams) &#123;</span><br><span class="line">                <span class="comment">//发送Intent</span></span><br><span class="line">                viewModel.setIntent(PanelUiIntent.TryExitSplitMode)</span><br><span class="line">            &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
+        <categories>
+            
+            <category> Android架构学习 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Android </tag>
+            
+        </tags>
         
     </entry>
     
@@ -172,7 +210,7 @@
     <entry>
       <title><![CDATA[深圳大鹏7娘山——2021.8.22]]></title>
       <url>http://easyliu.com/2021/09/07/life/2021_8_22_seven_mother_moutain/</url>
-      <content type="html"><![CDATA[<h2 id="风景无敌"><a href="#风景无敌" class="headerlink" title="风景无敌"></a>风景无敌</h2><div id="dplayer1" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer1"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/seven_mom_moutain_one.mp4","pic":"/resources/image/seven_mom_moutain_poster.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+      <content type="html"><![CDATA[<h2 id="风景无敌"><a href="#风景无敌" class="headerlink" title="风景无敌"></a>风景无敌</h2><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/seven_mom_moutain_one.mp4","pic":"/resources/image/seven_mom_moutain_poster.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
 <p><img src="/2021/09/07/life/2021_8_22_seven_mother_moutain/pic_1.jpg" alt="pic"></p>
 <p><img src="/2021/09/07/life/2021_8_22_seven_mother_moutain/pic_2.jpg" alt="pic"></p>
@@ -1313,7 +1351,7 @@
     <entry>
       <title><![CDATA[早起龙城公园爬山——2020.11.1]]></title>
       <url>http://easyliu.com/2020/11/01/life/2020_11_1_longcheng_park/</url>
-      <content type="html"><![CDATA[<h2 id="空气新鲜"><a href="#空气新鲜" class="headerlink" title="空气新鲜"></a>空气新鲜</h2><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/image/scenery_three.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+      <content type="html"><![CDATA[<h2 id="空气新鲜"><a href="#空气新鲜" class="headerlink" title="空气新鲜"></a>空气新鲜</h2><div id="dplayer1" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer1"),"autoplay":true,"theme":"#FADFA3","loop":true,"video":{"url":"/resources/video/scenery.mp4","pic":"/resources/image/scenery_three.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
 <p><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_one.jpeg" alt="scenery_one"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_two.jpeg" alt="scenery_two"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_three.jpeg" alt="scenery_three"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/scenery_four.jpeg" alt="scenery_four"></p>
 <h2 id="你大爷还是你大爷"><a href="#你大爷还是你大爷" class="headerlink" title="你大爷还是你大爷"></a>你大爷还是你大爷</h2><p><img src="/2020/11/01/life/2020_11_1_longcheng_park/uncle.jpeg" alt="uncle_one"><br><img src="/2020/11/01/life/2020_11_1_longcheng_park/uncle_two.jpeg" alt="uncle_two"></p>
