@@ -188,8 +188,8 @@
     
 
         <p class="article-excerpt">
-            1、Composable曝光和反曝光实现在Compose开发过程中，需要在进入退出重组以及View可见的场景自定进行@Composable的曝光和反曝光，进入退出重组的话可以通过LaunchedEffect和DisposableEffect来监听，那View可见的场景就得通过Lifecycle来实现了，如下所示：
-123456789101112131415161718192021222324252
+            1、Composable曝光和反曝光实现在Compose开发过程中，需要在进入退出重组以及View可见的场景进行@Composable的曝光和反曝光，进入退出重组的话可以通过LaunchedEffect和DisposableEffect来监听，那View可见的场景就得通过Lifecycle来实现了，如下所示，可以统一在DisposableEffect里面通过生命周期监听来处理：
+123456789
         </p>
     </div>
 </article>
