@@ -184,6 +184,7 @@
 
 <p>这样，整个功能就完美实现了，在点击add或者decrease按钮的时候计数会进行增减，并且弹出对应的toast，然后当进行横竖屏切换导致Activity销毁重建的时候，toast也不会再次弹出。</p>
 <h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p><a href="https://github.com/EasyLiu-Ly/MVI" target="_blank" rel="noopener">https://github.com/EasyLiu-Ly/MVI</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developer.android.google.cn/jetpack/guide?hl=zh_cn" target="_blank" rel="noopener">https://developer.android.google.cn/jetpack/guide?hl=zh_cn</a><br><a href="https://github.com/airbnb/mavericks" target="_blank" rel="noopener">https://github.com/airbnb/mavericks</a><br><a href="https://juejin.cn/post/7048980213811642382?searchId=202309161518351288648A2C013082F53D" target="_blank" rel="noopener">https://juejin.cn/post/7048980213811642382?searchId=202309161518351288648A2C013082F53D</a></p>
 ]]></content>
       
         <categories>
